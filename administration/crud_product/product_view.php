@@ -1,7 +1,7 @@
 <?php
 require ($_SERVER['DOCUMENT_ROOT'] . '/Computer-Store-POS-System/administration/dbconnect.php');
 
- $star0 = $star1 = $star2 = $star3 = $star4 = $star5 = 0;
+$star0 = $star1 = $star2 = $star3 = $star4 = $star5 = 0;
 if (isset($_GET['id'])) {
     $productID = $_GET['id'];
     $sql1 = "SELECT * FROM product WHERE product_id='$productID'";
@@ -113,7 +113,7 @@ if (isset($_GET['id'])) {
                                     </div>
                                     <div class="col-lg-6">
                                         <div class="about-avatar">
-                                            <img src="<?php echo $currentProduct['image']; ?>">
+                                            <img src="<?php echo '/Computer-Store-POS-System/client/images/' . $currentProduct['image']; ?> " width="521" height="521">
                                         </div>
                                     </div>
                                 </div>
