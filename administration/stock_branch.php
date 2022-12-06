@@ -1,6 +1,7 @@
 <?php
 require 'dbconnect.php';
 require 'crud_product_branch/product_db_branch.php';
+require 'exportExcel.php';
 
 $sql = "SELECT * FROM product WHERE store_type='Branch' ";
 $query1 = "SELECT * FROM store";
@@ -31,15 +32,17 @@ require 'static-nav/static-sidenav.php';
                 <div class="card-header">
                     <i class="fas fa-table me-1"></i>
                     Branch Stock Table
-                    
-                     <button type="button" class="btn btn-primary m-md-2 float-end" data-bs-toggle="modal" data-bs-target="#transferToModal">Transfer to<i class="bi bi-arrow-left-right  m-md-2"></i></button>
+
+                    <button type="button" class="btn btn-primary m-md-2 float-end" data-bs-toggle="modal" data-bs-target="#transferToModal">Transfer to<i class="bi bi-arrow-left-right  m-md-2"></i></button>
                     <?php include"crud_product_branch/transferTo_branch.php"; ?>
-                     
+
                     <div class="dropdown float-end">
                         <button type="button" class="btn btn-primary dropdown-toggle m-md-2" data-bs-toggle="dropdown">Export</button>
-                        <div class="dropdown-menu">
-                            <a class="dropdown-item" href="#"><i class="bi bi-filetype-xlsx m-md-2"></i>Export Excel</a>
-                        </div>
+                        <form action="stock_branch.php" method="POST">
+                            <div class="dropdown-menu">
+                                <button type="submit" class="dropdown-item" name="generate_branch"><i class="bi bi-filetype-xlsx m-md-2"></i>Export Excel</button>
+                            </div>
+                        </form>
                     </div>
                 </div>
                 <div class="card-body">

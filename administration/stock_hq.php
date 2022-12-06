@@ -1,6 +1,7 @@
 <?php
 require 'dbconnect.php';
 require 'crud_product/product_db.php';
+require 'exportExcel.php';
 
 $sql = "SELECT * FROM product WHERE store_type='Headquarter' ";
 $query1 = "SELECT * FROM store";
@@ -13,7 +14,6 @@ $get2 = mysqli_query($connect, $query2);
 if (!$result || !$get1 || !$get2) {
     die("Invalid query:" . $connect->error);
 }
-
 
 include 'static-include/header.php';
 require 'static-nav/static-headnav.php';
@@ -37,9 +37,11 @@ require 'static-nav/static-sidenav.php';
 
                     <div class="dropdown float-end">
                         <button type="button" class="btn btn-primary dropdown-toggle m-md-2" data-bs-toggle="dropdown">Export</button>
-                        <div class="dropdown-menu">
-                            <a class="dropdown-item" href="#"><i class="bi bi-filetype-xlsx m-md-2"></i>Export Excel</a>
-                        </div>
+                        <form action="stock_hq.php" method="POST">
+                            <div class="dropdown-menu">
+                                <button type="submit" class="dropdown-item" name="generate_hq"><i class="bi bi-filetype-xlsx m-md-2"></i>Export Excel</a>
+                            </div>
+                        </form>
                     </div>
                 </div>
                 <div class="card-body">
