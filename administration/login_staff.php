@@ -64,7 +64,7 @@ if (isset($_POST['staff_login'])) {
         <div id="layoutAuthentication">
             <div id="layoutAuthentication_content">
                 <main>
-
+                      <?php include 'alertMessage.php'; ?>
                     <div class="container">
                         <div class="row justify-content-center">
                             <div class="col-lg-5">

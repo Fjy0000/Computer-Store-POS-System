@@ -25,19 +25,13 @@ if (isset($_POST['resetPassword'])) {
                 $to = $email;
                 $subject = "Staff Account - Password Recovery Key";
                 $txt = $message;
-                $headers = "From: ymark2122@gmail.com" . "\r\n" .
-                        "CC: somebodyelse@example.com";
+                $headers = "From: ymark2122@gmail.com";
 
-                $retval = mail($to, $subject, $txt, $headers);
-                if ($retval == true) {
-                    echo "Message sent successfully...";
-                } else {
-                    echo "Message could not be sent...";
-                }
-//                header("Location:http://localhost/Computer-Store-POS-System/administration/setNewPassword.php");
-//                exit(0);
-//            }else{
-//                  echo '<script>alert("Invalid Email ! Please Try Again")</script>';
+                mail($to, $subject, $txt, $headers);
+                header("Location:http://localhost/Computer-Store-POS-System/administration/setNewPassword.php");
+                exit(0);
+            } else {
+                echo '<script>alert("Invalid Email ! Please Try Again")</script>';
             }
         }
     }
