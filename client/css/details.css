@@ -1,0 +1,41 @@
+:root{
+   --blue:#3498db;
+   --red:#e74c3c;
+   --orange:#f39c12;
+   --black:#333;
+   --white:#fff;
+   --light-bg:#eee;
+   --box-shadow:0 5px 10px rgba(0,0,0,.1);
+   --border:2px solid var(--black);
+}
+
+body{
+   background-color: var(--light-bg);
+}
+
+.btn{
+   display: inline-block;
+   padding:10px 30px;
+   cursor: pointer;
+   font-size: 18px;
+   color:var(--white);
+   border-radius: 5px;
+   text-transform: capitalize;
+   background-color: var(--blue);
+   margin-top: 10px;
+}
+
+.btn:hover
+{
+   background-color: var(--black);
+}
+
+.image-resize{
+    height: 380px;
+    margin-top: 0px;
+    margin-left: 30px;
+}
+
+.nameD{
+    font-size: 50px;
+}
