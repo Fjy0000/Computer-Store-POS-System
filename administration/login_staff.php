@@ -1,30 +1,39 @@
 <?php
 require 'dbconnect.php';
 
+$error_username = $error_password = "";
 
-if(isset($_POST['staff_login'])){
-    
+if (isset($_POST['staff_login'])) {
+
     $u = $_POST['inputUsername'];
     $p = $_POST['inputPassword'];
-    
-    $sql="SELECT * FROM staff WHERE staff_username='$u' AND staff_password='$p'";
-    
+
+    $sql = "SELECT * FROM staff WHERE staff_username='$u' AND staff_password='$p'";
+
     $check = mysqli_query($connect, $sql);
-    
-    if(mysqli_num_rows($check)==1){
-        $row = mysqli_fetch_assoc($check);
-        if($row['staff_username']==$u && $row['staff_password']==$p){
-            $_SESSION['message'] = "Welcome back ! $u let start to work.";
-            $_SESSION['id'] = $row['staff_id'];
-            $_SESSION['username'] = $row['staff_username'];
-            
-            header("Location:http://localhost/Computer-Store-POS-System/administration/admin_dashboard.php");
-            exit(0);
-        }
-    }else{
-        echo '<script>alert("Your login was failed !")</script>';
+
+    if (empty($u)) {
+        $error_username = "Please type in your username.";
     }
-    
+    if (empty($p)) {
+        $error_password = "Please type in your password.";
+    }
+
+    if (empty($error_password) && empty($error_username)) {
+        if (mysqli_num_rows($check) == 1) {
+            $row = mysqli_fetch_assoc($check);
+            if ($row['staff_username'] == $u && $row['staff_password'] == $p) {
+                $_SESSION['message'] = "Welcome back ! $u let start to work.";
+                $_SESSION['id'] = $row['staff_id'];
+                $_SESSION['username'] = $row['staff_username'];
+
+                header("Location:http://localhost/Computer-Store-POS-System/administration/admin_dashboard.php");
+                exit(0);
+            }
+        } else {
+            echo '<script>alert("Your login was failed !")</script>';
+        }
+    }
 }
 ?>
 <!DOCTYPE html>
@@ -55,17 +64,20 @@ if(isset($_POST['staff_login'])){
         <div id="layoutAuthentication">
             <div id="layoutAuthentication_content">
                 <main>
-                    
+
                     <div class="container">
                         <div class="row justify-content-center">
                             <div class="col-lg-5">
                                 <div class="card shadow-lg border-0 rounded-lg mt-5">
                                     <div class="card-header"><h3 class="text-center font-weight-light my-4">Admin Login</h3></div>
                                     <div class="card-body">
+                                        
                                         <form method="POST" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>">
                                             <div class="mb-3">
+                                                <span style="color: #dc3545">&nbsp;&nbsp; *<?php echo $error_username; ?></span>
                                                 <input class="form-control" name="inputUsername" id="inputUsername" type="text" placeholder="Username"/>
                                             </div>
+                                            <span style="color: #dc3545">&nbsp;&nbsp; *<?php echo $error_password; ?></span>
                                             <div class="input-group mb-3">
                                                 <input class="form-control" name="inputPassword" id="inputPassword" type="password" placeholder="Password"/>
                                                 <span onclick="togglePasswordIcon1()">
@@ -74,10 +86,11 @@ if(isset($_POST['staff_login'])){
                                                 </span>
                                             </div>
                                             <div class="d-flex align-items-center justify-content-between mt-4 mb-0">
-                                                <a class="small" href="account_retrieve_password.php">Forgot Password?</a>
+                                                <a class="small" href="retrieve_password.php">Forgot Password?</a>
                                                 <button type="submit" class="btn btn-primary" name="staff_login">Login</button>
                                             </div>
                                         </form>
+                                        
                                     </div>
                                 </div>
                             </div>
