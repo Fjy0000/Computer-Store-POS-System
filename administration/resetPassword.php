@@ -1,3 +1,50 @@
+<?php
+require ('dbconnect.php');
+
+$errorEmail = "";
+
+if (isset($_POST['resetPassword'])) {
+
+    $email = $_POST['staffEmail'];
+
+    $sql = "SELECT * FROM staff WHERE staff_email = '$email' ";
+    $check = mysqli_query($connect, $sql);
+
+    if (empty($email)) {
+        $errorEmail = "Please enter your email.";
+    } elseif (!empty($email) && !preg_match("^[_a-z0-9-]+(\.[_a-z0-9-]+)*@[a-z0-9-]+(\.[a-z0-9-]+)*(\.[a-z]{2,3})$^", $email)) {
+        $errorEmail = "Invalid email format";
+    }
+
+    if (empty($errorEmail)) {
+        if (mysqli_num_rows($check) == 1) {
+            $row = mysqli_fetch_assoc($check);
+            if ($row['staff_email'] == $email) {
+
+                $message = $row['staff_recoveryPasswordKey'];
+                $to = $email;
+                $subject = "Staff Account - Password Recovery Key";
+                $txt = $message;
+                $headers = "From: ymark2122@gmail.com" . "\r\n" .
+                        "CC: somebodyelse@example.com";
+
+                $retval = mail($to, $subject, $txt, $headers);
+                if ($retval == true) {
+                    echo "Message sent successfully...";
+                } else {
+                    echo "Message could not be sent...";
+                }
+//                header("Location:http://localhost/Computer-Store-POS-System/administration/setNewPassword.php");
+//                exit(0);
+//            }else{
+//                  echo '<script>alert("Invalid Email ! Please Try Again")</script>';
+            }
+        }
+    }
+}
+?>
+
+
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -18,19 +65,20 @@
                                     <div class="card-header"><h3 class="text-center font-weight-light my-4">Password Recovery</h3></div>
                                     <div class="card-body">
                                         <div class="small mb-3 text-muted">Enter your email address and we will send you a link to reset your password.</div>
-                                        <form>
+
+                                        <form action="resetPassword.php" method="POST">
+                                            <span style="color: #dc3545">&nbsp;&nbsp; *<?php echo $errorEmail; ?></span>
                                             <div class="form-floating mb-3">
-                                                <input class="form-control" id="inputEmail" type="email" placeholder="name@example.com" />
-                                                <label for="inputEmail">Email address</label>
+                                                <input class="form-control" id="staffEmail" type="email" name="staffEmail" placeholder="name@example.com" />
+                                                <label for="staffEmail">Email address</label>
                                             </div>
                                             <div class="d-flex align-items-center justify-content-between mt-4 mb-0">
-                                                <a class="small" href="login.html">Return to login</a>
-                                                <a class="btn btn-primary" href="login.html">Reset Password</a>
+                                                <a class="small" href="login_staff.php">Return to login</a>
+                                                <button type="submit" class="btn btn-primary" name="resetPassword">Reset Password</button>
                                             </div>
                                         </form>
                                     </div>
                                     <div class="card-footer text-center py-3">
-                                        <div class="small"><a href="register.html">Need an account? Sign up!</a></div>
                                     </div>
                                 </div>
                             </div>

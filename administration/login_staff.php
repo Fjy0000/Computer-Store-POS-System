@@ -31,7 +31,7 @@ if (isset($_POST['staff_login'])) {
                 exit(0);
             }
         } else {
-            echo '<script>alert("Your login was failed !")</script>';
+            echo '<script>alert("Invalid Username or Password !")</script>';
         }
     }
 }
@@ -86,7 +86,7 @@ if (isset($_POST['staff_login'])) {
                                                 </span>
                                             </div>
                                             <div class="d-flex align-items-center justify-content-between mt-4 mb-0">
-                                                <a class="small" href="retrieve_password.php">Forgot Password?</a>
+                                                <a class="small" href="resetPassword.php">Forgot Password?</a>
                                                 <button type="submit" class="btn btn-primary" name="staff_login">Login</button>
                                             </div>
                                         </form>
