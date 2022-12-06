@@ -60,7 +60,7 @@
                     </a>
                     
                     <div class="sb-sidenav-menu-heading">Generate Report</div>
-                     <a class="nav-link" href="#">
+                     <a class="nav-link" href="salesReport.php">
                         <div class="sb-nav-link-icon"><i class="bi bi-file-earmark"></i></div>
                         Sales Report
                     </a>
