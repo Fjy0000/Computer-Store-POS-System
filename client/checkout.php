@@ -14,7 +14,8 @@ if(isset($_POST['order_btn'])){
    $city = $_POST['city'];
    $state = $_POST['state'];
    $country = $_POST['country'];
-   $pin_code = $_POST['pin_code'];
+   $postal_code = $_POST['postal_code'];
+   $date = date("d/m/Y");
 
    $cart_query = mysqli_query($conn, "SELECT * FROM `cart`");
    $price_total = 0;
@@ -27,7 +28,7 @@ if(isset($_POST['order_btn'])){
    };
 
    $total_product = implode(', ',$product_name);
-   $detail_query = mysqli_query($conn, "INSERT INTO `order`(name, number, email, method, flat, street, city, state, country, pin_code, total_product, total_price) VALUES('$name','$number','$email','$method','$flat','$street','$city','$state','$country','$pin_code','$total_product','$grand_total')") or die('query failed');
+   $detail_query = mysqli_query($conn, "INSERT INTO `orders`(name, number, email, method, flat, street, city, state, country, postal_code, total_product, total_price, date) VALUES('$name','$number','$email','$method','$flat','$street','$city','$state','$country','$postal_code','$total_product','$grand_total','$date')") or die('query failed');
 
    if($cart_query && $detail_query){
       echo "
@@ -144,8 +145,8 @@ if(isset($_POST['order_btn'])){
             <input type="text" placeholder="e.g. india" name="country" required>
          </div>
          <div class="inputBox">
-            <span>pin code</span>
-            <input type="text" placeholder="e.g. 123456" name="pin_code" required>
+            <span>postal code</span>
+            <input type="text" placeholder="e.g. 123456" name="postal_code" required>
          </div>
       </div>
       <input type="submit" value="order now" name="order_btn" class="btn">

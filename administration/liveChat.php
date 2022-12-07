@@ -62,7 +62,6 @@ require 'dbconnect.php';
             $(document).ready(function () 
             {
                 get_users();
-                
                 //this update activity status function set every 5 seconds update the users status.  
                 setInterval(function(){
                     update_activity_status();

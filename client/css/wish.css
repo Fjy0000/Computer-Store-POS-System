@@ -33,3 +33,8 @@ body{
    background-color: var(--blue);
    margin-top: 10px;
 }
+
+.img{
+    height: 30px;
+    width: 30px;
+}

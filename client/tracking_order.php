@@ -17,7 +17,7 @@ and open the template in the editor.
     <body>
         <table align="center" border="10px" style="width: 600px; line-height: 60px;">
             <tr>
-                <th colspan="6"><h2>Order Record</h2></th>
+                <th colspan="7"><h2>Order Record</h2></th>
             </tr>
             <t>
                 <th>Name</th>
@@ -26,6 +26,7 @@ and open the template in the editor.
                 <th>State</th>
                 <th>Country</th>
                 <th>PostCode</th>
+                <th>DeliveryStatus</th>
             </t>
             
          <?php
@@ -39,6 +40,7 @@ and open the template in the editor.
                 <th><?php echo $rows['state']; ?></th>
                 <th><?php echo $rows['country']; ?></th>
                 <th><?php echo $rows['postal_code']; ?></th>
+                <th><?php echo $rows['delivery_status']; ?></th>
             </tr>
             <?php
             }

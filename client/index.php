@@ -190,7 +190,6 @@ if(isset($message)){
    <div class="cart-btn">  
       <a href="checkout.php" class="btn2 <?php echo ($grand_total > 1)?'':'disabled'; ?>">proceed to checkout</a>
    </div>
-<a href="@@cht">Group Chat</p></a>
 </div>
 
 </div>

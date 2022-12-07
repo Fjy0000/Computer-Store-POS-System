@@ -34,7 +34,7 @@ if(isset($_GET['remove'])){
                 ?>
             <tr>
 
-                <th><?php echo $fetch_cart['image']; ?></th>
+                <th><img src="images/<?php echo $fetch_cart['image']; ?>" alt="" width="200" height="200"></th>
                 <th><?php echo $fetch_cart['name']; ?></th>
                 <th><?php echo $fetch_cart['price']; ?></th>
                             <th>
