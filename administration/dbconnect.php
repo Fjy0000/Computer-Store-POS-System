@@ -1,6 +1,8 @@
 <?php
+
 session_start();
 
+//MySQLi (object-oriented) 
 $serverName = "localhost";
 $dbUsername = "root";
 $dbPassword = "";
@@ -11,4 +13,5 @@ if ($connect->connect_error) {
     die("Connection Failed :" . $connect->connect_error);
 }
 
-
+//PDO (PHP Data Objects)
+$connect2 = new PDO("mysql:host=localhost;dbname=fyp_database", "$dbUsername", "$dbPassword");

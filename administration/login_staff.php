@@ -27,6 +27,15 @@ if (isset($_POST['staff_login'])) {
                 $_SESSION['id'] = $row['staff_id'];
                 $_SESSION['username'] = $row['staff_username'];
 
+                //PDO mode - add users login details for use to represent the account online/offline in live chat
+                $i = $row['staff_id'];
+                $userN = $row['staff_username'];
+                $sub_sql = "INSERT INTO login_details(user_id, username) VALUES ('$i','$userN')";
+                //PDO
+                $statement = $connect2->prepare($sub_sql);
+                $statement->execute();
+                $_SESSION['login_details_id'] = $connect2->lastInsertId();
+
                 header("Location:http://localhost/Computer-Store-POS-System/administration/admin_dashboard.php");
                 exit(0);
             }
@@ -49,6 +58,10 @@ if (isset($_POST['staff_login'])) {
         <!-- JavaScript Bundle with Popper -->
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous"></script>
         <script src="js/scripts.js"></script>
+        <!-- Jquery only -->
+        <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+        <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+        <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 
         <style>
             #pws1_eye1{
@@ -64,14 +77,14 @@ if (isset($_POST['staff_login'])) {
         <div id="layoutAuthentication">
             <div id="layoutAuthentication_content">
                 <main>
-                      <?php include 'alertMessage.php'; ?>
+                    <?php include 'alertMessage.php'; ?>
                     <div class="container">
                         <div class="row justify-content-center">
                             <div class="col-lg-5">
                                 <div class="card shadow-lg border-0 rounded-lg mt-5">
                                     <div class="card-header"><h3 class="text-center font-weight-light my-4">Admin Login</h3></div>
                                     <div class="card-body">
-                                        
+
                                         <form method="POST" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>">
                                             <div class="mb-3">
                                                 <span style="color: #dc3545">&nbsp;&nbsp; *<?php echo $error_username; ?></span>
@@ -90,7 +103,7 @@ if (isset($_POST['staff_login'])) {
                                                 <button type="submit" class="btn btn-primary" name="staff_login">Login</button>
                                             </div>
                                         </form>
-                                        
+
                                     </div>
                                 </div>
                             </div>
