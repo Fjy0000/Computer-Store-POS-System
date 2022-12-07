@@ -31,16 +31,35 @@ function get_user_chat_history($from_user_id, $to_user_id, $connect2) {
     $statement->execute();
     $result = $statement->fetchAll();
     $output = "<ul class='list-unstyled'>";
+
     foreach ($result as $row) {
-        $user_name = '';
+        $user_name = "";
+        $background = "";
+        $message = "";
+
         if ($row["from_user_id"] == $from_user_id) {
-            $user_name = '<b class="text-success">You</b>';
+
+            if ($row["status"] == '2') {
+                $message = '<em> This message has been removed </em>';
+                $user_name = '<b class="text-success">You</b>';
+            } else {
+                $message = $row['chat_message'];
+                $user_name = '<button type="button" class="bi bi-x remove_message" id=" '. $row['chat_id'] .' "></button>&nbsp;<b class="text-success">You</b>';
+            }
+            $background = 'background-color:#ffe6e6;';
         } else {
+            if ($row["status"] == '2') {
+                $message = '<em> This message has been removed </em>';
+            } else {
+                $message = $row['chat_message'];
+            }
             $user_name = '<b class="text-danger">' . get_user_name($row['from_user_id'], $connect2) . '</b>';
+            $background = 'background-color:#ffffe6;';
         }
+
         $output .= '
-  <li style="border-bottom:1px dotted #ccc">
-   <p>' . $user_name . ' - ' . $row["chat_message"] . '
+  <li style="border-bottom:1px dotted #ccc;padding-top:8px; padding-left:8px; padding-right:8px;' . $background . '">
+   <p>' . $user_name . ' - ' . $message . '
     <div align="right">
      - <small><em>' . $row['timestamp'] . '</em></small>
     </div>

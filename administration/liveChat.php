@@ -141,6 +141,19 @@ session_start();
                     $('.user_dialog').dialog('destroy').remove();
                 });
 
+                $(document).on('click', '.remove_message', function () {
+                    var message_id = $(this).attr('id');
+                    if (confirm("Are you sure you want to remove this message in the chat ?")) {
+                        $.ajax({
+                            url: "liveChat_function/remove_message.php",
+                            method: "POST",
+                            data: {message_id: message_id},
+                            success: function (data) {
+                                update_chat_history();
+                            }
+                        })
+                    }
+                });
 
             });
 

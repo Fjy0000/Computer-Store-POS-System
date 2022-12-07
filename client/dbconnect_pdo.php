@@ -32,15 +32,33 @@ function get_user_chat_history($from_user_id, $to_user_id, $connect2) {
     $result = $statement->fetchAll();
     $output = "<ul class='list-unstyled'>";
     foreach ($result as $row) {
-        $user_name = '';
+        $user_name = "";
+        $background = "";
+        $message = "";
+
         if ($row["from_user_id"] == $from_user_id) {
-            $user_name = '<b class="text-success">You</b>';
+
+            if ($row["status"] == '2') {
+                $message = '<em> This message has been removed </em>';
+                $user_name = '<b class="text-success">You</b>';
+                
+            } else {
+                $message = $row['chat_message'];
+                $user_name = '<b class="text-success">You</b>';
+            }
         } else {
+            if ($row["status"] == '2') {
+                $message = '<em> This message has been removed </em>';
+            } else {
+                $message = $row['chat_message'];
+            }
             $user_name = '<b class="text-danger">' . get_user_name($row['from_user_id'], $connect2) . '</b>';
+            $background = 'background-color:#ffffe6;';
         }
+
         $output .= '
-  <li style="border-bottom:1px dotted #ccc">
-   <p>' . $user_name . ' - ' . $row["chat_message"] . '
+  <li style="border-bottom:1px dotted #ccc;padding-top:8px; padding-left:8px; padding-right:8px;' . $background . '">
+   <p>' . $user_name . ' - ' . $message . '
     <div align="right">
      - <small><em>' . $row['timestamp'] . '</em></small>
     </div>
