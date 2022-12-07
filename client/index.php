@@ -102,6 +102,7 @@ if(isset($message)){
       <a href="tracking_order.php" class="btn1">Tracking Order</a>
       <a href="add_rate.php" class="btn3">Review & Rating Product</a>
       <a href="wishlist.php" class="btn4">Wish list</a>
+      <a href="liveChat.php" class="btn2">Live Chat</a>
    </div>
 
 </div>
