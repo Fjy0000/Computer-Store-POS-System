@@ -16,6 +16,7 @@ if(isset($_POST['order_btn'])){
    $country = $_POST['country'];
    $postal_code = $_POST['postal_code'];
    $date = date("d/m/Y");
+   $delivery = "Preparing";
 
    $cart_query = mysqli_query($conn, "SELECT * FROM `cart`");
    $price_total = 0;
@@ -28,7 +29,7 @@ if(isset($_POST['order_btn'])){
    };
 
    $total_product = implode(', ',$product_name);
-   $detail_query = mysqli_query($conn, "INSERT INTO `orders`(name, number, email, method, flat, street, city, state, country, postal_code, total_product, total_price, date) VALUES('$name','$number','$email','$method','$flat','$street','$city','$state','$country','$postal_code','$total_product','$grand_total','$date')") or die('query failed');
+   $detail_query = mysqli_query($conn, "INSERT INTO `orders`(name, number, email, method, flat, street, city, state, country, postal_code, total_product, total_price, date, delivery_status) VALUES('$name','$number','$email','$method','$flat','$street','$city','$state','$country','$postal_code','$total_product','$grand_total','$date', '$delivery')") or die('query failed');
 
    if($cart_query && $detail_query){
       echo "
