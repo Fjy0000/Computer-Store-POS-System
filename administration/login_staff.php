@@ -1,5 +1,6 @@
 <?php
-require 'dbconnect.php';
+require ('dbconnect.php');
+require ('dbconnect_pdo.php');
 
 $error_username = $error_password = "";
 
@@ -23,7 +24,9 @@ if (isset($_POST['staff_login'])) {
         if (mysqli_num_rows($check) == 1) {
             $row = mysqli_fetch_assoc($check);
             if ($row['staff_username'] == $u && $row['staff_password'] == $p) {
+
                 $_SESSION['message'] = "Welcome back ! $u let start to work.";
+
                 $_SESSION['id'] = $row['staff_id'];
                 $_SESSION['username'] = $row['staff_username'];
 

@@ -53,7 +53,7 @@ if (isset($_POST['create_product'])) {
     if (empty($quantity)) {
         $quantityErr = "Required";
     }
-    if(empty($filename)){
+    if (empty($filename)) {
         $imageErr = "Required";
     }
 
@@ -250,3 +250,4 @@ if (isset($_POST['transfer_product'])) {
         }
     }
 }
+?>

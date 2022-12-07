@@ -15,7 +15,6 @@ if (isset($_POST['create_store'])) {
     $state = $_POST['state'];
     $postalCode = $_POST['postalCode'];
 
-
     if (empty($name)) {
         $nameErr = "Required";
     } elseif (!empty($name) && strlen($name) < 4) {
@@ -89,7 +88,7 @@ if (isset($_POST['update_store'])) {
 if (isset($_POST['delete_store'])) {
 
     $id = $_POST['delete_id'];
-    
+
     $sql4 = "DELETE FROM store WHERE store_id='$id'";
     $sql_run = mysqli_query($connect, $sql4);
     if ($sql_run) {
@@ -102,5 +101,4 @@ if (isset($_POST['delete_store'])) {
         exit(0);
     }
 }
-
-    
+?>

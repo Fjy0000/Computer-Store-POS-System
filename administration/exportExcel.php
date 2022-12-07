@@ -48,7 +48,6 @@ if (isset($_POST['generate_hq'])) {
     header("Content-Disposition:attachment;filename=stock_report_HQ.xls");
     echo $output;
     exit(0);
-    
 }
 
 //Export Excel File - Branch Stock
@@ -97,5 +96,5 @@ if (isset($_POST['generate_branch'])) {
     header("Content-Disposition:attachment;filename=stock_report_Branch.xls");
     echo $output;
     exit(0);
-    
 }
+?>

@@ -17,7 +17,7 @@ if (isset($_POST['create_promotion'])) {
 
     if (empty($title)) {
         $titleErr = "Required.";
-    }elseif(!empty ($title) && strlen($title)<5){
+    } elseif (!empty($title) && strlen($title) < 5) {
         $titleErr = "Promotion tilte must be at least 5 letter.";
     }
     if (empty($description)) {
@@ -98,5 +98,5 @@ if (isset($_POST['delete_promotion'])) {
         exit(0);
     }
 }
-
+?>
  

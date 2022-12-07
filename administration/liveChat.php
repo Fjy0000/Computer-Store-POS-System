@@ -1,5 +1,6 @@
 <?php
-require 'dbconnect.php';
+require 'dbconnect_pdo.php';
+session_start();
 ?>
 
 <!DOCTYPE html>
@@ -34,23 +35,13 @@ require 'dbconnect.php';
             <main>
                 <div class="container-fluid px-4">
                     <h1 class="mt-4">Live-Chat</h1>
-                </div>
 
-                <div class="row">
-                    <div class="col-sm-4 py-2">
-                        <div class="card">
-                            <div class="card-body">
-                                <h5 class="card-title">Online User List</h5>
-                                <hr>
-                                <div id="login_users"></div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-sm-8 py-2">
-                        <div class="card">
-                            <div class="card-body">
-
-                            </div>
+                    <div class="card mb-4">
+                        <div class="card-body">
+                            <h5 class="card-title">Online User List</h5>
+                            <hr>
+                            <div id="login_users"></div>
+                            <div id="chat_modal"></div>
                         </div>
                     </div>
                 </div>
@@ -59,15 +50,17 @@ require 'dbconnect.php';
         <?php include 'static-include/footer.php'; ?>
 
         <script>
-            $(document).ready(function () 
+            $(document).ready(function ()
             {
                 get_users();
+
                 //this update activity status function set every 5 seconds update the users status.  
-                setInterval(function(){
+                setInterval(function () {
                     update_activity_status();
                     get_users();
+                    update_chat_history();
                 }, 5000);
-                
+
                 function get_users()
                 {
                     $.ajax({
@@ -78,16 +71,77 @@ require 'dbconnect.php';
                         }
                     })
                 }
-                
-                function update_activity_status(){
+
+                function update_activity_status() {
                     $.ajax({
-                        url:"liveChat_function/update_activity_status.php";
-                        success: function(){
-                            
+                        url: "liveChat_function/update_activity_status.php",
+                        success: function () {
                         }
                     })
                 }
-                
+
+                function chat_box(to_user_id, to_user_name) {
+                    var modal_content = '<div id="user_dialog_' + to_user_id + '" class="user_dialog" title="You have chat with ' + to_user_name + ' ">';
+                    modal_content += '<div style="height:400px; border:1px solid #ccc; overflow-y: scroll; margin-bottom:24px; padding:16px;" class="chat_history" data-touserid="' + to_user_id + '" id="chat_history_' + to_user_id + '">';
+                    modal_content += get_to_user_chat_history(to_user_id);
+                    modal_content += '</div>';
+                    modal_content += '<div class="form-group">';
+                    modal_content += '<textarea name="chat_message_' + to_user_id + '" id="chat_message_' + to_user_id + '" class="form-control"></textarea>';
+                    modal_content += '</div><div class="form-group" align="right">';
+                    modal_content += '<button type="button" name="send_chat" id="' + to_user_id + '" class="btn btn-info send_chat">Send</button></div></div>';
+                    $('#chat_modal').html(modal_content);
+                }
+                $(document).on('click', '.start_chat', function () {
+                    var to_user_id = $(this).data('touserid');
+                    var to_user_name = $(this).data('tousername');
+                    chat_box(to_user_id, to_user_name);
+                    $("#user_dialog_" + to_user_id).dialog({
+                        autoOpen: false,
+                        width: 400
+                    });
+                    $('#user_dialog_' + to_user_id).dialog('open');
+                });
+
+                $(document).on('click', '.send_chat', function () {
+                    var to_user_id = $(this).attr('id');
+                    var chat_message = $('#chat_message_' + to_user_id).val();
+                    $.ajax({
+                        url: "livechat_function/start_conversation.php",
+                        method: "POST",
+                        data: {to_user_id: to_user_id, chat_message: chat_message},
+                        success: function (data)
+                        {
+                            $('#chat_message_' + to_user_id).val('');
+                            $('#chat_history_' + to_user_id).html(data);
+                        }
+                    })
+                });
+
+                function get_to_user_chat_history(to_user_id) {
+                    $.ajax({
+                        url: "liveChat_function/get_to_user_chat_history.php",
+                        method: "POST",
+                        data: {
+                            to_user_id: to_user_id
+                        },
+                        success: function (data) {
+                            $('#chat_history_' + to_user_id).html(data);
+                        }
+                    })
+                }
+
+                function update_chat_history() {
+                    $('.chat_history').each(function () {
+                        var to_user_id = $(this).data('touserid');
+                        get_to_user_chat_history(to_user_id);
+                    });
+                }
+
+                $(document).on('click', '.ui-button-icon', function () {
+                    $('.user_dialog').dialog('destroy').remove();
+                });
+
+
             });
 
         </script>

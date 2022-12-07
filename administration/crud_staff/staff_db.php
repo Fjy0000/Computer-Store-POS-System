@@ -171,5 +171,4 @@ if (isset($_POST['delete_staff'])) {
         exit(0);
     }
 }
-
-    
+?>

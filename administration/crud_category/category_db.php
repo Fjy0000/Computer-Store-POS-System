@@ -17,9 +17,9 @@ if (isset($_POST['create_category'])) {
     } elseif (!empty($name)) {
         if (strlen($name) < 5) {
             $nameErr = "Category name must be at least 5 letter.";
-        } 
+        }
     }
-        
+
     if (empty($description)) {
         $descriptionErr = "Required.";
     }
@@ -67,7 +67,7 @@ if (isset($_POST['update_category'])) {
 if (isset($_POST['delete_category'])) {
 
     $id = $_POST['delete_id'];
-    
+
     $sql4 = "DELETE FROM category WHERE category_id='$id'";
     $sql_run = mysqli_query($connect, $sql4);
     if ($sql_run) {
@@ -80,5 +80,4 @@ if (isset($_POST['delete_category'])) {
         exit(0);
     }
 }
-
-    
+?>

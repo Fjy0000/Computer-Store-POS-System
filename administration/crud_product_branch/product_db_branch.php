@@ -181,3 +181,4 @@ if (isset($_POST['transfer_product_branch'])) {
         }
     }
 }
+?>

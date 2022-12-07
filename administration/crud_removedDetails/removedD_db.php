@@ -108,7 +108,5 @@ if (isset($_POST['delete_removedDetails'])) {
         exit(0);
     }
 }
+?>
 
-
-
-    

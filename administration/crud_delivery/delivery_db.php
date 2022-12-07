@@ -38,4 +38,4 @@ if (isset($_POST['assign_delivery'])) {
         }
     }
 }
-    
+?>
