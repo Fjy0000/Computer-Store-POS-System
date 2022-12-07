@@ -17,7 +17,7 @@
                         }
                         ?>">User's Profile</a></li>
                     <li><hr class="dropdown-divider" /></li>
-                    <li><a class="dropdown-item" href="login_staff.php" name="logout" >Logout</a></li>
+                    <li><a class="dropdown-item" href="logout_staff.php">Logout</a></li>
                 </ul>
             </li>
         </ul>

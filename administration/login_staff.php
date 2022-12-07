@@ -8,7 +8,7 @@ if (isset($_POST['staff_login'])) {
     $u = $_POST['inputUsername'];
     $p = $_POST['inputPassword'];
 
-    $sql = "SELECT * FROM staff WHERE staff_username='$u' AND staff_password='$p'";
+    $sql = "SELECT * FROM staff WHERE staff_username='$u' AND staff_password='$p' ";
 
     $check = mysqli_query($connect, $sql);
 

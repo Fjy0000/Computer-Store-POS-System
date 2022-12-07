@@ -11,11 +11,7 @@ require 'static-nav/static-sidenav.php';
         <div class="container-fluid px-4">
             <h1 class="mt-4">Live-Chat</h1>
         </div>
-
-
-
-
-
+        
     </main>
 </div>
 <?php include 'static-include/footer.php'; ?>
