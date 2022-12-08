@@ -13,7 +13,7 @@ if (isset($_POST['create_removeDetails'])) {
     $r_store_id = $_POST['r_store_id'];
     $reason = $_POST['reason'];
     $r_quantity = $_POST['r_quantity'];
-    $currentDate = date("d/m/Y");
+    $currentDate = date("Y-m-d");
 
     if (empty($r_product_name)) {
         $r_product_name_Err = "Required";

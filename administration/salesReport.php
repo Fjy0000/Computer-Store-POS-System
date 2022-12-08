@@ -12,71 +12,85 @@ if (!$result || !$get1) {
     die("Invalid query:" . $connect->error);
 }
 
-$storeErr = $productErr = "";
+$sderror = $ederror = $storeErr = "";
 $questionStr = "Select the store to generate that store sold product is required";
 
 if (isset($_POST['generate'])) {
     $store = $_POST['storeName'];
+    $endDate = $_POST['endD'];
+    $startDate = $_POST['startD'];
     $count = 0;
     $totalAmount = 0;
 
-    $sql = "SELECT * FROM orders WHERE store_send = '$store' ";
-    $ordersList = mysqli_query($connect, $sql);
-
-    $pdf = new FPDF();
-    $pdf->AddPage();
-
-    //pdf header
-    $pdf->SetFont('Arial', 'BU', 20);
-    $pdf->Cell(200, 10, 'Computer Store', 0, 1, 'C');
-    $pdf->Cell(200, 10, 'Monthly Sales Report', 0, 1, 'C');
-
-    $pdf->SetFont('Arial', '', 16);
-    $pdf->Cell(200, 10, $store, 0, 1, 'C');
-
-    $pdf->SetFont('Arial', '', 12);
-    $pdf->Cell(64, 10, ' ', 0, 0, 'C');
-    //$pdf->Cell(20, 10, 'Date : ', 0, 0, 'C');
-    //$pdf->Cell(15, 10, '02/11/2022', 0, 0, 'C');
-    //$pdf->Cell(15, 10, 'To', 0, 0, 'C');
-    //$pdf->Cell(15, 10, '04/12/2033', 0, 0, 'C');
-    $pdf->Line(10, 55, 200, 55);
-
-    //pdf body
-    $pdf->Ln(25);
-    $pdf->SetFont('Arial', '', 12);
-    $pdf->Cell(20, 5, 'No', 0, 0);
-    $pdf->Cell(120, 5, 'Product (Sold)', 0, 0);
-    $pdf->Cell(35, 5, 'Price (RM)', 0, 0, 'C');
-    $pdf->Line(10, 70, 200, 70);
-
-    if (mysqli_num_rows($ordersList) > 0) {
-        foreach ($ordersList as $sold) {
-            $totalAmount += (double) $sold['total_price'];
-            $count += 1;
-            $pdf->Ln(10);
-            $pdf->Cell(20, 5, $count, 0, 0);
-            $x = $pdf->GetX();
-            $y = $pdf->GetY();
-            $pdf->MultiCell(120, 5, $sold['total_product'], 0, 0);
-            $pdf->SetXY($x + 115, $y);
-            $pdf->Cell(35, 5, $sold['total_price'], 0, 0, 'C');
-            $pdf->Ln(8);
-        }
+    if (empty($endDate)) {
+        $ederror = "Required.";
+    }
+    if (empty($startDate)) {
+        $sderror = "Required.";
+    }
+    if (empty($store)) {
+        $storeErr = "Required.";
     }
 
-    //pdf footer
-    $pdf->Ln(80);
-    $pdf->Cell(120, 5, ' ', 0, 0);
-    $pdf->SetFont('Arial', 'B', 12);
-    $pdf->Cell(47, 5, 'Total Amount (Sold) :', 0, 0);
-    $pdf->SetFont('Arial', 'B', 14);
-    $pdf->Cell(10, 5, 'RM', 0, 0);
-    $pdf->Cell(20, 5, $totalAmount, 0, 0);
 
+    if (empty($storeErr) && empty($ederror) && empty($sderror)) {
+        $sql = "SELECT * FROM orders WHERE store_send = '$store' ";
+        $ordersList = mysqli_query($connect, $sql);
 
-    //print out pdf
-    $pdf->Output();
+        $pdf = new FPDF();
+        $pdf->AddPage();
+
+        //pdf header
+        $pdf->SetFont('Arial', 'BU', 20);
+        $pdf->Cell(200, 10, 'Computer Store', 0, 1, 'C');
+        $pdf->Cell(200, 10, 'Monthly Sales Report', 0, 1, 'C');
+
+        $pdf->SetFont('Arial', '', 16);
+        $pdf->Cell(200, 10, $store, 0, 1, 'C');
+
+        $pdf->SetFont('Arial', '', 12);
+        $pdf->Cell(64, 10, ' ', 0, 0, 'C');
+        $pdf->Cell(20, 10, 'Date : ', 0, 0, 'C');
+        $pdf->Cell(15, 10, $startDate, 0, 0, 'C');
+        $pdf->Cell(15, 10, 'To', 0, 0, 'C');
+        $pdf->Cell(15, 10, $endDate, 0, 0, 'C');
+        $pdf->Line(10, 55, 200, 55);
+
+        //pdf body
+        $pdf->Ln(25);
+        $pdf->SetFont('Arial', '', 12);
+        $pdf->Cell(20, 5, 'No', 0, 0);
+        $pdf->Cell(120, 5, 'Product (Sold)', 0, 0);
+        $pdf->Cell(35, 5, 'Price (RM)', 0, 0, 'C');
+        $pdf->Line(10, 70, 200, 70);
+
+        if (mysqli_num_rows($ordersList) > 0) {
+            foreach ($ordersList as $sold) {
+                $totalAmount += (double) $sold['total_price'];
+                $count += 1;
+                $pdf->Ln(10);
+                $pdf->Cell(20, 5, $count, 0, 0);
+                $x = $pdf->GetX();
+                $y = $pdf->GetY();
+                $pdf->MultiCell(120, 5, $sold['total_product'], 0, 0);
+                $pdf->SetXY($x + 115, $y);
+                $pdf->Cell(35, 5, $sold['total_price'], 0, 0, 'C');
+                $pdf->Ln(8);
+            }
+        }
+
+        //pdf footer
+        $pdf->Ln(80);
+        $pdf->Cell(120, 5, ' ', 0, 0);
+        $pdf->SetFont('Arial', 'B', 12);
+        $pdf->Cell(47, 5, 'Total Amount (Sold) :', 0, 0);
+        $pdf->SetFont('Arial', 'B', 14);
+        $pdf->Cell(10, 5, 'RM', 0, 0);
+        $pdf->Cell(20, 5, $totalAmount, 0, 0);
+
+        //print out pdf
+        $pdf->Output();
+    }
 }
 
 include 'static-include/header.php';
@@ -128,7 +142,14 @@ require 'static-nav/static-sidenav.php';
                                                 ?>
                                             </select>
                                         </div>
-
+                                        <div class="mb-3">
+                                            <label>Start Date</label><span style="color: #dc3545">&nbsp;&nbsp; *<?php echo $sderror; ?></span>
+                                            <input type="date" name="startD" class="form-control">
+                                        </div>
+                                        <div class="mb-3">
+                                            <label>End Date</label><span style="color: #dc3545">&nbsp;&nbsp; *<?php echo $ederror; ?></span>
+                                            <input type="date" name="endD" class="form-control">
+                                        </div>
                                     </div>
                                     <div class="modal-footer">
                                         <button type="submit" class="btn btn-primary" name="generate">Confirm Generate</button>

@@ -15,7 +15,7 @@ if(isset($_POST['order_btn'])){
    $state = $_POST['state'];
    $country = $_POST['country'];
    $postal_code = $_POST['postal_code'];
-   $date = date("d/m/Y");
+   $date = date("Y-m-d");
    $delivery = "Preparing";
 
    $cart_query = mysqli_query($conn, "SELECT * FROM `cart`");
