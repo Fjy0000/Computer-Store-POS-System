@@ -64,6 +64,10 @@ if (isset($_POST['create_removeDetails'])) {
             header("Location:http://localhost/Computer-Store-POS-System/administration/remove_details.php");
             exit(0);
         }
+    } else {
+        $_SESSION['message'] = "Remove Product Quantity Failed.";
+        header("Location:http://localhost/Computer-Store-POS-System/administration/remove_details.php");
+        exit(0);
     }
 }
 

@@ -36,6 +36,10 @@ if (isset($_POST['assign_delivery'])) {
             header("Location:http://localhost/Computer-Store-POS-System/administration/delivery.php");
             exit(0);
         }
+    } else {
+        $_SESSION['message'] = "Assign Failed.";
+        header("Location:http://localhost/Computer-Store-POS-System/administration/delivery.php");
+        exit(0);
     }
 }
 ?>

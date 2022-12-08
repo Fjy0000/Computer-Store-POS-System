@@ -30,7 +30,7 @@ if (isset($_POST['create_product'])) {
     }
 
     if ($_FILES['image']['size'] > 200000) {
-        $imageErr =  "File is too large only allowed  size < 2MB.";
+        $imageErr = "File is too large only allowed  size < 2MB.";
     }
 
     if ($fileType != "jpg" && $fileType != "png" && $fileType != "jpeg") {
@@ -97,6 +97,7 @@ if (isset($_POST['update_product'])) {
     $c_name = $_POST['c_name'];
     $quantity = $_POST['quantity'];
 
+    $fileType = strtolower(pathinfo($_FILES['image']['name'], PATHINFO_EXTENSION));
     $filename = $_FILES['image']['name'];
     $tempname = $_FILES['image']['tmp_name'];
     $folder = $_SERVER['DOCUMENT_ROOT'] . '/Computer-Store-POS-System/client/images/';
@@ -110,15 +111,59 @@ if (isset($_POST['update_product'])) {
         $store_type = $row['type'];
     }
 
-    $sql3 = "UPDATE product SET name='$name',description='$description',price='$price',category_name='$c_name',"
-            . "store_id='$s_id',store_name='$store_n',store_type='$store_type',quantity='$quantity',image='$filename' WHERE product_id='$id' ";
+    if ($_FILES['image']['size'] > 200000) {
+        $imageErr = "File is too large only allowed  size < 2MB.";
+    }
 
-    move_uploaded_file($tempname, $folder . $filename);
-    $sql_run = mysqli_query($connect, $sql3);
-    if ($sql_run) {
-        $_SESSION['message'] = "Updated successfully.";
-        header("Location:http://localhost/Computer-Store-POS-System/administration/stock_hq.php");
-        exit(0);
+    if ($fileType != "jpg" && $fileType != "png" && $fileType != "jpeg") {
+        $imageErr = "Only JPG, JPEG & PNG files are allowed.";
+    }
+
+    if (empty($name)) {
+        $nameErr = "Required.";
+    } elseif (!empty($name) && strlen($name) < 5) {
+        $nameErr = "Product name must be at least 5 letter.";
+    }
+
+    if (empty($description)) {
+        $descriptionErr = "Required";
+    }
+
+    if (empty($price)) {
+        $priceErr = "Required";
+    }
+
+    if (empty($c_name)) {
+        $categoryErr = "Required";
+    }
+
+    if (empty($s_id)) {
+        $s_idErr = "Required";
+    }
+
+    if (empty($quantity)) {
+        $quantityErr = "Required";
+    }
+    if (empty($filename)) {
+        $imageErr = "Required";
+    }
+
+    if (empty($nameErr) && empty($priceErr) && empty($categoryErr) && empty($s_idErr) && empty($imageErr) && empty($descriptionErr) && empty($imageErr)) {
+
+        $sql3 = "UPDATE product SET name='$name',description='$description',price='$price',category_name='$c_name',"
+                . "store_id='$s_id',store_name='$store_n',store_type='$store_type',quantity='$quantity',image='$filename' WHERE product_id='$id' ";
+
+        move_uploaded_file($tempname, $folder . $filename);
+        $sql_run = mysqli_query($connect, $sql3);
+        if ($sql_run) {
+            $_SESSION['message'] = "Updated successfully.";
+            header("Location:http://localhost/Computer-Store-POS-System/administration/stock_hq.php");
+            exit(0);
+        } else {
+            $_SESSION['message'] = "Updating Failed.";
+            header("Location:http://localhost/Computer-Store-POS-System/administration/stock_hq.php");
+            exit(0);
+        }
     } else {
         $_SESSION['message'] = "Updating Failed.";
         header("Location:http://localhost/Computer-Store-POS-System/administration/stock_hq.php");

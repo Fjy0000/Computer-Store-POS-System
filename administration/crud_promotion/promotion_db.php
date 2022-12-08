@@ -66,14 +66,43 @@ if (isset($_POST['update_promotion'])) {
     $expiryDate = $_POST['expiryDate'];
     $discountRate = $_POST['discountRate'];
 
-    $sql3 = "UPDATE promotion SET title='$title',description='$description',"
-            . "promo_code='$promoCode',expiry_date='$expiryDate',discount_rate='$discountRate' WHERE promo_id='$id'";
+    if (empty($title)) {
+        $titleErr = "Required.";
+    } elseif (!empty($title) && strlen($title) < 5) {
+        $titleErr = "Promotion tilte must be at least 5 letter.";
+    }
+    if (empty($description)) {
+        $descriptionErr = "Required.";
+    }
+    if (empty($promoCode)) {
+        $promoCodeErr = "Required.";
+    } elseif (!empty($promoCode) && strlen($promoCode) < 5) {
+        $userNameErr = "Promotion Code require at least 5 letter.";
+    }
 
-    $sql_run = mysqli_query($connect, $sql3);
-    if ($sql_run) {
-        $_SESSION['message'] = "Updated successfully.";
-        header("Location:http://localhost/Computer-Store-POS-System/administration/promotion.php");
-        exit(0);
+    if (empty($expiryDate)) {
+        $expiryDateErr = "Required.";
+    }
+
+    if (empty($discountRate)) {
+        $discountRateErr = "Required.";
+    }
+
+    if (empty($titleErr) && empty($descriptionErr) && empty($promoCodeErr) && empty($expiryDateErr) && empty($discountRateErr)) {
+
+        $sql3 = "UPDATE promotion SET title='$title',description='$description',"
+                . "promo_code='$promoCode',expiry_date='$expiryDate',discount_rate='$discountRate' WHERE promo_id='$id'";
+
+        $sql_run = mysqli_query($connect, $sql3);
+        if ($sql_run) {
+            $_SESSION['message'] = "Updated successfully.";
+            header("Location:http://localhost/Computer-Store-POS-System/administration/promotion.php");
+            exit(0);
+        } else {
+            $_SESSION['message'] = "Updating Failed.";
+            header("Location:http://localhost/Computer-Store-POS-System/administration/promotion.php");
+            exit(0);
+        }
     } else {
         $_SESSION['message'] = "Updating Failed.";
         header("Location:http://localhost/Computer-Store-POS-System/administration/promotion.php");

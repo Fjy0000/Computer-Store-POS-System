@@ -69,14 +69,46 @@ if (isset($_POST['update_store'])) {
     $state = $_POST['state'];
     $postalCode = $_POST['postalCode'];
 
-    $sql3 = "UPDATE store SET name='$name',type='$type',"
-            . "address='$address',state='$state',postal_code='$postalCode' WHERE store_id='$id'";
+    if (empty($name)) {
+        $nameErr = "Required";
+    } elseif (!empty($name) && strlen($name) < 4) {
+        $nameErr = "Store name must at least 5 letter";
+    }
 
-    $sql_run = mysqli_query($connect, $sql3);
-    if ($sql_run) {
-        $_SESSION['message'] = "Updated successfully.";
-        header("Location:http://localhost/Computer-Store-POS-System/administration/store.php");
-        exit(0);
+    if (empty($type)) {
+        $typeErr = "Required";
+    }
+
+    if (empty($address)) {
+        $addressErr = "Required";
+    } elseif (!empty($address) && strlen($address) < 11) {
+        $addressErr = "Store Address must be real";
+    }
+
+    if (empty($state)) {
+        $stateErr = "Required";
+    }
+
+    if (empty($postalCode)) {
+        $postalErr = "Required";
+    }
+
+
+    if (empty($nameErr) && empty($typeErr) && empty($addressErr) && empty($stateErr) && empty($postalErr)) {
+
+        $sql3 = "UPDATE store SET name='$name',type='$type',"
+                . "address='$address',state='$state',postal_code='$postalCode' WHERE store_id='$id'";
+
+        $sql_run = mysqli_query($connect, $sql3);
+        if ($sql_run) {
+            $_SESSION['message'] = "Updated successfully.";
+            header("Location:http://localhost/Computer-Store-POS-System/administration/store.php");
+            exit(0);
+        } else {
+            $_SESSION['message'] = "Updating Failed.";
+            header("Location:http://localhost/Computer-Store-POS-System/administration/store.php");
+            exit(0);
+        }
     } else {
         $_SESSION['message'] = "Updating Failed.";
         header("Location:http://localhost/Computer-Store-POS-System/administration/store.php");
