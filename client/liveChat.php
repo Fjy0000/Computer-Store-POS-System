@@ -28,16 +28,18 @@ session_start();
             <main>
                 <div class="container-fluid px-4">
                     <h1 class="mt-4">Live-Chat</h1>
-
-                    <div class="card mb-4">
-                        <div class="card-body">
-                            <h5 class="card-title">Online User List</h5>
-                            <hr>
-                            <div id="login_users"></div>
-                            <div id="chat_modal"></div>
+                    <div class="card">
+                        <div class='card-header'>
+                            <h5>Online User List</h5>
+                            <a href="index.php" class="btn btn-primary float-end">Back</a>
+                        </div>
+                        <div class="card mb-4">
+                            <div class="card-body">
+                                <div id="login_users"></div>
+                                <div id="chat_modal"></div>
+                            </div>
                         </div>
                     </div>
-                </div>
             </main>
         </div>
     </body>

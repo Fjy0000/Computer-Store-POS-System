@@ -35,7 +35,6 @@ session_start();
             <main>
                 <div class="container-fluid px-4">
                     <h1 class="mt-4">Live-Chat</h1>
-
                     <div class="card mb-4">
                         <div class="card-body">
                             <h5 class="card-title">Online User List</h5>

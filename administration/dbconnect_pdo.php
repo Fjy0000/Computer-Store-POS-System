@@ -72,12 +72,12 @@ function get_user_chat_history($from_user_id, $to_user_id, $connect2) {
 }
 
 function get_user_name($user_id, $connect2) {
-    $query = "SELECT staff_username FROM staff WHERE staff_id = '$user_id'";
+    $query = "SELECT name FROM user_form WHERE id = '$user_id'";
     $statement = $connect2->prepare($query);
     $statement->execute();
     $result = $statement->fetchAll();
     foreach ($result as $row) {
-        return $row['staff_username'];
+        return $row['name'];
     }
 }
 
