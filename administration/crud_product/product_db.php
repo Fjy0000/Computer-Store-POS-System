@@ -29,12 +29,12 @@ if (isset($_POST['create_product'])) {
         $store_type = $row['type'];
     }
 
-    if ($_FILES["fileToUpload"]["size"] > 200000) {
+    if ($_FILES['image']['size'] > 200000) {
         $imageErr =  "File is too large only allowed  size < 2MB.";
     }
 
     if ($fileType != "jpg" && $fileType != "png" && $fileType != "jpeg") {
-        $imageErr = "only JPG, JPEG & PNG files are allowed.";
+        $imageErr = "Only JPG, JPEG & PNG files are allowed.";
     }
 
     if (empty($name)) {
