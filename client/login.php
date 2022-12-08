@@ -6,6 +6,7 @@ and open the template in the editor.
 -->
 <?php
 include 'config.php';
+require 'dbconnect_pdo.php';
 session_start();
 
 if (isset($_POST['submit'])) {
