@@ -47,7 +47,6 @@
                             <option selected value="">- Select Delivery Status -</option>
                             <option value="Packaging">Packaging</option>
                             <option value="Delivering">Delivering</option>
-                            <option value="Received">Received</option>
                         </select>
                     </div>
                 </div>

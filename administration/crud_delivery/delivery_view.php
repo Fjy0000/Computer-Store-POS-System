@@ -121,6 +121,10 @@ if (isset($_GET['id'])) {
                                                 ?></p>
                                         </div>
                                         <div>
+                                            <h5>Ordered Date</h5>
+                                            <p><?php echo $currentOrders['date']; ?></p>
+                                        </div>
+                                        <div>
                                             <h5>Store Send Product</h5>
                                             <p><?php
                                                 if (empty($currentOrders['store_send'])) {
@@ -139,6 +143,10 @@ if (isset($_GET['id'])) {
                                                     echo $currentOrders['delivery_status'];
                                                 }
                                                 ?></p>
+                                        </div>
+                                        <div>
+                                            <h5>QR code</h5>
+                                            <p><?php echo $currentOrders['image_qrcode']; ?></p>
                                         </div>
                                     </div>
                                 </div>

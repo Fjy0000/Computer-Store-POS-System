@@ -28,10 +28,10 @@ require 'static-nav/static-sidenav.php';
                 <div class="card-header">
                     <i class="fas fa-table me-1"></i>
                     Delivery Table
-                    
+
                     <button type="button" class="btn btn-warning m-md-2 float-end" data-bs-toggle="modal" data-bs-target="#deliveryModal">Delivery Manage</button>
-                    <?php include"crud_delivery/delivery_assign.php " ; ?>
-                    
+                    <?php include"crud_delivery/delivery_assign.php "; ?>
+
                 </div>
                 <div class="card-body">
                     <table class="table">
@@ -58,7 +58,8 @@ require 'static-nav/static-sidenav.php';
                                         <td><?php echo $delivery["state"]; ?></td>
                                         <td><?php echo $delivery["delivery_status"]; ?></td>
                                         <td>
-                                              <a class='btn btn-info' href='crud_delivery/delivery_view.php?id=<?php echo $delivery["id"]; ?>'>View</a>
+                                            <a class='btn btn-info' href='crud_delivery/delivery_view.php?id=<?php echo $delivery["id"]; ?>'>View</a>
+                                            <a class='btn btn-dark' href='generate_qrCode.php?id=<?php echo $delivery["id"]; ?>'><i class="bi bi-qr-code"></i></a>
                                         </td>
                                     </tr>
                                     <?php
