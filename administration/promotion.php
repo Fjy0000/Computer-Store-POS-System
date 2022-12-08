@@ -34,7 +34,7 @@ require 'static-nav/static-sidenav.php';
                                 <th>Title</th>
                                 <th>Description</th>
                                 <th>Promotion Code</th>
-                                <th>Discount Rate</th>
+                                <th>Discount Rate (%)</th>
                                 <th>Expiry Date</th>
                             </tr>
                         </thead>

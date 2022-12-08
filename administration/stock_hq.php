@@ -3,7 +3,7 @@ require 'dbconnect.php';
 require 'crud_product/product_db.php';
 require 'exportExcel.php';
 
-$sql = "SELECT * FROM product WHERE store_type='Headquarter' ";
+$sql = "SELECT * FROM product WHERE store_type='Headquarters' ";
 $query1 = "SELECT * FROM store";
 $query2 = "SELECT DISTINCT name FROM product ";
 

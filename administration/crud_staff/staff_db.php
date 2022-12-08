@@ -42,7 +42,7 @@ if (isset($_POST['create_staff'])) {
     if (empty($phone)) {
         $phoneErr = "Required";
     } elseif (!empty($phone)) {
-        if (strlen($phone) < 11 || strlen($phone) > 13) {
+        if (strlen($phone) < 10 || strlen($phone) > 13) {
             $phoneErr = "Staff phone number must be real";
         } else {
             if (!preg_match("/^[0-9]*$/", $phone)) {
