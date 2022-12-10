@@ -11,7 +11,7 @@
             <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false"><i class="bi bi-person" style="font-size: 30px;"></i></a>
                 <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-                    <li><a class="dropdown-item" href="user_profile.php?id=<?php
+                    <li><a class="dropdown-item" href="http://localhost/Computer-Store-POS-System/administration/user_profile.php?id=<?php
                         if (empty($_SESSION['id'])) {
                             echo "null";
                         } else {
@@ -19,7 +19,7 @@
                         }
                         ?>">User's Profile</a></li>
                     <li><hr class="dropdown-divider" /></li>
-                    <li><a class="dropdown-item" href="logout_staff.php">Logout</a></li>
+                    <li><a class="dropdown-item" href="http://localhost/Computer-Store-POS-System/administration/logout_staff.php">Logout</a></li>
                 </ul>
             </li>
         </ul>

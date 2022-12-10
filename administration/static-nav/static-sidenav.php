@@ -6,22 +6,22 @@
 
                     <div class="sb-sidenav-menu-heading">Core</div>
 
-                    <a class="nav-link" href="admin_dashboard.php">
+                    <a class="nav-link" href="http://localhost/Computer-Store-POS-System/administration/admin_dashboard.php">
                         <div class="sb-nav-link-icon"><i class="bi bi-speedometer"></i></div>
                         Dashboard
                     </a>
-                    <a class="nav-link" href="liveChat.php">
+                    <a class="nav-link" href="http://localhost/Computer-Store-POS-System/administration/liveChat.php">
                         <div class="sb-nav-link-icon"><i class="bi bi-chat-dots-fill"></i></div>
                         Live-Chat
                     </a>
 
                     <div class="sb-sidenav-menu-heading">Maintenance</div>
 
-                    <a class="nav-link" href="staff.php">
+                    <a class="nav-link" href="http://localhost/Computer-Store-POS-System/administration/staff.php">
                         <div class="sb-nav-link-icon"><i class="bi bi-person-vcard-fill"></i></div>
                         Staff Account
                     </a>
-                    <a class="nav-link" href="delivery.php">
+                    <a class="nav-link" href="http://localhost/Computer-Store-POS-System/administration/delivery.php">
                         <div class="sb-nav-link-icon"><i class="bi bi-truck"></i></div>
                         Sales Delivery
                     </a>
@@ -32,35 +32,35 @@
                     </a>
                     <div class="collapse" id="stockPage" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordionPages">
                         <nav class="sb-sidenav-menu-nested nav">
-                            <a class="nav-link" href="stock_hq.php">
+                            <a class="nav-link" href="http://localhost/Computer-Store-POS-System/administration/stock_hq.php">
                                 <div class="sb-nav-link-icon"><i class="bi bi-table"></i></div>
                                 HQ's Stock
                             </a>
-                            <a class="nav-link" href="stock_branch.php">
+                            <a class="nav-link" href="http://localhost/Computer-Store-POS-System/administration/stock_branch.php">
                                 <div class="sb-nav-link-icon"><i class="bi bi-table"></i></div>
                                 Branch's Stock
                             </a>
-                            <a class="nav-link" href="remove_details.php">
+                            <a class="nav-link" href="http://localhost/Computer-Store-POS-System/administration/remove_details.php">
                                 <div class="sb-nav-link-icon"><i class="bi bi-table"></i></div>
                                 Remove Product Quantity
                             </a>
                         </nav>
                     </div>
-                    <a class="nav-link" href="category.php">
+                    <a class="nav-link" href="http://localhost/Computer-Store-POS-System/administration/category.php">
                         <div class="sb-nav-link-icon"><i class="bi bi-funnel"></i></div>
                         Category
                     </a>
-                    <a class="nav-link" href="promotion.php">
+                    <a class="nav-link" href="http://localhost/Computer-Store-POS-System/administration/promotion.php">
                         <div class="sb-nav-link-icon"><i class="bi bi-ticket-fill"></i></div>
                         Promotion
                     </a>
-                    <a class="nav-link" href="store.php">
+                    <a class="nav-link" href="http://localhost/Computer-Store-POS-System/administration/store.php">
                         <div class="sb-nav-link-icon"><i class="bi bi-buildings"></i></div>
                         Store
                     </a>
                     
                     <div class="sb-sidenav-menu-heading">Generate Report</div>
-                     <a class="nav-link" href="salesReport.php">
+                     <a class="nav-link" href="http://localhost/Computer-Store-POS-System/administration/salesReport.php">
                         <div class="sb-nav-link-icon"><i class="bi bi-file-earmark"></i></div>
                         Sales Report
                     </a>
