@@ -4,25 +4,23 @@ $output = " ";
 
 //Export Excel File - HQ Stock
 if (isset($_POST['generate_hq'])) {
-    $getData = "SELECT * FROM product";
+    $getData = "SELECT * FROM product WHERE store_type='Headquarters' ";
     $get_data = mysqli_query($connect, $getData);
 
     if (mysqli_num_rows($get_data) > 0) {
         $output .= "  <table class='table' bordered='1'>
                             <tr>
-                                <th colspan='10'>Stock Report ( Headquarter )</th>
+                                <th colspan='9'>Stock Report ( Headquarter )</th>
                             <tr>
                             <tr>
                                 <th>Product ID</th>
                                 <th>Product Name</th>
-                                <th>Product Description</th>
                                 <th>Product Price</th>
                                 <th>Product Category</th>
                                  <th>Product Quantity</th>
                                 <th>Store ID</th>
                                 <th>Store Name</th>
                                 <th>Store Type</th>
-                                <th>Product Image</th>
                             </tr>
                             ";
 
@@ -30,14 +28,12 @@ if (isset($_POST['generate_hq'])) {
             $output .= " <tr>
                                         <td>" . $row["product_id"] . "</td>
                                         <td>" . $row["name"] . "</td>
-                                         <td>" . $row["description"] . "</td>
                                          <td>" . $row["price"] . "</td>
                                          <td>" . $row["category_name"] . "</td>
                                          <td>" . $row["quantity"] . "</td>
                                          <td>" . $row["store_id"] . "</td>
                                           <td>" . $row["store_name"] . "</td>
                                           <td>" . $row["store_type"] . "</td>
-                                          <td>" . $row["image"] . "</td>
                                     </tr>";
         }
         $output .= "</table>";
@@ -58,19 +54,17 @@ if (isset($_POST['generate_branch'])) {
     if (mysqli_num_rows($get_data) > 0) {
         $output .= "  <table class='table' bordered='1'>
                             <tr>
-                                <th colspan='10'>Stock Report ( Branches )</th>
+                                <th colspan='9'>Stock Report ( Branches )</th>
                             <tr>
                             <tr>
                                 <th>Product ID</th>
                                 <th>Product Name</th>
-                                <th>Product Description</th>
                                 <th>Product Price</th>
                                 <th>Product Category</th>
                                  <th>Product Quantity</th>
                                 <th>Store ID</th>
                                 <th>Store Name</th>
                                 <th>Store Type</th>
-                                <th>Product Image</th>
                             </tr>
                             ";
 
@@ -78,14 +72,12 @@ if (isset($_POST['generate_branch'])) {
             $output .= " <tr>
                                         <td>" . $row["product_id"] . "</td>
                                         <td>" . $row["name"] . "</td>
-                                         <td>" . $row["description"] . "</td>
                                          <td>" . $row["price"] . "</td>
                                          <td>" . $row["category_name"] . "</td>
                                          <td>" . $row["quantity"] . "</td>
                                          <td>" . $row["store_id"] . "</td>
                                           <td>" . $row["store_name"] . "</td>
                                           <td>" . $row["store_type"] . "</td>
-                                          <td>" . $row["image"] . "</td>
                                     </tr>";
         }
         $output .= "</table>";
