@@ -3,60 +3,25 @@ require 'dbconnect.php';
 
 $error1 = $error2 = $error3 = $error4 = "";
 
+$show_order = "SELECT * FROM orders WHERE id='1' ";
+
+
+
+
 if (isset($_POST['confirm'])) {
 
-    $name = $_POST['inputName'];
-    $phone = $_POST['inputPhone'];
-    $email = $_POST['inputEmail'];
     $orderid = $_POST['inputOrderId'];
     $s = "Received";
 
-    if (empty($name)) {
-        $error3 = "Required";
-    }
-    if (empty($orderid)) {
-        $error1 = "Required";
-    }
-    if (empty($email)) {
-        $error2 = "Required";
-    }
-    if (empty($phone)) {
-        $error4 = "Required";
-    } elseif (!empty($phone)) {
-        if (strlen($phone) < 10 || strlen($phone) > 13) {
-            $error4 = "Staff phone number must be real";
-        } else {
-            if (!preg_match("/^[0-9]*$/", $phone)) {
-                $error4 = "Only numbers are allowed";
-            }
-        }
-    }
+    $query_update = "UPDATE orders SET delivery_status='$s' WHERE id='$orderid' ";
+    $update = mysqli_query($connect, $query_update);
 
-    if (empty($error1) && empty($error2) && empty($error3) && empty($error4)) {
-        $query_get = "SELECT * FROM orders WHERE id='$orderid' AND email='$email' AND number='$phone' AND name='$name' ";
-        $query_update = "UPDATE orders SET delivery_status='$s' WHERE id='$orderid' ";
-        $check = mysqli_query($connect, $query_get);
-        if (mysqli_num_rows($check) == 1) {
-            $row = mysqli_fetch_assoc($check);
-            if ($row['id'] == $orderid && $row['name'] == $name && $row['email'] == $email && $row['number'] == $phone) {
-                $update = mysqli_query($connect, $query_update);
-                if ($update) {
-                    $_SESSION['message'] = "Your order is confirm received.";
-                    header("Location:http://localhost/Computer-Store-POS-System/administration/customer_recevied_order.php");
-                    exit(0);
-                } else {
-                    $_SESSION['message'] = "Failed.";
-                    header("Location:http://localhost/Computer-Store-POS-System/administration/customer_recevied_order.php");
-                    exit(0);
-                }
-            } else {
-                $_SESSION['message'] = "Not Found Your Order ID";
-                header("Location:http://localhost/Computer-Store-POS-System/administration/customer_recevied_order.php");
-                exit(0);
-            }
-        }
+    if ($update) {
+        $_SESSION['message'] = "Your order is confirm received.";
+        header("Location:http://localhost/Computer-Store-POS-System/administration/customer_recevied_order.php");
+        exit(0);
     } else {
-        $_SESSION['message'] = "Invalid input please try again !";
+        $_SESSION['message'] = "Failed.";
         header("Location:http://localhost/Computer-Store-POS-System/administration/customer_recevied_order.php");
         exit(0);
     }
@@ -89,24 +54,9 @@ if (isset($_POST['confirm'])) {
                                 <div class="card shadow-lg border-0 rounded-lg mt-5">
                                     <div class="card-header"><h3 class="text-center font-weight-light my-4">Customer - Confirm Recevied Order</h3></div>
                                     <div class="card-body">
-
+                                        
+                                        
                                         <form method="POST" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>">
-                                            <div class="form-group mb-3">
-                                                <label>Order ID</label><span style="color: #dc3545">&nbsp;&nbsp; *<?php echo $error1; ?></span>
-                                                <input class="form-control" name="inputOrderId" id="inputOrderId" type="text"/>
-                                            </div>
-                                            <div class="form-group mb-3">
-                                                <label>Your Email</label><span style="color: #dc3545">&nbsp;&nbsp; *<?php echo $error2; ?></span>
-                                                <input class="form-control" name="inputEmail" id="inputEmail" type="email"/>
-                                            </div>
-                                            <div class="form-group mb-3">
-                                                <label>Your Name</label><span style="color: #dc3545">&nbsp;&nbsp; *<?php echo $error3; ?></span>
-                                                <input class="form-control" name="inputName" id="inputName" type="text"/>
-                                            </div>
-                                            <div class="form-group mb-3">
-                                                <label>Your Phone Number</label><span style="color: #dc3545">&nbsp;&nbsp; *<?php echo $error4; ?></span>
-                                                <input class="form-control" name="inputPhone" id="inputPhone" type="text"/>
-                                            </div>
                                             <div class="d-flex align-items-center justify-content-between mt-4 mb-0">
                                                 <button type="submit" class="btn btn-primary" name="confirm">Confirm</button>
                                             </div>

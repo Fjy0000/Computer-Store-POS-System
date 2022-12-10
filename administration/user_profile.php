@@ -61,6 +61,38 @@ if (isset($_GET['id'])) {
                                                     ?></p>
                                             </div>
                                             <div>
+                                                <h6>Username</h6>
+                                                <p><?php
+                                                    if (empty($currentStaff['staff_username'])) {
+                                                        echo "null";
+                                                    } else {
+                                                        echo $currentStaff['staff_username'];
+                                                    }
+                                                    ?></p>
+                                            </div>
+                                            <div>
+                                                <h6>Staff Email</h6>
+                                                <p><?php
+                                                    if (empty($currentStaff['staff_email'])) {
+                                                        echo "null";
+                                                    } else {
+                                                        echo $currentStaff['staff_email'];
+                                                    }
+                                                    ?></p>
+                                            </div>
+                                            <div>
+                                                <h6>Staff Position</h6>
+                                                <p><?php
+                                                    if (empty($currentStaff['staff_position'])) {
+                                                        echo "null";
+                                                    } else {
+                                                        echo $currentStaff['staff_position'];
+                                                    }
+                                                    ?></p>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div>
                                                 <h6>Staff Name</h6>
                                                 <p><?php
                                                     if (empty($currentStaff['staff_name'])) {
@@ -77,18 +109,6 @@ if (isset($_GET['id'])) {
                                                         echo "null";
                                                     } else {
                                                         echo $currentStaff['staff_age'];
-                                                    }
-                                                    ?></p>
-                                            </div>
-                                        </div>
-                                        <div class="col-md-6">
-                                            <div>
-                                                <h6>Staff Position</h6>
-                                                <p><?php
-                                                    if (empty($currentStaff['staff_position'])) {
-                                                        echo "null";
-                                                    } else {
-                                                        echo $currentStaff['staff_position'];
                                                     }
                                                     ?></p>
                                             </div>
@@ -109,54 +129,6 @@ if (isset($_GET['id'])) {
                                                         echo "null";
                                                     } else {
                                                         echo $currentStaff['staff_ic'];
-                                                    }
-                                                    ?></p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <hr>
-                                    <h3>Account Secure</h3>
-                                    <div class="row">
-                                        <div class="col-md-6">
-                                            <div>
-                                                <h6>Staff Email</h6>
-                                                <p><?php
-                                                    if (empty($currentStaff['staff_email'])) {
-                                                        echo "null";
-                                                    } else {
-                                                        echo $currentStaff['staff_email'];
-                                                    }
-                                                    ?></p>
-                                            </div>
-                                            <div>
-                                                <h6>Username</h6>
-                                                <p><?php
-                                                    if (empty($currentStaff['staff_username'])) {
-                                                        echo "null";
-                                                    } else {
-                                                        echo $currentStaff['staff_username'];
-                                                    }
-                                                    ?></p>
-                                            </div>
-                                        </div>
-                                        <div class="col-md-6">
-                                            <div>
-                                                <h6>Password</h6>
-                                                <p><?php
-                                                    if (empty($currentStaff['staff_password'])) {
-                                                        echo "null";
-                                                    } else {
-                                                        echo $currentStaff['staff_password'];
-                                                    }
-                                                    ?></p>
-                                            </div>
-                                            <div>
-                                                <h6>Password Recovery Key</h6>
-                                                <p><?php
-                                                    if (empty($currentStaff['staff_recoveryPasswordKey'])) {
-                                                        echo "null";
-                                                    } else {
-                                                        echo $currentStaff['staff_recoveryPasswordKey'];
                                                     }
                                                     ?></p>
                                             </div>
