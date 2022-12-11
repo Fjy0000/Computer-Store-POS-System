@@ -3,24 +3,20 @@ require 'dbconnect.php';
 
 $error1 = $error2 = $error3 = $error4 = "";
 
-if (isset($_GET['id'])) {
-    $s = "Received";
-    $order_id = $_GET['id'];
+$s = "Received";
+$order_id = $_GET['id'];
 
-    $show_order = "SELECT * FROM orders WHERE id='$order_id' ";
-    $order_receive = mysqli_query($connect, $show_order);
+$show_order = "SELECT * FROM orders WHERE id='$order_id' ";
+$result = mysqli_query($connect, $show_order);
 
-    if (isset($_POST['confirm'])) {
-        $id = $_POST['customer_order_id'];
-        $query_update = "UPDATE orders SET delivery_status='$s' WHERE id='$id' ";
-        $update = mysqli_query($connect, $query_update);
+if (isset($_POST['confirm'])) {
+    $id = $_POST['customer_order_id'];
+    $query_update = "UPDATE orders SET delivery_status='$s' WHERE id='$id' ";
+    $update = mysqli_query($connect, $query_update);
 
-        if ($update) {
-            $_SESSION['message'] = "Your order is record at received.";
-        }
+    if ($update) {
+        $_SESSION['message'] = "Your order is record at received.";
     }
-} else {
-    echo 'Thank you for your select our store.';
 }
 ?>
 <!DOCTYPE html>
@@ -53,8 +49,8 @@ if (isset($_GET['id'])) {
                                     <form method="POST" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>">
                                         <div class="card-body">
                                             <?php
-                                            if (mysqli_num_rows($order_receive) == 1) {
-                                                $row = mysqli_fetch_assoc($order_receive);
+                                            if (mysqli_num_rows($result) == 1) {
+                                                $row = mysqli_fetch_assoc($result);
                                                 ?>
                                                 <div class="form-group mb-3">
                                                     <p><strong>Order ID</strong></p>
