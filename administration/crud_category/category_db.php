@@ -3,8 +3,9 @@
 //Define empty error message
 $nameErr = $descriptionErr = $currentCategory = "";
 
-//Define information of requirement
-$questionStr = "1. All fields are required.";
+//Define Description of function
+$f_Desc1 = "This page is the create category page and in here you can create and add a new category type.";
+$f_Desc2 = "This page is the update category page and in here you can update a category details.";
 
 //Create Category
 if (isset($_POST['create_category'])) {
@@ -13,7 +14,7 @@ if (isset($_POST['create_category'])) {
     $description = $_POST['description'];
 
     if (empty($name)) {
-        $nameErr = "Required.";
+        $nameErr = "Name field cannot empty.";
     } elseif (!empty($name)) {
         if (strlen($name) < 5) {
             $nameErr = "Category name must be at least 5 letter.";
@@ -21,7 +22,7 @@ if (isset($_POST['create_category'])) {
     }
 
     if (empty($description)) {
-        $descriptionErr = "Required.";
+        $descriptionErr = "Description field cannot empty.";
     }
 
     if (empty($nameErr) && empty($descriptionErr)) {
@@ -34,10 +35,16 @@ if (isset($_POST['create_category'])) {
             header("Location: http://localhost/Computer-Store-POS-System/administration/category.php");
             exit(0);
         } else {
-            $_SESSION['message'] = "Creating Failed.";
+            $_SESSION['error'] = "Create Fail";
             header("Location: http://localhost/Computer-Store-POS-System/administration/category.php");
             exit(0);
         }
+    } else {
+        $_SESSION['error'] = "Create Fail. Reason : <br>"
+                . "<strong>$nameErr</strong><br>"
+                . "<strong>$descriptionErr</strong>";
+        header("Location: http://localhost/Computer-Store-POS-System/administration/category.php");
+        exit(0);
     }
 }
 
@@ -50,7 +57,7 @@ if (isset($_POST['update_category'])) {
     $description = $_POST['description'];
 
     if (empty($name)) {
-        $nameErr = "Required.";
+        $nameErr = "Name field cannot empty.";
     } elseif (!empty($name)) {
         if (strlen($name) < 5) {
             $nameErr = "Category name must be at least 5 letter.";
@@ -58,7 +65,7 @@ if (isset($_POST['update_category'])) {
     }
 
     if (empty($description)) {
-        $descriptionErr = "Required.";
+        $descriptionErr = "Description field cannot empty.";
     }
 
     if (empty($nameErr) && empty($descriptionErr)) {
@@ -69,12 +76,14 @@ if (isset($_POST['update_category'])) {
             header("Location: http://localhost/Computer-Store-POS-System/administration/category.php");
             exit(0);
         } else {
-            $_SESSION['message'] = "Updating Failed.";
+            $_SESSION['error'] = "Update Fail.";
             header("Location: http://localhost/Computer-Store-POS-System/administration/category.php");
             exit(0);
         }
     } else {
-        $_SESSION['message'] = "Updating Failed.";
+        $_SESSION['error'] = "Update Fail. Reason : <br>"
+                . "<strong>$nameErr</strong><br>"
+                . "<strong>$descriptionErr</strong>";
         header("Location: http://localhost/Computer-Store-POS-System/administration/category.php");
         exit(0);
     }
@@ -92,7 +101,7 @@ if (isset($_POST['delete_category'])) {
         header("Location: http://localhost/Computer-Store-POS-System/administration/category.php");
         exit(0);
     } else {
-        $_SESSION['message'] = "Delete Failed.";
+        $_SESSION['error'] = "Delete Failed.";
         header("Location: http://localhost/Computer-Store-POS-System/administration/category.php");
         exit(0);
     }

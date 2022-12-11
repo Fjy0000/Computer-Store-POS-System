@@ -4,7 +4,7 @@
 $id_error = $store_send_error = $delivery_status_error = "";
 
 //Define information of requirement
-$questionStr = "1. All fields are required.";
+$f_Desc1 = "1. All fields are required.";
 
 //Assign Delivery
 if (isset($_POST['assign_delivery'])) {

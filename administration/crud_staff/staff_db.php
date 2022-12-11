@@ -4,7 +4,7 @@
 $currentStaff = $nameErr = $phoneErr = $emailErr = $icErr = $ageErr = $positionErr = $userNameErr = $passwordErr = $cPasswordErr = $keyErr = "";
 
 //Define information of requirement
-$questionStr = "1. Password must contain at least 1 uppercase letter, number and 1 symbol and length >5. | 2. The phone number must be real and needs to be added country calling code(+60). Example : 60127329575 
+$f_Desc1 = "1. Password must contain at least 1 uppercase letter, number and 1 symbol and length >5. | 2. The phone number must be real and needs to be added country calling code(+60). Example : 60127329575 
     | 3. Staff IC number must be real and without symbol. Example: 960607012207 | 4. All fields are required.";
 
 //Create Staff

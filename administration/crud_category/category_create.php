@@ -7,7 +7,8 @@
                 <span aria-hidden="true" data-bs-dismiss="modal" aria-label="Close"><i class="bi bi-x-lg"></i></span>
             </div>
             <div>
-                <i class="bi bi-question-circle float-end" data-bs-toggle="popover" title="Requirement:" data-bs-content="<?php echo $questionStr ?>"></i>
+                <i class="bi bi-question-circle float-end" data-bs-toggle="popover" title="Description:" data-bs-content="<?php echo $f_Desc1 ?>"></i>
+                <span style="color: #dc3545">&nbsp;&nbsp; * = Required</span>
             </div>
             <form method="POST" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>">
                 <div class="modal-body">

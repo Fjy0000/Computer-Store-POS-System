@@ -13,7 +13,7 @@ if (!$result || !$get1) {
 }
 
 $sderror = $ederror = $storeErr = "";
-$questionStr = "Select the store to generate that store sold product is required";
+$f_Desc1 = "Select the store to generate that store sold product is required";
 
 if (isset($_POST['generate'])) {
     $store = $_POST['storeName'];
@@ -123,7 +123,7 @@ require 'static-nav/static-sidenav.php';
                                     <span aria-hidden="true" data-bs-dismiss="modal" aria-label="Close"><i class="bi bi-x-lg"></i></span>
                                 </div>
                                 <div>
-                                    <i class="bi bi-question-circle float-end" style="font-size: 18px" data-bs-toggle="popover" title="Requirement:" data-bs-content="<?php echo $questionStr ?>"></i>
+                                    <i class="bi bi-question-circle float-end" style="font-size: 18px" data-bs-toggle="popover" title="Requirement:" data-bs-content="<?php echo $f_Desc1 ?>"></i>
                                 </div>
                                 <form method="POST" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>">
                                     <div class="modal-body">

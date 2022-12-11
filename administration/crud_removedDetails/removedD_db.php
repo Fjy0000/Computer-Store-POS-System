@@ -4,7 +4,7 @@
 $currentRemoveDetails = $r_product_name_Err = $r_store_id_Err = $reasonErr = $r_quantity_Err = $checkError = "";
 
 //Define information of requirement
-$questionStr = "1. All fields are required.";
+$f_Desc1 = "1. All fields are required.";
 
 //Create Remove Quantity
 if (isset($_POST['create_removeDetails'])) {

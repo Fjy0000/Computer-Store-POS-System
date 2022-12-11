@@ -4,7 +4,7 @@
 $currentProduct = $nameErr = $descriptionErr = $categoryErr = $priceErr = $s_idErr = $imageErr = $quantityErr = $t_productErr = $toErr = $fromErr = "";
 
 //Define information of requirement
-$questionStr = "1. All fields are required.";
+$f_Desc1 = "1. All fields are required.";
 
 //Update Product
 if (isset($_POST['update_product_branch'])) {

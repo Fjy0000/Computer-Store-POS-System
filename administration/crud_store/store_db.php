@@ -4,7 +4,7 @@
 $currentStore = $nameErr = $addressErr = $typeErr = $stateErr = $postalErr = "";
 
 //Define information of requirement
-$questionStr = "1. All fields are required.";
+$f_Desc1 = "1. All fields are required.";
 
 //Create Store
 if (isset($_POST['create_store'])) {

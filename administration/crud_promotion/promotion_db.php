@@ -4,7 +4,7 @@
 $currentPromo = $titleErr = $expiryDateErr = $descriptionErr = $promoCodeErr = $discountRateErr = $positionErr = $userNameErr = $passwordErr = $cPasswordErr = $keyErr = "";
 
 //Define information of requirement
-$questionStr = "1. All fields are required.";
+$f_Desc1 = "1. All fields are required.";
 
 //Create Promotion
 if (isset($_POST['create_promotion'])) {

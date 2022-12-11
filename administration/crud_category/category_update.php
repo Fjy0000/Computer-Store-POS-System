@@ -35,7 +35,8 @@ if (isset($_GET['id'])) {
                         </div>
                         <div class="row">
                             <div class="col-md-12">
-                                <i class="bi bi-question-circle float-end" style="font-size: 18px" data-bs-toggle="popover" title="Requirement:" data-bs-content="<?php echo $questionStr ?>"></i>
+                                <i class="bi bi-question-circle float-end" style="font-size: 18px" data-bs-toggle="popover" title="Description:" data-bs-content="<?php echo $f_Desc2 ?>"></i>
+                                <span style="color: #dc3545">&nbsp;&nbsp; * = Required</span>
                             </div>
                         </div>
                         <div class="card-body">
@@ -45,11 +46,11 @@ if (isset($_GET['id'])) {
                                         <div class="card-body">
                                             <input type="hidden" name="id" value="<?php echo $currentCategory['category_id']; ?>">
                                             <div class="mb-3">
-                                                <label>Category Name</label><span style="color: #dc3545">&nbsp;&nbsp; *<?php echo $nameErr; ?></span>
+                                                <label>Category Name</label><span style="color: #dc3545">&nbsp;&nbsp; * <?php echo $nameErr; ?></span>
                                                 <input type="text" name="name" class="form-control" value="<?php echo $currentCategory['category_name']; ?>">
                                             </div>
                                             <div class="mb-3">
-                                                <label>Description</label><span style="color: #dc3545">&nbsp;&nbsp; *<?php echo $descriptionErr; ?></span>
+                                                <label>Description</label><span style="color: #dc3545">&nbsp;&nbsp; * <?php echo $descriptionErr; ?></span>
                                                 <textarea name="description" class="form-control"><?php echo $currentCategory['description']; ?></textarea>
                                             </div>
                                             <div class="mt-4 mb-0">
