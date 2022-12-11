@@ -45,29 +45,23 @@ if (isset($_POST['create_product'])) {
     if ($fileType != "jpg" && $fileType != "png" && $fileType != "jpeg") {
         $imageErr = "Only JPG, JPEG & PNG files are allowed.";
     }
-
     if (empty($name)) {
         $nameErr = "Required.";
     } elseif (!empty($name) && strlen($name) < 5) {
         $nameErr = "Product name must be at least 5 letter.";
     }
-
     if (empty($description)) {
         $descriptionErr = "Required";
     }
-
     if (empty($price)) {
         $priceErr = "Required";
     }
-
     if (empty($c_name)) {
         $categoryErr = "Required";
     }
-
     if (empty($s_id)) {
         $s_idErr = "Required";
     }
-
     if (empty($quantity)) {
         $quantityErr = "Required";
     }
@@ -84,11 +78,11 @@ if (isset($_POST['create_product'])) {
         $sql_run = mysqli_query($connect, $sql2);
 
         if ($sql_run) {
-            $_SESSION['message'] = "Created successfully.";
+            $_SESSION['message'] = "Created Successfully.";
             header("Location:http://localhost/Computer-Store-POS-System/administration/stock_hq.php");
             exit(0);
         } else {
-            $_SESSION['error'] = "Create Fail ! System connect to database or query error. ";
+            $_SESSION['error'] = "Create Fail ! ! System connect to database or query error. ";
             header("Location:http://localhost/Computer-Store-POS-System/administration/stock_hq.php");
             exit(0);
         }
@@ -123,33 +117,26 @@ if (isset($_POST['update_product'])) {
     if ($_FILES['image']['size'] > 200000) {
         $imageErr = "File is too large only allowed  size < 2MB.";
     }
-
     if ($fileType != "jpg" && $fileType != "png" && $fileType != "jpeg") {
         $imageErr = "Only JPG, JPEG & PNG files are allowed.";
     }
-
     if (empty($name)) {
         $nameErr = "Required.";
     } elseif (!empty($name) && strlen($name) < 5) {
         $nameErr = "Product name must be at least 5 letter.";
     }
-
     if (empty($description)) {
         $descriptionErr = "Required";
     }
-
     if (empty($price)) {
         $priceErr = "Required";
     }
-
     if (empty($c_name)) {
         $categoryErr = "Required";
     }
-
     if (empty($s_id)) {
         $s_idErr = "Required";
     }
-
     if (empty($quantity)) {
         $quantityErr = "Required";
     }
@@ -165,7 +152,7 @@ if (isset($_POST['update_product'])) {
         move_uploaded_file($tempname, $folder . $filename);
         $sql_run = mysqli_query($connect, $sql3);
         if ($sql_run) {
-            $_SESSION['message'] = "Updated successfully.";
+            $_SESSION['message'] = "Updated Successfully.";
             header("Location:http://localhost/Computer-Store-POS-System/administration/stock_hq.php");
             exit(0);
         } else {
@@ -241,17 +228,14 @@ if (isset($_POST['transfer_product'])) {
     if (empty($fromStoreId)) {
         $fromErr = "Required";
     }
-
     if (empty($toStoreId)) {
         $toErr = "Required";
     } elseif ($fromStoreId == $toStoreId) {
         $toErr = "Cannot select same store. ";
     }
-
     if (empty($n_product)) {
         $t_productErr = "Required";
     }
-
     if (empty($transfer_num)) {
         $quantityErr = "Required";
     }
@@ -282,7 +266,7 @@ if (isset($_POST['transfer_product'])) {
                 header("Location:http://localhost/Computer-Store-POS-System/administration/stock_hq.php");
                 exit(0);
             } else {
-                $_SESSION['error'] = "Transfer Failed ! System connect to database or query error. ";
+                $_SESSION['error'] = "Transfer Failed ! ! System connect to database or query error. ";
                 header("Location:http://localhost/Computer-Store-POS-System/administration/stock_hq.php");
                 exit(0);
             }
@@ -294,7 +278,7 @@ if (isset($_POST['transfer_product'])) {
                 header("Location:http://localhost/Computer-Store-POS-System/administration/stock_hq.php");
                 exit(0);
             } else {
-                $_SESSION['error'] = "Transfer Failed ! System connect to database or query error. ";
+                $_SESSION['error'] = "Transfer Failed ! ! System connect to database or query error. ";
                 header("Location:http://localhost/Computer-Store-POS-System/administration/stock_hq.php");
                 exit(0);
             }

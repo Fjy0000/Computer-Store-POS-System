@@ -32,7 +32,7 @@ if (isset($_POST['create_staff'])) {
     $_SESSION['staff_input_recoveryKey'] = $recoveryKey;
 
     if (empty($name)) {
-        $nameErr = "Required";
+        $nameErr = "Name field cannot be left blank";
     } elseif (!empty($name)) {
         if (strlen($name) < 4) {
             $nameErr = "Staff name must be real name";
@@ -42,15 +42,13 @@ if (isset($_POST['create_staff'])) {
             }
         }
     }
-
     if (empty($email)) {
-        $emailErr = "Required";
+        $emailErr = "Email field cannot be left blank";
     } elseif (!empty($email) && !preg_match("^[_a-z0-9-]+(\.[_a-z0-9-]+)*@[a-z0-9-]+(\.[a-z0-9-]+)*(\.[a-z]{2,3})$^", $email)) {
         $emailErr = "Invalid email format";
     }
-
     if (empty($phone)) {
-        $phoneErr = "Required";
+        $phoneErr = "Phone field cannot be left blank";
     } elseif (!empty($phone)) {
         if (strlen($phone) < 10 || strlen($phone) > 13) {
             $phoneErr = "Staff phone number must be real";
@@ -60,9 +58,8 @@ if (isset($_POST['create_staff'])) {
             }
         }
     }
-
     if (empty($ic)) {
-        $icErr = "Required";
+        $icErr = "IC field cannot be left blank";
     } elseif (!empty($ic)) {
         if (strlen($ic) < 12) {
             $icErr = "Staff ic number must be real";
@@ -72,31 +69,26 @@ if (isset($_POST['create_staff'])) {
             }
         }
     }
-
     if (empty($age)) {
-        $ageErr = "Required";
+        $ageErr = "Age field cannot be left blank";
     } elseif (!empty($age) && !preg_match("/^[0-9]*$/", $age)) {
         $ageErr = "Only numbers are allowed";
     }
-
     if (empty($position)) {
-        $positionErr = "Required";
+        $positionErr = "Position field cannot be left blank";
     }
-
     if (empty($recoveryKey)) {
-        $keyErr = "Required";
+        $keyErr = "Recovery Key field cannot be left blank";
     }
-
     if (empty($username)) {
-        $userNameErr = "Required";
+        $userNameErr = "Username field cannot be left blank";
     } elseif (!empty($username)) {
         if (strlen($username) < 4) {
             $userNameErr = "Account username require at least 5 letter";
         }
     }
-
     if (empty($password)) {
-        $passwordErr = "Required";
+        $passwordErr = "Password field cannot be left blank";
     } elseif (!empty($password)) {
         if (strlen($password) < 5) {
             $passwordErr = "Password must be at least 5 characters";
@@ -106,11 +98,10 @@ if (isset($_POST['create_staff'])) {
             }
         }
     }
-
     if (empty($cPassword)) {
-        $cPasswordErr = "Required";
+        $cPasswordErr = "Confirm Password field cannot be left blank";
     } elseif (!empty($cPassword) && strcmp($password, $cPassword) != 0) {
-        $cPasswordErr = "Please make sure your password match.";
+        $cPasswordErr = "Invalid confirm password must match with password";
     }
 
     if (empty($nameErr) && empty($emailErr) && empty($phoneErr) && empty($icErr) && empty($ageErr) && empty($positionErr) && empty($keyErr) && empty($userNameErr) && empty($passwordErr) && empty($cPasswordErr)) {
@@ -126,7 +117,7 @@ if (isset($_POST['create_staff'])) {
             header("Location:http://localhost/Computer-Store-POS-System/administration/staff.php");
             exit(0);
         } else {
-            $_SESSION['error'] = "Create Failed.";
+            $_SESSION['error'] = "Create Fail ! ! System connect to database or query error.";
             header("Location:http://localhost/Computer-Store-POS-System/administration/staff.php");
             exit(0);
         }
@@ -150,7 +141,7 @@ if (isset($_POST['update_staff'])) {
     $recoveryKey = $_POST['recoveryKey'];
 
     if (empty($name)) {
-        $nameErr = "Required";
+        $nameErr = "Name field cannot be left blank";
     } elseif (!empty($name)) {
         if (strlen($name) < 4) {
             $nameErr = "Staff name must be real name";
@@ -160,15 +151,13 @@ if (isset($_POST['update_staff'])) {
             }
         }
     }
-
     if (empty($email)) {
-        $emailErr = "Required";
+        $emailErr = "Email field cannot be left blank";
     } elseif (!empty($email) && !preg_match("^[_a-z0-9-]+(\.[_a-z0-9-]+)*@[a-z0-9-]+(\.[a-z0-9-]+)*(\.[a-z]{2,3})$^", $email)) {
         $emailErr = "Invalid email format";
     }
-
     if (empty($phone)) {
-        $phoneErr = "Required";
+        $phoneErr = "Phone field cannot be left blank";
     } elseif (!empty($phone)) {
         if (strlen($phone) < 10 || strlen($phone) > 13) {
             $phoneErr = "Staff phone number must be real";
@@ -178,9 +167,8 @@ if (isset($_POST['update_staff'])) {
             }
         }
     }
-
     if (empty($ic)) {
-        $icErr = "Required";
+        $icErr = "IC field cannot be left blank";
     } elseif (!empty($ic)) {
         if (strlen($ic) < 12) {
             $icErr = "Staff ic number must be real";
@@ -190,31 +178,26 @@ if (isset($_POST['update_staff'])) {
             }
         }
     }
-
     if (empty($age)) {
-        $ageErr = "Required";
+        $ageErr = "Age field cannot be left blank";
     } elseif (!empty($age) && !preg_match("/^[0-9]*$/", $age)) {
         $ageErr = "Only numbers are allowed";
     }
-
     if (empty($position)) {
-        $positionErr = "Required";
+        $positionErr = "Position field cannot be left blank";
     }
-
     if (empty($recoveryKey)) {
-        $keyErr = "Required";
+        $keyErr = "Recovery Key field cannot be left blank";
     }
-
     if (empty($username)) {
-        $userNameErr = "Required";
+        $userNameErr = "Username field cannot be left blank";
     } elseif (!empty($username)) {
         if (strlen($username) < 4) {
             $userNameErr = "Account username require at least 5 letter";
         }
     }
-
     if (empty($password)) {
-        $passwordErr = "Required";
+        $passwordErr = "Password field cannot be left blank";
     } elseif (!empty($password)) {
         if (strlen($password) < 5) {
             $passwordErr = "Password must be at least 5 characters";
@@ -224,11 +207,10 @@ if (isset($_POST['update_staff'])) {
             }
         }
     }
-
     if (empty($cPassword)) {
-        $cPasswordErr = "Required";
+        $cPasswordErr = "Confirm Password field cannot be left blank";
     } elseif (!empty($cPassword) && strcmp($password, $cPassword) != 0) {
-        $cPasswordErr = "Please make sure your password match.";
+        $cPasswordErr = "Invalid confirm password must match with password";
     }
 
     if (empty($nameErr) && empty($emailErr) && empty($phoneErr) && empty($icErr) && empty($ageErr) && empty($positionErr) && empty($keyErr) && empty($userNameErr) && empty($passwordErr) && empty($cPasswordErr)) {
@@ -243,12 +225,22 @@ if (isset($_POST['update_staff'])) {
             header("Location:http://localhost/Computer-Store-POS-System/administration/staff.php");
             exit(0);
         } else {
-            $_SESSION['error'] = "Update Failed.";
+            $_SESSION['error'] = "Update Fail ! ! System connect to database or query error.";
             header("Location:http://localhost/Computer-Store-POS-System/administration/staff.php");
             exit(0);
         }
     } else {
-        $_SESSION['error'] = "Update Failed.";
+        $_SESSION['error'] = "Update Fail ! Reason: <br>"
+                . "- $nameErr <br>"
+                . "- $emailErr <br>"
+                . "- $phoneErr <br>"
+                . "- $icErr <br>"
+                . "- $ageErr <br>"
+                . "- $positionErr <br>"
+                . "- $userNameErr <br>"
+                . "- $passwordErr <br>"
+                . "- $cPasswordErr <br>"
+                . "- $keyErr";
         header("Location:http://localhost/Computer-Store-POS-System/administration/staff.php");
         exit(0);
     }
