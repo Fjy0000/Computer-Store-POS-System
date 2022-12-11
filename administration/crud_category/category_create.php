@@ -14,7 +14,7 @@
                 <div class="modal-body">
                     <div class="form-group">
                         <label>Category Name</label><span style="color: #dc3545">&nbsp;&nbsp; *<?php echo $nameErr; ?></span>
-                        <input type="text" name="name" class="form-control">
+                        <input type="text" name="name" class="form-control" value="">
                     </div>
                     <div class="form-group">
                         <label>Description</label><span style="color: #dc3545">&nbsp;&nbsp; *<?php echo $descriptionErr; ?></span>

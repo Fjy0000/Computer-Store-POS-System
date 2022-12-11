@@ -12,12 +12,12 @@ if (isset($_POST['create_category'])) {
 
     $name = $_POST['name'];
     $description = $_POST['description'];
-
+    
     if (empty($name)) {
         $nameErr = "Name field cannot empty.";
     } elseif (!empty($name)) {
-        if (strlen($name) < 5) {
-            $nameErr = "Category name must be at least 5 letter.";
+        if (strlen($name) < 4) {
+            $nameErr = "Category name must be at least 4 letter.";
         }
     }
 
@@ -59,8 +59,8 @@ if (isset($_POST['update_category'])) {
     if (empty($name)) {
         $nameErr = "Name field cannot empty.";
     } elseif (!empty($name)) {
-        if (strlen($name) < 5) {
-            $nameErr = "Category name must be at least 5 letter.";
+        if (strlen($name) < 4) {
+            $nameErr = "Category name must be at least 4 letter.";
         }
     }
 
