@@ -3,20 +3,24 @@ require 'dbconnect.php';
 
 $error1 = $error2 = $error3 = $error4 = "";
 
-$s = "Received";
-$order_id = $_GET['id'];
+if (isset($_GET['id'])) {
+    $s = "Received";
+    $order_id = $_GET['id'];
 
-$show_order = "SELECT * FROM orders WHERE id='$order_id' ";
-$order_receive = mysqli_query($connect, $show_order);
+    $show_order = "SELECT * FROM orders WHERE id='$order_id' ";
+    $order_receive = mysqli_query($connect, $show_order);
 
-if (isset($_POST['confirm'])) {
-    $id = $_POST['customer_order_id'];
-    $query_update = "UPDATE orders SET delivery_status='$s' WHERE id='$id' ";
-    $update = mysqli_query($connect, $query_update);
+    if (isset($_POST['confirm'])) {
+        $id = $_POST['customer_order_id'];
+        $query_update = "UPDATE orders SET delivery_status='$s' WHERE id='$id' ";
+        $update = mysqli_query($connect, $query_update);
 
-    if ($update) {
-        $_SESSION['message'] = "Your order is record at received.";
+        if ($update) {
+            $_SESSION['message'] = "Your order is record at received.";
+        }
     }
+} else {
+    echo 'Thank you for your select our store.';
 }
 ?>
 <!DOCTYPE html>
