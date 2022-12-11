@@ -34,9 +34,8 @@ require 'static-nav/static-sidenav.php';
                                 <th>ID</th>
                                 <th>Staff Name</th>
                                 <th>Position</th>
-                                <th>Username</th>
-                                <th>Password</th>
-                                <th>Password Recovery Key</th>
+                                <th>Email</th>
+                                <th>Phone</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -48,9 +47,8 @@ require 'static-nav/static-sidenav.php';
                                         <td><?php echo $staff["staff_id"]; ?></td>
                                         <td><?php echo $staff["staff_name"]; ?></td>
                                         <td><?php echo $staff["staff_position"]; ?></td>
-                                        <td><?php echo $staff["staff_username"]; ?></td>
-                                        <td><?php echo $staff["staff_password"]; ?></td>
-                                        <td><?php echo $staff["staff_recoveryPasswordKey"]; ?></td>
+                                        <td><?php echo $staff["staff_email"]; ?></td>
+                                        <td><?php echo $staff["staff_contactNo"]; ?></td>
                                         <td>
                                             <a class='btn btn-info' href='crud_staff/staff_view.php?id=<?php echo $staff["staff_id"]; ?>'>View</a>
                                             <a class='btn btn-warning' href='crud_staff/staff_update.php?id=<?php echo $staff["staff_id"]; ?>'>Update</a>

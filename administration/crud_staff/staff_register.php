@@ -55,23 +55,44 @@ require 'staff_db.php';
                                                 <h4 class="mb-4">Staff Personal Information</h4>
                                                 <div class="mb-3">
                                                     <label>Staff Name</label><span style="color: #dc3545">&nbsp;&nbsp; *<?php echo $nameErr; ?></span>
-                                                    <input type="text" name="name" class="form-control">
+                                                    <input type="text" name="name" class="form-control" value="<?php
+                                                    if (!empty($_SESSION['staff_input_name'])) {
+                                                        echo $_SESSION['staff_input_name'];
+                                                    };
+                                                    ?>">
                                                 </div>
                                                 <div class="mb-3">
                                                     <label>Staff Email</label><span style="color: #dc3545">&nbsp;&nbsp; *<?php echo $emailErr; ?></span>
-                                                    <input type="email" name="email" class="form-control" placeholder="example@gmail.com">
+                                                    <input type="email" name="email" class="form-control" placeholder="example@gmail.com" 
+                                                           value="<?php
+                                                           if (!empty($_SESSION['staff_input_email'])) {
+                                                               echo $_SESSION['staff_input_email'];
+                                                           };
+                                                           ?>">
                                                 </div>
                                                 <div class="mb-3">
                                                     <label>Staff Phone No</label><span style="color: #dc3545">&nbsp;&nbsp; *<?php echo $phoneErr; ?></span>
-                                                    <input type="text" name="phone" class="form-control">
+                                                    <input type="text" name="phone" class="form-control" placeholder="60XXXXXXXXX" value="<?php
+                                                    if (!empty($_SESSION['staff_input_phone'])) {
+                                                        echo $_SESSION['staff_input_phone'];
+                                                    };
+                                                    ?>">
                                                 </div>
                                                 <div class="mb-3">
                                                     <label>Staff IC</label><span style="color: #dc3545">&nbsp;&nbsp; *<?php echo $icErr; ?></span>
-                                                    <input type="text" name="ic" class="form-control">
+                                                    <input type="text" name="ic" class="form-control" value="<?php
+                                                    if (!empty($_SESSION['staff_input_ic'])) {
+                                                        echo $_SESSION['staff_input_ic'];
+                                                    };
+                                                    ?>">
                                                 </div>
                                                 <div class="mb-3">
                                                     <label>Staff Age</label><span style="color: #dc3545">&nbsp;&nbsp; *<?php echo $ageErr; ?></span>
-                                                    <input type="number" name="age" min="18" max="100" class="form-control">
+                                                    <input type="number" name="age" min="18" max="100" class="form-control" value="<?php
+                                                    if (!empty($_SESSION['staff_input_age'])) {
+                                                        echo $_SESSION['staff_input_age'];
+                                                    };
+                                                    ?>">
                                                 </div>
                                                 <div class="mb-3">
                                                     <label>Staff Position</label><span style="color: #dc3545">&nbsp;&nbsp; *<?php echo $positionErr; ?></span>
@@ -93,12 +114,21 @@ require 'staff_db.php';
                                                 <h4 class="mb-4">Staff Account Information</h4>
                                                 <div class="mb-3">
                                                     <label>Username</label><span style="color: #dc3545">&nbsp;&nbsp; *<?php echo $userNameErr; ?></span>
-                                                    <input type="text" name="username" class="form-control">
+                                                    <input type="text" name="username" class="form-control" value="<?php
+                                                    if (!empty($_SESSION['staff_input_username'])) {
+                                                        echo $_SESSION['staff_input_username'];
+                                                    };
+                                                    ?>">
                                                 </div>
                                                 <div class="mb-3">
                                                     <label>Password</label><span style="color: #dc3545">&nbsp;&nbsp; *<?php echo $passwordErr; ?></span>
                                                     <div class="input-group mb-3">
-                                                        <input type="password" name="password" id="password" class="form-control">
+                                                        <input type="password" name="password" id="password" class="form-control" placeholder="at least 1 uppercase letter, number and 1 symbol and length >5." 
+                                                               value="<?php
+                                                               if (!empty($_SESSION['staff_input_password'])) {
+                                                                   echo $_SESSION['staff_input_password'];
+                                                               };
+                                                               ?>">
                                                         <span onclick="togglePasswordIcon1()">
                                                             <button type="button" id="pws1_eye1" class="bi bi-eye-slash-fill"></button>
                                                             <button type="button" id="pws1_eye2" class="bi bi-eye-fill"></button>
@@ -108,7 +138,12 @@ require 'staff_db.php';
                                                 <div class="mb-3">
                                                     <label>Confirm Password</label><span style="color: #dc3545">&nbsp;&nbsp; *<?php echo $cPasswordErr; ?></span>
                                                     <div class="input-group mb-3">
-                                                        <input type="password" name="confirmPassword" id="confirmPassword" class="form-control">
+                                                        <input type="password" name="confirmPassword" id="confirmPassword" class="form-control" placeholder="must match with password." 
+                                                               value="<?php
+                                                               if (!empty($_SESSION['staff_input_cPassword'])) {
+                                                                   echo $_SESSION['staff_input_cPassword'];
+                                                               };
+                                                               ?>">
                                                         <span onclick="togglePasswordIcon2()">
                                                             <button type="button" id="pws2_eye1" class="bi bi-eye-slash-fill"></button>
                                                             <button type="button" id="pws2_eye2" class="bi bi-eye-fill"></button>
@@ -118,7 +153,12 @@ require 'staff_db.php';
                                                 <div class="mb-3">
                                                     <label>Password Recovery Key</label><span style="color: #dc3545">&nbsp;&nbsp; *<?php echo $keyErr; ?></span>
                                                     <div class="input-group mb-3">
-                                                        <input type="text" name="recoveryKey" id="recoveryKey" class="form-control">
+                                                        <input type="text" name="recoveryKey" id="recoveryKey" class="form-control" 
+                                                               value="<?php
+                                                               if (!empty($_SESSION['staff_input_recoveryKey'])) {
+                                                                   echo $_SESSION['staff_input_recoveryKey'];
+                                                               };
+                                                               ?>">
                                                         <button type="button" class="bi bi-arrow-repeat" style="font-size: 20px" onclick="getKey()"></button>
                                                     </div>
                                                 </div>

@@ -4,8 +4,7 @@
 $currentStaff = $nameErr = $phoneErr = $emailErr = $icErr = $ageErr = $positionErr = $userNameErr = $passwordErr = $cPasswordErr = $keyErr = "";
 
 //Define information of requirement
-$f_Desc1 = "1. Password must contain at least 1 uppercase letter, number and 1 symbol and length >5. | 2. The phone number must be real and needs to be added country calling code(+60). Example : 60127329575 
-    | 3. Staff IC number must be real and without symbol. Example: 960607012207 | 4. All fields are required.";
+$f_Desc1 = "This page is a staff account registration page, in here you can create and add a new one staff account.";
 
 //Create Staff
 if (isset($_POST['create_staff'])) {
@@ -20,6 +19,17 @@ if (isset($_POST['create_staff'])) {
     $password = $_POST['password'];
     $cPassword = $_POST['confirmPassword'];
     $recoveryKey = $_POST['recoveryKey'];
+
+    //session value to keep input value after vaildation
+    $_SESSION['staff_input_name'] = $name;
+    $_SESSION['staff_input_email'] = $email;
+    $_SESSION['staff_input_phone'] = $phone;
+    $_SESSION['staff_input_ic'] = $ic;
+    $_SESSION['staff_input_age'] = $age;
+    $_SESSION['staff_input_username'] = $username;
+    $_SESSION['staff_input_password'] = $password;
+    $_SESSION['staff_input_cPassword'] = $cPassword;
+    $_SESSION['staff_input_recoveryKey'] = $recoveryKey;
 
     if (empty($name)) {
         $nameErr = "Required";
@@ -111,6 +121,17 @@ if (isset($_POST['create_staff'])) {
 
         $sql_run = mysqli_query($connect, $sql1);
         if ($sql_run) {
+
+            unset($_SESSION['staff_input_name'],
+                    $_SESSION['staff_input_email'],
+                    $_SESSION['staff_input_phone'],
+                    $_SESSION['staff_input_ic'],
+                    $_SESSION['staff_input_age'],
+                    $_SESSION['staff_input_username'],
+                    $_SESSION['staff_input_password'],
+                    $_SESSION['staff_input_cPassword'],
+                    $_SESSION['staff_input_recoveryKey']);
+
             $_SESSION['message'] = "Created successfully.";
             header("Location:http://localhost/Computer-Store-POS-System/administration/staff.php");
             exit(0);
