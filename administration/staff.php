@@ -71,5 +71,19 @@ require 'static-nav/static-sidenav.php';
         </div>
     </main>
 </div>
-
 <?php include 'static-include/footer.php'; ?>
+<script>
+    $(document).on('click', '.remove_message', function () {
+        var message_id = $(this).attr('id');
+        if (confirm("Are you sure you want to remove this message in the chat ?")) {
+            $.ajax({
+                url: "liveChat_function/remove_message.php",
+                method: "POST",
+                data: {message_id: message_id},
+                success: function (data) {
+                    update_chat_history();
+                }
+            })
+        }
+    });
+</script>

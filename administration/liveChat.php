@@ -8,6 +8,7 @@ session_start();
     <head>
         <meta charset="utf-8" />
         <title></title>
+        <script src="js/scripts.js"></script>
         <link href="css/styles.css" rel="stylesheet" />
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.2/font/bootstrap-icons.css">
         <script src="https://use.fontawesome.com/releases/v6.1.0/js/all.js" crossorigin="anonymous"></script>
@@ -20,8 +21,6 @@ session_start();
         <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
         <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
         <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
-
-        <script src="js/scripts.js"></script>
     </head>
 
     <body class="sb-nav-fixed">
