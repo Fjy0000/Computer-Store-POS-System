@@ -12,7 +12,7 @@ if (isset($_POST['create_category'])) {
 
     $name = $_POST['name'];
     $description = $_POST['description'];
-    
+
     if (empty($name)) {
         $nameErr = "Name field cannot empty.";
     } elseif (!empty($name)) {
@@ -84,24 +84,6 @@ if (isset($_POST['update_category'])) {
         $_SESSION['error'] = "Update Fail. Reason : <br>"
                 . "<strong>$nameErr</strong><br>"
                 . "<strong>$descriptionErr</strong>";
-        header("Location: http://localhost/Computer-Store-POS-System/administration/category.php");
-        exit(0);
-    }
-}
-
-//Delete Category 
-if (isset($_POST['delete_category'])) {
-
-    $id = $_POST['delete_id'];
-
-    $sql4 = "DELETE FROM category WHERE category_id='$id'";
-    $sql_run = mysqli_query($connect, $sql4);
-    if ($sql_run) {
-        $_SESSION['message'] = "Deleted successfully.";
-        header("Location: http://localhost/Computer-Store-POS-System/administration/category.php");
-        exit(0);
-    } else {
-        $_SESSION['error'] = "Delete Failed.";
         header("Location: http://localhost/Computer-Store-POS-System/administration/category.php");
         exit(0);
     }

@@ -4,7 +4,9 @@
 $currentProduct = $nameErr = $descriptionErr = $categoryErr = $priceErr = $s_idErr = $imageErr = $quantityErr = $t_productErr = $toErr = $fromErr = "";
 
 //Define information of requirement
-$f_Desc1 = "1. All fields are required.";
+$f_Desc1 = "This page is a add new stock page, in here you can create and add a new product and assign to different store inventory.";
+$f_Desc2 = "This page is a update stock page, in here you can update a selected stock details.";
+$f_Desc3 = "This function is transfer stock, in here you can transfer the selected stock product quantity to another stock.";
 
 //Add New Product
 if (isset($_POST['create_product'])) {
@@ -15,11 +17,19 @@ if (isset($_POST['create_product'])) {
     $c_name = $_POST['c_name'];
     $quantity = $_POST['quantity'];
 
+    //session value to keep input value after vaildation get error message
+    $_SESSION['product_input_name'] = $name;
+    $_SESSION['product_input_description'] = $description;
+    $_SESSION['product_input_price'] = $price;
+    $_SESSION['product_input_quantity'] = $quantity;
+
+    //get image name, image path
     $fileType = strtolower(pathinfo($_FILES['image']['name'], PATHINFO_EXTENSION));
     $filename = $_FILES['image']['name'];
     $tempname = $_FILES['image']['tmp_name'];
     $folder = $_SERVER['DOCUMENT_ROOT'] . '/Computer-Store-POS-System/client/images/';
 
+    //get store name and type 
     $s_id = $_POST['s_id'];
     $sql1 = "SELECT * FROM store WHERE store_id='$s_id'";
     $result = mysqli_query($connect, $sql1);
@@ -32,7 +42,6 @@ if (isset($_POST['create_product'])) {
     if ($_FILES['image']['size'] > 200000) {
         $imageErr = "File is too large only allowed  size < 2MB.";
     }
-
     if ($fileType != "jpg" && $fileType != "png" && $fileType != "jpeg") {
         $imageErr = "Only JPG, JPEG & PNG files are allowed.";
     }
@@ -79,7 +88,7 @@ if (isset($_POST['create_product'])) {
             header("Location:http://localhost/Computer-Store-POS-System/administration/stock_hq.php");
             exit(0);
         } else {
-            $_SESSION['message'] = "Creating Failed.";
+            $_SESSION['error'] = "Create Fail ! System connect to database or query error. ";
             header("Location:http://localhost/Computer-Store-POS-System/administration/stock_hq.php");
             exit(0);
         }
@@ -148,7 +157,7 @@ if (isset($_POST['update_product'])) {
         $imageErr = "Required";
     }
 
-    if (empty($nameErr) && empty($priceErr) && empty($categoryErr) && empty($s_idErr) && empty($imageErr) && empty($descriptionErr) && empty($imageErr)) {
+    if (empty($nameErr) && empty($descriptionErr) && empty($priceErr) && empty($categoryErr) && empty($s_idErr) && empty($imageErr) && empty($quantityErr)) {
 
         $sql3 = "UPDATE product SET name='$name',description='$description',price='$price',category_name='$c_name',"
                 . "store_id='$s_id',store_name='$store_n',store_type='$store_type',quantity='$quantity',image='$filename' WHERE product_id='$id' ";
@@ -160,32 +169,20 @@ if (isset($_POST['update_product'])) {
             header("Location:http://localhost/Computer-Store-POS-System/administration/stock_hq.php");
             exit(0);
         } else {
-            $_SESSION['message'] = "Updating Failed.";
+            $_SESSION['message'] = "Update Fail ! System connect to database or query error. ";
             header("Location:http://localhost/Computer-Store-POS-System/administration/stock_hq.php");
             exit(0);
         }
     } else {
-        $_SESSION['message'] = "Updating Failed.";
-        header("Location:http://localhost/Computer-Store-POS-System/administration/stock_hq.php");
-        exit(0);
-    }
-}
-
-
-//Delete Product
-if (isset($_POST['delete_product'])) {
-
-    $id = $_POST['delete_id'];
-
-    $sql4 = "DELETE FROM product WHERE product_id='$id'";
-    $sql_run = mysqli_query($connect, $sql4);
-
-    if ($sql_run) {
-        $_SESSION['message'] = "Deleted successfully.";
-        header("Location:http://localhost/Computer-Store-POS-System/administration/stock_hq.php");
-        exit(0);
-    } else {
-        $_SESSION['message'] = "Delete Failed.";
+        $_SESSION['error'] = "Update Fail ! Reason : <br>"
+                . "- $nameErr <br>"
+                . "- $descriptionErr <br>"
+                . "- $categoryErr <br>"
+                . "- $s_idErr <br>"
+                . "- $priceErr <br>"
+                . "- $quantityErr <br>"
+                . "- $imageErr";
+        
         header("Location:http://localhost/Computer-Store-POS-System/administration/stock_hq.php");
         exit(0);
     }
@@ -281,11 +278,11 @@ if (isset($_POST['transfer_product'])) {
             mysqli_query($connect, $create_toStore_sql);
 
             if ($sql_run) {
-                $_SESSION['message'] = "Transfer successfully.";
+                $_SESSION['message'] = "Transfer Successfully.";
                 header("Location:http://localhost/Computer-Store-POS-System/administration/stock_hq.php");
                 exit(0);
             } else {
-                $_SESSION['message'] = "Transfer Failed.";
+                $_SESSION['error'] = "Transfer Failed ! System connect to database or query error. ";
                 header("Location:http://localhost/Computer-Store-POS-System/administration/stock_hq.php");
                 exit(0);
             }
@@ -293,11 +290,11 @@ if (isset($_POST['transfer_product'])) {
             mysqli_query($connect, $to_sql);
 
             if ($sql_run) {
-                $_SESSION['message'] = "Transfer successfully.";
+                $_SESSION['message'] = "Transfer Successfully.";
                 header("Location:http://localhost/Computer-Store-POS-System/administration/stock_hq.php");
                 exit(0);
             } else {
-                $_SESSION['message'] = "Transfer Failed.";
+                $_SESSION['error'] = "Transfer Failed ! System connect to database or query error. ";
                 header("Location:http://localhost/Computer-Store-POS-System/administration/stock_hq.php");
                 exit(0);
             }

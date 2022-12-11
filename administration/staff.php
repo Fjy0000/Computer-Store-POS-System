@@ -9,6 +9,17 @@ if (!$result) {
     die("Invalid query:" . $connect->error);
 }
 
+//Remove session value of input field in register page
+unset($_SESSION['staff_input_name'],
+        $_SESSION['staff_input_email'],
+        $_SESSION['staff_input_phone'],
+        $_SESSION['staff_input_ic'],
+        $_SESSION['staff_input_age'],
+        $_SESSION['staff_input_username'],
+        $_SESSION['staff_input_password'],
+        $_SESSION['staff_input_cPassword'],
+        $_SESSION['staff_input_recoveryKey']);
+
 include 'static-include/header.php';
 require 'static-nav/static-headnav.php';
 require 'static-nav/static-sidenav.php';
@@ -73,12 +84,12 @@ require 'static-nav/static-sidenav.php';
 <script>
     //delete staff account confirmation
     $(document).on('click', '.delete_staff', function () {
-        var staff_id = $(this).attr('id');
+        var id = $(this).attr('id');
         if (confirm("Are you sure you want to delete this staff account ? ")) {
             $.ajax({
                 url: "crud_staff/staff_delete.php",
                 method: "POST",
-                data: {staff_id: staff_id},
+                data: {id: id},
                 success: function (data) {
                     location.reload(true);
                 }

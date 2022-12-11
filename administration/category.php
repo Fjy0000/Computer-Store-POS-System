@@ -2,7 +2,6 @@
 require 'dbconnect.php';
 require 'crud_category/category_db.php';
 
-
 $sql = "SELECT * FROM category";
 $result = mysqli_query($connect, $sql);
 
@@ -26,10 +25,10 @@ require 'static-nav/static-sidenav.php';
                 <div class="card-header">
                     <i class="fas fa-table me-1"></i>
                     Category Table
-                    
+
                     <button type="button" class="btn btn-primary m-md-2 float-end" data-bs-toggle="modal" data-bs-target="#categoryModal">Create</button>
                     <?php include"crud_category/category_create.php"; ?>
-                    
+
                 </div>
                 <div class="card-body">
                     <table class="table">
@@ -52,10 +51,7 @@ require 'static-nav/static-sidenav.php';
 
                                         <td>
                                             <a class='btn btn-warning' href='crud_category/category_update.php?id=<?php echo $category["category_id"]; ?>'>Update</a>
-                                            <form method="POST" action="category.php" class="d-inline">
-                                                <input type="hidden" name="delete_id" value="<?php echo $category["category_id"]; ?>">
-                                                <button type="submit" class="btn btn-danger" name="delete_category">Delete</button>
-                                            </form>
+                                            <button type="button" class="btn btn-danger delete_category" id="<?php echo $category["category_id"]; ?>">Delete</button>
                                         </td>
                                     </tr>
                                     <?php
@@ -73,3 +69,20 @@ require 'static-nav/static-sidenav.php';
 </div>
 
 <?php include 'static-include/footer.php'; ?>
+
+<script>
+    //delete category confirmation
+    $(document).on('click', '.delete_category', function () {
+        var id = $(this).attr('id');
+        if (confirm("Are you sure you want to delete this category ? ")) {
+            $.ajax({
+                url: "crud_category/category_delete.php",
+                method: "POST",
+                data: {id: id},
+                success: function (data) {
+                    location.reload(true);
+                }
+            })
+        }
+    });
+</script>

@@ -47,15 +47,27 @@ if (!$result1 || !$result2) {
                                         <div class="card-body">
                                             <div class="mb-3">
                                                 <label>Product Name</label><span style="color: #dc3545">&nbsp;&nbsp; *<?php echo $nameErr; ?></span>
-                                                <input type="text" name="name" class="form-control">
+                                                <input type="text" name="name" class="form-control" value="<?php
+                                                if (!empty($_SESSION['product_input_name'])) {
+                                                    echo $_SESSION['product_input_name'];
+                                                };
+                                                ?>">
                                             </div>
                                             <div class="mb-3">
                                                 <label>Description</label><span style="color: #dc3545">&nbsp;&nbsp; *<?php echo $descriptionErr; ?></span>
-                                                <textarea name="description" class="form-control"></textarea>
+                                                <textarea name="description" class="form-control"><?php
+                                                    if (!empty($_SESSION['product_input_description'])) {
+                                                        echo $_SESSION['product_input_description'];
+                                                    };
+                                                    ?></textarea>
                                             </div>
                                             <div class="mb-3">
                                                 <label>Product Price (RM)</label><span style="color: #dc3545">&nbsp;&nbsp; *<?php echo $priceErr; ?></span>
-                                                <input type="number" name="price" min="0" step="0.01" class="form-control">
+                                                <input type="number" name="price" min="0" step="0.01" class="form-control" value="<?php
+                                                if (!empty($_SESSION['product_input_price'])) {
+                                                    echo $_SESSION['product_input_price'];
+                                                };
+                                                ?>">
                                             </div>
                                             <div class="mb-3">
                                                 <label>Category</label><span style="color: #dc3545">&nbsp;&nbsp; *<?php echo $categoryErr; ?></span>
@@ -72,7 +84,7 @@ if (!$result1 || !$result2) {
                                                     ?>
                                                 </select>
                                             </div>
-                                            
+
                                             <div class="mb-3">
                                                 <label>Store Name</label><span style="color: #dc3545">&nbsp;&nbsp; *<?php echo $s_idErr; ?></span>
                                                 <select class="form-select" aria-label="store list" name="s_id" id="s_id">
@@ -88,10 +100,14 @@ if (!$result1 || !$result2) {
                                                     ?>
                                                 </select>
                                             </div>
-                                            
+
                                             <div class="mb-3">
                                                 <label>Quantity</label><span style="color: #dc3545">&nbsp;&nbsp; *<?php echo $quantityErr; ?></span>
-                                                <input type="number" name="quantity" min="0" class="form-control">
+                                                <input type="number" name="quantity" min="0" class="form-control" value="<?php
+                                                if (!empty($_SESSION['product_input_quantity'])) {
+                                                    echo $_SESSION['product_input_quantity'];
+                                                };
+                                                ?>">
                                             </div>
                                             <div class="mb-3">
                                                 <label>Product Image</label><span style="color: #dc3545">&nbsp;&nbsp; *<?php echo $imageErr; ?></span>

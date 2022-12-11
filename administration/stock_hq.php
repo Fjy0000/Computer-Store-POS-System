@@ -15,6 +15,13 @@ if (!$result || !$get1 || !$get2) {
     die("Invalid query:" . $connect->error);
 }
 
+//Remove session value of input field in create page
+unset($_SESSION['product_input_name'],
+        $_SESSION['product_input_description'],
+        $_SESSION['product_input_price'],
+        $_SESSION['product_input_quantity']
+);
+
 include 'static-include/header.php';
 require 'static-nav/static-headnav.php';
 require 'static-nav/static-sidenav.php';
@@ -39,7 +46,7 @@ require 'static-nav/static-sidenav.php';
                         <button type="button" class="btn btn-primary dropdown-toggle m-md-2" data-bs-toggle="dropdown">Export</button>
                         <form action="stock_hq.php" method="POST">
                             <div class="dropdown-menu">
-                                <button type="submit" class="dropdown-item" name="generate_hq"><i class="bi bi-filetype-xlsx m-md-2"></i>Export Excel</a>
+                                <button type="submit" class="dropdown-item" name="generate_hq"><i class="bi bi-filetype-xlsx m-md-2"></i>Export Excel</button>
                             </div>
                         </form>
                     </div>
@@ -69,10 +76,7 @@ require 'static-nav/static-sidenav.php';
                                         <td>
                                             <a class='btn btn-info' href="crud_product/product_view.php?id=<?php echo $product["product_id"]; ?>">View</a>
                                             <a class='btn btn-warning' href="crud_product/product_update.php?id=<?php echo $product["product_id"]; ?>">Update</a>
-                                            <form method="POST" action="stock_hq.php" class="d-inline">
-                                                <input type="hidden" name="delete_id" value="<?php echo $product["product_id"]; ?>">
-                                                <button type="submit" class="btn btn-danger" name="delete_product">Delete</button>
-                                            </form>
+                                            <button type="button" class="btn btn-danger delete_product" id="<?php echo $product["product_id"]; ?>">Delete</button>
                                         </td>
                                     </tr>
                                     <?php
@@ -89,3 +93,20 @@ require 'static-nav/static-sidenav.php';
     </main>
 </div>
 <?php include 'static-include/footer.php'; ?>
+
+<script>
+    //delete stock confirmation
+    $(document).on('click', '.delete_product', function () {
+        var id = $(this).attr('id');
+        if (confirm("Are you sure you want to delete this product whole information ? ")) {
+            $.ajax({
+                url: "crud_product/product_delete.php",
+                method: "POST",
+                data: {id: id},
+                success: function (data) {
+                    location.reload(true);
+                }
+            })
+        }
+    });
+</script>

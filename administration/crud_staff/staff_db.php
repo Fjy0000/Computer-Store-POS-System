@@ -20,7 +20,7 @@ if (isset($_POST['create_staff'])) {
     $cPassword = $_POST['confirmPassword'];
     $recoveryKey = $_POST['recoveryKey'];
 
-    //session value to keep input value after vaildation
+    //session value to keep input value after vaildation get error message
     $_SESSION['staff_input_name'] = $name;
     $_SESSION['staff_input_email'] = $email;
     $_SESSION['staff_input_phone'] = $phone;
@@ -122,21 +122,11 @@ if (isset($_POST['create_staff'])) {
         $sql_run = mysqli_query($connect, $sql1);
         if ($sql_run) {
 
-            unset($_SESSION['staff_input_name'],
-                    $_SESSION['staff_input_email'],
-                    $_SESSION['staff_input_phone'],
-                    $_SESSION['staff_input_ic'],
-                    $_SESSION['staff_input_age'],
-                    $_SESSION['staff_input_username'],
-                    $_SESSION['staff_input_password'],
-                    $_SESSION['staff_input_cPassword'],
-                    $_SESSION['staff_input_recoveryKey']);
-
-            $_SESSION['message'] = "Created successfully.";
+            $_SESSION['message'] = "Created Successfully.";
             header("Location:http://localhost/Computer-Store-POS-System/administration/staff.php");
             exit(0);
         } else {
-            $_SESSION['message'] = "Creating Failed.";
+            $_SESSION['error'] = "Create Failed.";
             header("Location:http://localhost/Computer-Store-POS-System/administration/staff.php");
             exit(0);
         }
@@ -249,19 +239,18 @@ if (isset($_POST['update_staff'])) {
 
         $sql_run = mysqli_query($connect, $sql3);
         if ($sql_run) {
-            $_SESSION['message'] = "Updated successfully.";
+            $_SESSION['message'] = "Updated Successfully.";
             header("Location:http://localhost/Computer-Store-POS-System/administration/staff.php");
             exit(0);
         } else {
-            $_SESSION['message'] = "Updating Failed.";
+            $_SESSION['error'] = "Update Failed.";
             header("Location:http://localhost/Computer-Store-POS-System/administration/staff.php");
             exit(0);
         }
     } else {
-        $_SESSION['message'] = "Updating Failed.";
+        $_SESSION['error'] = "Update Failed.";
         header("Location:http://localhost/Computer-Store-POS-System/administration/staff.php");
         exit(0);
     }
 }
-
 ?>
