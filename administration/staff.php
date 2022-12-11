@@ -52,10 +52,7 @@ require 'static-nav/static-sidenav.php';
                                         <td>
                                             <a class='btn btn-info' href='crud_staff/staff_view.php?id=<?php echo $staff["staff_id"]; ?>'>View</a>
                                             <a class='btn btn-warning' href='crud_staff/staff_update.php?id=<?php echo $staff["staff_id"]; ?>'>Update</a>
-                                            <form method="POST" action="staff.php" class='d-inline'>
-                                                <input type="hidden" name="delete_id" value="<?php echo $staff["staff_id"]; ?>">
-                                                <button type="submit" class="btn btn-danger" name="delete_staff">Delete</button>
-                                            </form>
+                                            <button type="button" class="btn btn-danger delete_staff" id="<?php echo $staff["staff_id"]; ?>">Delete</button>
                                         </td>
                                     </tr>
                                     <?php
@@ -72,16 +69,18 @@ require 'static-nav/static-sidenav.php';
     </main>
 </div>
 <?php include 'static-include/footer.php'; ?>
+
 <script>
-    $(document).on('click', '.remove_message', function () {
-        var message_id = $(this).attr('id');
-        if (confirm("Are you sure you want to remove this message in the chat ?")) {
+    //delete staff account confirmation
+    $(document).on('click', '.delete_staff', function () {
+        var staff_id = $(this).attr('id');
+        if (confirm("Are you sure you want to delete this staff account ? ")) {
             $.ajax({
-                url: "liveChat_function/remove_message.php",
+                url: "crud_staff/staff_delete.php",
                 method: "POST",
-                data: {message_id: message_id},
+                data: {staff_id: staff_id},
                 success: function (data) {
-                    update_chat_history();
+                    location.reload(true);
                 }
             })
         }

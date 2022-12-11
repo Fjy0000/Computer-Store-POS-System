@@ -264,21 +264,4 @@ if (isset($_POST['update_staff'])) {
     }
 }
 
-//Delete Staff
-if (isset($_POST['delete_staff'])) {
-
-    $id = $_POST['delete_id'];
-
-    $sql4 = "DELETE FROM staff WHERE staff_id='$id'";
-    $sql_run = mysqli_query($connect, $sql4);
-    if ($sql_run) {
-        $_SESSION['message'] = "Deleted successfully.";
-        header("Location:http://localhost/Computer-Store-POS-System/administration/staff.php");
-        exit(0);
-    } else {
-        $_SESSION['message'] = "Delete Failed.";
-        header("Location:http://localhost/Computer-Store-POS-System/administration/staff.php");
-        exit(0);
-    }
-}
 ?>
