@@ -44,7 +44,11 @@ require 'static-nav/static-sidenav.php';
                             </div>
                         </form>
                     </div>
-                </div>  
+                    <div class="card-footer">
+                        <label>QR Code Image</label>
+                        <div> <?php echo "<img src=' " . $qrcode . " '> "; ?></div>
+                    </div> 
+                </div>
             </div>
         </div>
     </main>
