@@ -31,11 +31,11 @@ if (isset($_POST['create_category'])) {
 
         $sql_run = mysqli_query($connect, $sql1);
         if ($sql_run) {
-            $_SESSION['message'] = "Created successfully.";
+            $_SESSION['message'] = "Created Successfully.";
             header("Location: http://localhost/Computer-Store-POS-System/administration/category.php");
             exit(0);
         } else {
-            $_SESSION['error'] = "Create Fail";
+            $_SESSION['error'] = "Create Fail ! ! System connect to database or query error. ";
             header("Location: http://localhost/Computer-Store-POS-System/administration/category.php");
             exit(0);
         }
@@ -72,11 +72,11 @@ if (isset($_POST['update_category'])) {
         $sql2 = "UPDATE category SET category_name='$name',description='$description' WHERE category_id='$id'";
         $sql_run = mysqli_query($connect, $sql2);
         if ($sql_run) {
-            $_SESSION['message'] = "Updated successfully.";
+            $_SESSION['message'] = "Updated Successfully.";
             header("Location: http://localhost/Computer-Store-POS-System/administration/category.php");
             exit(0);
         } else {
-            $_SESSION['error'] = "Update Fail.";
+            $_SESSION['error'] = "Update Fail ! ! System connect to database or query error. ";
             header("Location: http://localhost/Computer-Store-POS-System/administration/category.php");
             exit(0);
         }

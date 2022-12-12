@@ -3,7 +3,7 @@
 //Define empty error message
 $currentProduct = $nameErr = $descriptionErr = $categoryErr = $priceErr = $s_idErr = $imageErr = $quantityErr = $t_productErr = $toErr = $fromErr = "";
 
-//Define information of requirement
+//Define Description of function
 $f_Desc1 = "This page is a add new stock page, in here you can create and add a new product and assign to different store inventory.";
 $f_Desc2 = "This page is a update stock page, in here you can update a selected stock details.";
 $f_Desc3 = "This function is transfer stock, in here you can transfer the selected stock product quantity to another stock.";
@@ -46,27 +46,27 @@ if (isset($_POST['create_product'])) {
         $imageErr = "Only JPG, JPEG & PNG files are allowed.";
     }
     if (empty($name)) {
-        $nameErr = "Required.";
+        $nameErr = "product name field cannot empty";
     } elseif (!empty($name) && strlen($name) < 5) {
         $nameErr = "Product name must be at least 5 letter.";
     }
     if (empty($description)) {
-        $descriptionErr = "Required";
+        $descriptionErr = "product description field cannot empty";
     }
     if (empty($price)) {
-        $priceErr = "Required";
+        $priceErr = "price field cannot empty";
     }
     if (empty($c_name)) {
-        $categoryErr = "Required";
+        $categoryErr = "category field cannot empty";
     }
     if (empty($s_id)) {
-        $s_idErr = "Required";
+        $s_idErr = "store field cannot empty";
     }
     if (empty($quantity)) {
-        $quantityErr = "Required";
+        $quantityErr = "quantity field cannot empty";
     }
     if (empty($filename)) {
-        $imageErr = "Required";
+        $imageErr = "image field cannot empty";
     }
 
     if (empty($nameErr) && empty($priceErr) && empty($categoryErr) && empty($s_idErr) && empty($imageErr) && empty($descriptionErr) && empty($imageErr)) {
@@ -121,27 +121,27 @@ if (isset($_POST['update_product'])) {
         $imageErr = "Only JPG, JPEG & PNG files are allowed.";
     }
     if (empty($name)) {
-        $nameErr = "Required.";
+        $nameErr = "product name field cannot empty.";
     } elseif (!empty($name) && strlen($name) < 5) {
         $nameErr = "Product name must be at least 5 letter.";
     }
     if (empty($description)) {
-        $descriptionErr = "Required";
+        $descriptionErr = "product description field cannot empty";
     }
     if (empty($price)) {
-        $priceErr = "Required";
+        $priceErr = "price field cannot empty";
     }
     if (empty($c_name)) {
-        $categoryErr = "Required";
+        $categoryErr = "category field cannot empty";
     }
     if (empty($s_id)) {
-        $s_idErr = "Required";
+        $s_idErr = "store field cannot empty";
     }
     if (empty($quantity)) {
-        $quantityErr = "Required";
+        $quantityErr = "quantity field cannot empty";
     }
     if (empty($filename)) {
-        $imageErr = "Required";
+        $imageErr = "image field cannot empty";
     }
 
     if (empty($nameErr) && empty($descriptionErr) && empty($priceErr) && empty($categoryErr) && empty($s_idErr) && empty($imageErr) && empty($quantityErr)) {
@@ -169,7 +169,7 @@ if (isset($_POST['update_product'])) {
                 . "- $priceErr <br>"
                 . "- $quantityErr <br>"
                 . "- $imageErr";
-        
+
         header("Location:http://localhost/Computer-Store-POS-System/administration/stock_hq.php");
         exit(0);
     }
@@ -226,18 +226,18 @@ if (isset($_POST['transfer_product'])) {
 
     //input requirement
     if (empty($fromStoreId)) {
-        $fromErr = "Required";
+        $fromErr = "From Store field cannot empty";
     }
     if (empty($toStoreId)) {
-        $toErr = "Required";
+        $toErr = "To Store field cannot empty";
     } elseif ($fromStoreId == $toStoreId) {
         $toErr = "Cannot select same store. ";
     }
     if (empty($n_product)) {
-        $t_productErr = "Required";
+        $t_productErr = "Product name field cannot empty";
     }
     if (empty($transfer_num)) {
-        $quantityErr = "Required";
+        $quantityErr = "Quantity to transfer field cannot empty";
     }
 
     if (empty($t_productErr) && empty($toErr) && empty($fromErr) && empty($quantityErr)) {
@@ -260,7 +260,6 @@ if (isset($_POST['transfer_product'])) {
         mysqli_query($connect, $from_sql);
         if (mysqli_num_rows($check_run) == 0) {
             mysqli_query($connect, $create_toStore_sql);
-
             if ($sql_run) {
                 $_SESSION['message'] = "Transfer Successfully.";
                 header("Location:http://localhost/Computer-Store-POS-System/administration/stock_hq.php");
@@ -272,7 +271,6 @@ if (isset($_POST['transfer_product'])) {
             }
         } else {
             mysqli_query($connect, $to_sql);
-
             if ($sql_run) {
                 $_SESSION['message'] = "Transfer Successfully.";
                 header("Location:http://localhost/Computer-Store-POS-System/administration/stock_hq.php");

@@ -3,8 +3,8 @@
 //Error Message
 $id_error = $store_send_error = $delivery_status_error = "";
 
-//Define information of requirement
-$f_Desc1 = "1. All fields are required.";
+//Define Description of function
+$f_Desc1 = "This function is manage delivery, in here you can control the customer order delivery status and assign the store to send the order. ";
 
 //Assign Delivery
 if (isset($_POST['assign_delivery'])) {
@@ -14,13 +14,13 @@ if (isset($_POST['assign_delivery'])) {
     $delivery_status = $_POST['delivery'];
 
     if (empty($id)) {
-        $id_error = "Required";
+        $id_error = "Order ID field cannot empty";
     }
     if (empty($store_send)) {
-        $store_send_error = "Required";
+        $store_send_error = "Store field cannot empty";
     }
     if (empty($delivery_status)) {
-        $delivery_status_error = "Required";
+        $delivery_status_error = "Delivery status field cannot empty";
     }
 
     if (empty($id_error) && empty($store_send_error) && empty($delivery_status_error)) {
@@ -28,16 +28,19 @@ if (isset($_POST['assign_delivery'])) {
 
         $sql_run = mysqli_query($connect, $sql);
         if ($sql_run) {
-            $_SESSION['message'] = "Updated successfully.";
+            $_SESSION['message'] = "Updated Successfully.";
             header("Location:http://localhost/Computer-Store-POS-System/administration/delivery.php");
             exit(0);
         } else {
-            $_SESSION['message'] = "Updating Failed.";
+            $_SESSION['error'] = "Update Fail ! ! System connect to database or query error.  ";
             header("Location:http://localhost/Computer-Store-POS-System/administration/delivery.php");
             exit(0);
         }
     } else {
-        $_SESSION['message'] = "Assign Failed.";
+        $_SESSION['error'] = "Assign Fail ! ! Reason: <br>"
+                . "- $id_error <br>"
+                . "- $store_send_error <br>"
+                . "- $delivery_status_error ";
         header("Location:http://localhost/Computer-Store-POS-System/administration/delivery.php");
         exit(0);
     }
