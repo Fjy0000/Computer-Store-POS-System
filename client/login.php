@@ -54,13 +54,13 @@ if (isset($_POST['submit'])) {
 
             <form action="" method="post" enctype="multipart/form-data">
                 <h3>login now</h3>
-<?php
-if (isset($message)) {
-    foreach ($message as $message) {
-        echo '<div class="message">' . $message . '</div>';
-    }
-}
-?>
+                <?php
+                if (isset($message)) {
+                    foreach ($message as $message) {
+                        echo '<div class="message">' . $message . '</div>';
+                    }
+                }
+                ?>
                 <input type="email" name="email" placeholder="enter email" class="box" required>
                 <input type="password" name="password" placeholder="enter password" class="box" required>
                 <input type="submit" name="submit" value="login now" class="btn">
