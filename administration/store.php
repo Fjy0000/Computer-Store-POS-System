@@ -78,7 +78,7 @@ require 'static-nav/static-sidenav.php';
     //delete staff account confirmation
     $(document).on('click', '.delete_store', function () {
         var id = $(this).attr('id');
-        if (confirm("Are you sure you want to delete this staff account ? ")) {
+        if (confirm("Are you sure you want to delete this Store ? ")) {
             $.ajax({
                 url: "crud_store/store_delete.php",
                 method: "POST",

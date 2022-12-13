@@ -76,7 +76,7 @@ require 'static-nav/static-sidenav.php';
     //delete promotion confirmation
     $(document).on('click', '.delete_promotion', function () {
         var id = $(this).attr('id');
-        if (confirm("Are you sure you want to delete this staff account ? ")) {
+        if (confirm("Are you sure you want to delete this Promotion ? ")) {
             $.ajax({
                 url: "crud_promotion/promotion_delete.php",
                 method: "POST",

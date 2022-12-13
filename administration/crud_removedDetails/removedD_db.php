@@ -55,7 +55,16 @@ if (isset($_POST['create_removeDetails'])) {
             header("Location:http://localhost/Computer-Store-POS-System/administration/remove_details.php");
             exit(0);
         }
-    } 
+    } else {
+        $_SESSION['error'] = "Remove Product Quantity Fail ! Reason: <br>"
+                . "$r_product_name_Err<br>"
+                . "$r_quantity_Err<br>"
+                . "$r_store_id_Err<br>"
+                . "$reasonErr<br>"
+                . "$checkError";
+        header("Location:http://localhost/Computer-Store-POS-System/administration/remove_details.php");
+        exit(0);
+    }
 }
 ?>
 

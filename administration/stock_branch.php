@@ -45,7 +45,7 @@ require 'static-nav/static-sidenav.php';
                                 <form method="POST" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>">
                                     <div class="modal-body">
                                         <div class="form-group mb-3">
-                                            <label>From</label><span style="color: #dc3545">&nbsp;&nbsp; *<?php echo $fromErr; ?></span>
+                                            <label>From</label><span style="color: #dc3545">&nbsp;&nbsp; *</span>
                                             <select class="form-select" aria-label="from store" name="fromStoreId" id="fromStoreId">
                                                 <option selected value="">- Select Store -</option>
                                                 <?php
@@ -60,7 +60,7 @@ require 'static-nav/static-sidenav.php';
                                             </select>
                                         </div>
                                         <div class="form-group mb-3">
-                                            <label>To</label><span style="color: #dc3545">&nbsp;&nbsp; *<?php echo $toErr; ?></span>
+                                            <label>To</label><span style="color: #dc3545">&nbsp;&nbsp; *</span>
                                             <select class="form-select" aria-label="to store" name="toStoreId" id="toStoreId">
                                                 <option selected value="">- Select Store -</option>
                                                 <?php
@@ -75,7 +75,7 @@ require 'static-nav/static-sidenav.php';
                                             </select>
                                         </div>
                                         <div class="form-group mb-3">
-                                            <label>Product Name</label><span style="color: #dc3545">&nbsp;&nbsp; *<?php echo $t_productErr; ?></span>
+                                            <label>Product Name</label><span style="color: #dc3545">&nbsp;&nbsp; *</span>
                                             <select class="form-select" aria-label="Product list" name="product" id="product">
                                                 <option selected value="">- Select Product -</option>
                                                 <?php
@@ -90,7 +90,7 @@ require 'static-nav/static-sidenav.php';
                                             </select>
                                         </div>
                                         <div class="form-group mb-3">
-                                            <label>Quantity</label><span style="color: #dc3545">&nbsp;&nbsp; *<?php echo $quantityErr; ?></span>
+                                            <label>Quantity</label><span style="color: #dc3545">&nbsp;&nbsp; *</span>
                                             <input type="number" min="0" class="form-control" name="transferQuantity">
                                         </div>
                                     </div>

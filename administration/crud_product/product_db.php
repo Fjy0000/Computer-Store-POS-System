@@ -281,6 +281,15 @@ if (isset($_POST['transfer_product'])) {
                 exit(0);
             }
         }
+    }else {
+        $_SESSION['error'] = "Update Fail ! Reason : <br>"
+                . "$fromErr <br>"
+                . "$toErr <br>"
+                . "$t_productErr <br>"
+                . "$quantityErr";
+
+        header("Location:http://localhost/Computer-Store-POS-System/administration/stock_hq.php");
+        exit(0);
     }
 }
 ?>

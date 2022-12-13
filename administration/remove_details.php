@@ -46,7 +46,7 @@ require 'static-nav/static-sidenav.php';
                                 <form method="POST" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>">
                                     <div class="modal-body">
                                         <div class="form-group mb-3">
-                                            <label>Store</label><span style="color: #dc3545">&nbsp;&nbsp; *<?php echo $r_store_id_Err; ?></span>
+                                            <label>Store</label><span style="color: #dc3545">&nbsp;&nbsp; *</span>
                                             <select class="form-select" aria-label="store" name="r_store_id" id="r_store_id">
                                                 <option selected value="">- Select Store -</option>
                                                 <?php
@@ -61,7 +61,7 @@ require 'static-nav/static-sidenav.php';
                                             </select>
                                         </div>
                                         <div class="form-group mb-3">
-                                            <label>Product</label><span style="color: #dc3545">&nbsp;&nbsp; *<?php echo $r_product_name_Err; ?></span>
+                                            <label>Product</label><span style="color: #dc3545">&nbsp;&nbsp; *</span>
                                             <select class="form-select" aria-label="product" name="r_product_name" id="r_product_name">
                                                 <option selected value="">- Select Product -</option>
                                                 <?php
@@ -76,11 +76,11 @@ require 'static-nav/static-sidenav.php';
                                             </select>
                                         </div>
                                         <div class="form-group mb-3">
-                                            <label>Reason</label><span style="color: #dc3545">&nbsp;&nbsp; *<?php echo $reasonErr; ?></span>
+                                            <label>Reason</label><span style="color: #dc3545">&nbsp;&nbsp; *</span>
                                             <textarea class="form-control" name="reason"></textarea>
                                         </div>
                                         <div class="form-group mb-3">
-                                            <label>Quantity</label><span style="color: #dc3545">&nbsp;&nbsp; *<?php echo $r_quantity_Err; ?></span>
+                                            <label>Quantity</label><span style="color: #dc3545">&nbsp;&nbsp; *</span>
                                             <input type="number" min="0" class="form-control" name="r_quantity">
                                         </div>
                                     </div>
@@ -138,7 +138,7 @@ require 'static-nav/static-sidenav.php';
     //delete removed details confirmation
     $(document).on('click', '.delete_removedD', function () {
         var id = $(this).attr('id');
-        if (confirm("Are you sure you want to delete this staff account ? ")) {
+        if (confirm("Are you sure you want to delete this Removed Details ? ")) {
             $.ajax({
                 url: "crud_removedDetails/removedD_delete.php",
                 method: "POST",
