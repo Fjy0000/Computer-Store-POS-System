@@ -37,7 +37,7 @@ if (isset($_GET['id'])) {
                     <h1 class="mt-4">Customer Order Details</h1>
                     <div class="card mb-4">
                         <div class="card-header bg-dark">
-                              <button type="button" onclick="history.back()" class="btn btn-primary float-end">Back</button>
+                            <button type="button" onclick="history.back()" class="btn btn-primary float-end">Back</button>
                         </div>
                         <section>
                             <div class="container">
@@ -142,10 +142,6 @@ if (isset($_GET['id'])) {
                                                     echo $currentOrders['delivery_status'];
                                                 }
                                                 ?></p>
-                                        </div>
-                                        <div>
-                                            <h5>QR code</h5>
-                                            <p><?php echo $currentOrders['image_qrcode']; ?></p>
                                         </div>
                                     </div>
                                 </div>
