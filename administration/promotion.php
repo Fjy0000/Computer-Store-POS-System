@@ -12,13 +12,10 @@ include 'static-include/header.php';
 require 'static-nav/static-headnav.php';
 require 'static-nav/static-sidenav.php';
 ?>
-
 <div id="layoutSidenav_content">
     <main>
         <div class="container-fluid px-4">
-
             <?php include 'alertMessage.php'; ?>
-
             <h1 class="mt-4">Promotion Maintenance</h1>
             <div class="card mb-4">
                 <div class="card-header">
@@ -71,4 +68,5 @@ require 'static-nav/static-sidenav.php';
         </div>
     </main>
 </div>
-<?php include 'static-include/footer.php'; ?>
+</body>
+</html>

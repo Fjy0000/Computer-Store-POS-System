@@ -1,6 +1,4 @@
 <?php
-
-
 //logout clear session value
 session_start();
 session_destroy();

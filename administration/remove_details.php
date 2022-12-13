@@ -137,7 +137,8 @@ require 'static-nav/static-sidenav.php';
         </div>
     </main>
 </div>
-<?php include 'static-include/footer.php'; ?>
+</body>
+</html>
 <script>
     //popover
     var popoverTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="popover"]'));

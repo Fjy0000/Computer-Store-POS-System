@@ -10,8 +10,8 @@ if (!$result1 || !$result2) {
     die("Invalid query:" . $connect->error);
 }
 ?>
-<!DOCTYPE html>
 
+<!DOCTYPE html>
 <html>
     <head>
         <meta charset="UTF-8">
@@ -23,17 +23,14 @@ if (!$result1 || !$result2) {
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.min.js" integrity="sha384-cuYeSxntonz0PPNlHhBs68uyIAVpIIOZZ5JqeqvYYIcEL727kskC66kF92t6Xl2V" crossorigin="anonymous"></script>
     </head>
     <body class="bg-primary">
-
         <?php include ($_SERVER['DOCUMENT_ROOT'] . '/Computer-Store-POS-System/administration/alertMessage.php'); ?>
-
         <div class="container">
             <div class="row">
                 <div class="col-md-12">
                     <div class="card shadow-lg border-0 rounded-lg mt-5">
                         <div class="card-header">
-                            <h4>Create Product
-                                <a href="http://localhost/Computer-Store-POS-System/administration/stock_hq.php" class="btn btn-danger float-end">Back</a>
-                            </h4>
+                            <h4>Create Product</h4>
+                            <button type="button" onclick="history.back()" class="btn btn-primary float-end">Back</button>
                         </div>
                         <div class="row">
                             <div class="col-md-12">
@@ -84,7 +81,6 @@ if (!$result1 || !$result2) {
                                                     ?>
                                                 </select>
                                             </div>
-
                                             <div class="mb-3">
                                                 <label>Store Name</label><span style="color: #dc3545">&nbsp;&nbsp; *<?php echo $s_idErr; ?></span>
                                                 <select class="form-select" aria-label="store list" name="s_id" id="s_id">
@@ -100,7 +96,6 @@ if (!$result1 || !$result2) {
                                                     ?>
                                                 </select>
                                             </div>
-
                                             <div class="mb-3">
                                                 <label>Quantity</label><span style="color: #dc3545">&nbsp;&nbsp; *<?php echo $quantityErr; ?></span>
                                                 <input type="number" name="quantity" min="0" class="form-control" value="<?php
@@ -127,13 +122,12 @@ if (!$result1 || !$result2) {
                 </div>
             </div>
         </div>
-        <script>
-            //popover
-            var popoverTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="popover"]'));
-            var popoverList = popoverTriggerList.map(function (t) {
-                return new bootstrap.Popover(t);
-            });
-        </script>
-
     </body>
 </html>
+<script>
+    //popover
+    var popoverTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="popover"]'));
+    var popoverList = popoverTriggerList.map(function (t) {
+        return new bootstrap.Popover(t);
+    });
+</script>

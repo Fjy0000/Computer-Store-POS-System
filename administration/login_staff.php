@@ -48,6 +48,7 @@ if (isset($_POST['staff_login'])) {
     }
 }
 ?>
+
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -87,7 +88,6 @@ if (isset($_POST['staff_login'])) {
                                 <div class="card shadow-lg border-0 rounded-lg mt-5">
                                     <div class="card-header"><h3 class="text-center font-weight-light my-4">Admin Login</h3></div>
                                     <div class="card-body">
-
                                         <form method="POST" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>">
                                             <div class="mb-3">
                                                 <span style="color: #dc3545">&nbsp;&nbsp; *<?php echo $error_username; ?></span>
@@ -106,7 +106,6 @@ if (isset($_POST['staff_login'])) {
                                                 <button type="submit" class="btn btn-primary" name="staff_login">Login</button>
                                             </div>
                                         </form>
-
                                     </div>
                                 </div>
                             </div>
@@ -114,24 +113,36 @@ if (isset($_POST['staff_login'])) {
                     </div>
                 </main>
             </div>
-            <?php include 'static-nav/static-footer.html'; ?>
+            <footer class="py-4 bg-light mt-auto">
+                <div class="container-fluid px-4">
+                    <div class="d-flex align-items-center justify-content-between small">
+                        <div class="text-muted">Copyright &copy; Your Website 2022</div>
+                        <div>
+                            <a href="#">Privacy Policy</a>
+                            &middot;
+                            <a href="#">Terms &amp; Conditions</a>
+                        </div>
+                    </div>
+                </div>
+            </footer>
         </div>
-        <script>
-            //Toggle Password Visibility
-            function togglePasswordIcon1() {
-                var x1 = document.getElementById("inputPassword");
-                var y1 = document.getElementById("pws1_eye1");
-                var z1 = document.getElementById("pws1_eye2");
+    </body>
+</html>
+<script>
+    //Toggle Password Visibility
+    function togglePasswordIcon1() {
+        var x1 = document.getElementById("inputPassword");
+        var y1 = document.getElementById("pws1_eye1");
+        var z1 = document.getElementById("pws1_eye2");
 
-                if (x1.type === "password") {
-                    x1.type = "text";
-                    y1.style.display = "none";
-                    z1.style.display = "block";
-                } else {
-                    x1.type = "password";
-                    z1.style.display = "none";
-                    y1.style.display = "block";
-                }
-            }
-        </script>
-        <?php include'static-include/footer.php'; ?>
+        if (x1.type === "password") {
+            x1.type = "text";
+            y1.style.display = "none";
+            z1.style.display = "block";
+        } else {
+            x1.type = "password";
+            z1.style.display = "none";
+            y1.style.display = "block";
+        }
+    }
+</script>

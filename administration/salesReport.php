@@ -32,7 +32,6 @@ if (isset($_POST['generate'])) {
         $storeErr = "Required.";
     }
 
-
     if (empty($storeErr) && empty($ederror) && empty($sderror)) {
         $sql = "SELECT * FROM orders WHERE store_send = '$store' ";
         $ordersList = mysqli_query($connect, $sql);
@@ -100,15 +99,12 @@ require 'static-nav/static-sidenav.php';
 <div id="layoutSidenav_content">
     <main>
         <div class="container-fluid px-4">
-
             <?php include 'alertMessage.php'; ?>
-
             <h1 class="mt-4">Sales Report</h1>
             <div class="card mb-4">
                 <div class="card-header">
                     <i class="fas fa-table me-1"></i>
                     Order Table
-
                     <div class="dropdown float-end">
                         <button type="button" class="btn btn-primary dropdown-toggle m-md-2" data-bs-toggle="dropdown">Export</button>
                         <div class="dropdown-menu">
@@ -193,6 +189,8 @@ require 'static-nav/static-sidenav.php';
             </div>
     </main>
 </div>
+</body>
+</html>
 <script>
     //popover
     var popoverTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="popover"]'));
@@ -200,4 +198,4 @@ require 'static-nav/static-sidenav.php';
         return new bootstrap.Popover(t);
     });
 </script>
-<?php include 'static-include/footer.php'; ?>
+

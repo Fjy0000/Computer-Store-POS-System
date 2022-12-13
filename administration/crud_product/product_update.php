@@ -20,8 +20,8 @@ if (!$result1 || !$result2) {
     die("Invalid query:" . $connect->error);
 }
 ?>
-<!DOCTYPE html>
 
+<!DOCTYPE html>
 <html>
     <head>
         <meta charset="UTF-8">
@@ -38,9 +38,8 @@ if (!$result1 || !$result2) {
                 <div class="col-md-12">
                     <div class="card shadow-lg border-0 rounded-lg mt-5">
                         <div class="card-header">
-                            <h4>Update Product
-                                <a href="http://localhost/Computer-Store-POS-System/administration/stock_hq.php" class="btn btn-danger float-end">Back</a>
-                            </h4>
+                            <h4>Update Product</h4>
+                                <button type="button" onclick="history.back()" class="btn btn-primary float-end">Back</button>
                         </div>
                         <div class="row">
                             <div class="col-md-12">
@@ -52,7 +51,7 @@ if (!$result1 || !$result2) {
                                 <div class="row">
                                     <div class="card mb-4 mb-md-0">
                                         <div class="card-body">
-                                            <input type="hidden" name="id" class="form-control" value="<?php echo $currentProduct['product_id'];?>">
+                                            <input type="hidden" name="id" class="form-control" value="<?php echo $currentProduct['product_id']; ?>">
                                             <div class="mb-3">
                                                 <label>Product Name</label><span style="color: #dc3545">&nbsp;&nbsp; *<?php echo $nameErr; ?></span>
                                                 <input type="text" name="name" class="form-control" value="<?php echo $currentProduct['name']; ?>">
@@ -97,11 +96,11 @@ if (!$result1 || !$result2) {
                                             </div>
                                             <div class="mb-3">
                                                 <label>Quantity</label><span style="color: #dc3545">&nbsp;&nbsp; *<?php echo $quantityErr; ?></span>
-                                                <input type="number" name="quantity" min="0" class="form-control" value="<?php echo $currentProduct['quantity'];?>">
+                                                <input type="number" name="quantity" min="0" class="form-control" value="<?php echo $currentProduct['quantity']; ?>">
                                             </div>
-                                             <div class="mb-3">
+                                            <div class="mb-3">
                                                 <label>Product Image</label><span style="color: #dc3545">&nbsp;&nbsp; *<?php echo $imageErr; ?></span>
-                                                <input type="file" name="image" class="form-control" value="<?php echo $currentProduct['image'] ;?>">
+                                                <input type="file" name="image" class="form-control" value="<?php echo $currentProduct['image']; ?>">
                                             </div>
                                         </div>
                                     </div>
@@ -117,14 +116,12 @@ if (!$result1 || !$result2) {
                 </div>
             </div>
         </div>
-        <script>
-            //popover
-            var popoverTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="popover"]'));
-            var popoverList = popoverTriggerList.map(function (t) {
-                return new bootstrap.Popover(t);
-            });
-
-        </script>
-
     </body>
 </html>
+<script>
+    //popover
+    var popoverTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="popover"]'));
+    var popoverList = popoverTriggerList.map(function (t) {
+        return new bootstrap.Popover(t);
+    });
+</script>

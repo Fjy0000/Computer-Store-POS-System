@@ -34,7 +34,6 @@ if (isset($_POST['confirm'])) {
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous"></script>
         <script src="http://localhost/Computer-Store-POS-System/administration/js/scripts.js"></script>
     </head>
-
     <body class="bg-primary">
         <div id="layoutAuthentication">
             <div id="layoutAuthentication_content">
@@ -89,6 +88,18 @@ if (isset($_POST['confirm'])) {
                     </div>
                 </main>
             </div>
-            <?php include 'static-nav/static-footer.html'; ?>
+            <footer class="py-4 bg-light mt-auto">
+                <div class="container-fluid px-4">
+                    <div class="d-flex align-items-center justify-content-between small">
+                        <div class="text-muted">Copyright &copy; Your Website 2022</div>
+                        <div>
+                            <a href="#">Privacy Policy</a>
+                            &middot;
+                            <a href="#">Terms &amp; Conditions</a>
+                        </div>
+                    </div>
+                </div>
+            </footer>
         </div>
-        <?php include'static-include/footer.php'; ?>
+    </body>
+</html>

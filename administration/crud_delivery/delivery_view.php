@@ -11,8 +11,8 @@ if (isset($_GET['id'])) {
     }
 }
 ?>
-<!DOCTYPE html>
 
+<!DOCTYPE html>
 <html>
     <head>
         <meta charset="UTF-8">
@@ -31,7 +31,6 @@ if (isset($_GET['id'])) {
         include ($_SERVER['DOCUMENT_ROOT'] . '/Computer-Store-POS-System/administration/static-nav/static-headnav.php');
         include ($_SERVER['DOCUMENT_ROOT'] . '/Computer-Store-POS-System/administration/static-nav/static-sidenav.php');
         ?>
-
         <div id="layoutSidenav_content">
             <main>
                 <div class="container-fluid px-4">

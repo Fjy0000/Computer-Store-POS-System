@@ -15,7 +15,6 @@ if (!$result || !$get1 || !$get2) {
     die("Invalid query:" . $connect->error);
 }
 
-
 include 'static-include/header.php';
 require 'static-nav/static-headnav.php';
 require 'static-nav/static-sidenav.php';
@@ -24,9 +23,7 @@ require 'static-nav/static-sidenav.php';
 <div id="layoutSidenav_content">
     <main>
         <div class="container-fluid px-4">
-
             <?php include 'alertMessage.php'; ?>
-
             <h1 class="mt-4">Branch Stock Manage</h1>
             <div class="card mb-4">
                 <div class="card-header">
@@ -157,7 +154,8 @@ require 'static-nav/static-sidenav.php';
         </div>
     </main>
 </div>
-<?php include 'static-include/footer.php'; ?>
+</body>
+</html>
 <script>
     //popover
     var popoverTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="popover"]'));

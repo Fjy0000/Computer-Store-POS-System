@@ -29,16 +29,13 @@ require 'static-nav/static-sidenav.php';
 <div id="layoutSidenav_content">
     <main>
         <div class="container-fluid px-4">
-
             <?php include 'alertMessage.php'; ?>
-
             <h1 class="mt-4">HQ Stock Manage</h1>
             <div class="card mb-4">
                 <div class="card-header">
                     <i class="fas fa-table me-1"></i>
                     HQ Stock Table
                     <a href="crud_product/product_create.php" class="btn btn-primary float-end m-md-2">Add New Product</a>
-
                     <button type="button" class="btn btn-primary m-md-2 float-end" data-bs-toggle="modal" data-bs-target="#transferToModal">Transfer to<i class="bi bi-arrow-left-right  m-md-2"></i></button>
                     <!-- Transfer to modal  -->
                     <div class="modal fade" id="transferToModal" tabindex="-1" role="dialog" aria-labelledby="transferModalLabel" aria-hidden="true">
@@ -119,7 +116,6 @@ require 'static-nav/static-sidenav.php';
                             </div>
                         </form>
                     </div>
-
                 </div>
                 <div class="card-body">
                     <table class="table">
@@ -162,10 +158,9 @@ require 'static-nav/static-sidenav.php';
         </div>
     </main>
 </div>
-<?php include 'static-include/footer.php'; ?>
-
+</body>
+</html>
 <script>
-
     //popover
     var popoverTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="popover"]'));
     var popoverList = popoverTriggerList.map(function (t) {

@@ -17,9 +17,7 @@ require 'static-nav/static-sidenav.php';
 <div id="layoutSidenav_content">
     <main>
         <div class="container-fluid px-4">
-
             <?php include 'alertMessage.php'; ?>
-
             <h1 class="mt-4">Category Maintenance</h1>
             <div class="card mb-4">
                 <div class="card-header">
@@ -95,11 +93,9 @@ require 'static-nav/static-sidenav.php';
         </div>
     </main>
 </div>
-
-<?php include 'static-include/footer.php'; ?>
-
+</body>
+</html>
 <script>
-
     //popover
     var popoverTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="popover"]'));
     var popoverList = popoverTriggerList.map(function (t) {

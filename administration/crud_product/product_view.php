@@ -39,8 +39,8 @@ if (isset($_GET['id'])) {
     }
 }
 ?>
-<!DOCTYPE html>
 
+<!DOCTYPE html>
 <html>
     <head>
         <meta charset="UTF-8">
@@ -59,14 +59,13 @@ if (isset($_GET['id'])) {
         include ($_SERVER['DOCUMENT_ROOT'] . '/Computer-Store-POS-System/administration/static-nav/static-headnav.php');
         include ($_SERVER['DOCUMENT_ROOT'] . '/Computer-Store-POS-System/administration/static-nav/static-sidenav.php');
         ?>
-
         <div id="layoutSidenav_content">
             <main>
                 <div class="container-fluid px-4">
                     <h1 class="mt-4">Product's Detail</h1>
                     <div class="card mb-4">
                         <div class="card-header bg-dark">
-                             <button type="button" onclick="history.back()" class="btn btn-primary float-end">Back</button>
+                            <button type="button" onclick="history.back()" class="btn btn-primary float-end">Back</button>
                         </div>
                         <section class="section about-section gray-bg" id="about">
                             <div class="container">
