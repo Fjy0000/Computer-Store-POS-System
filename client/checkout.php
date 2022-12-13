@@ -29,8 +29,7 @@ if(isset($_POST['order_btn'])){
    };
 
    $total_product = implode(', ',$product_name);
-   $detail_query = mysqli_query($conn, "INSERT INTO `orders`(name, number, email, method, flat, street, city, state, country, postal_code, total_product, total_price, date, delivery_status) "
-           . "VALUES('$name','$number','$email','$method','$flat','$street','$city','$state','$country','$postal_code','$total_product','$grand_total','$date', '$delivery')") or die('query failed');
+   $detail_query = mysqli_query($conn, "INSERT INTO `orders`(name, number, email, method, flat, street, city, state, country, postal_code, total_product, total_price, date, delivery_status) VALUES('$name','$number','$email','$method','$flat','$street','$city','$state','$country','$postal_code','$total_product','$grand_total','$date', '$delivery')") or die('query failed');
 
    if($cart_query && $detail_query){
       echo "
@@ -106,7 +105,7 @@ if(isset($_POST['order_btn'])){
 
    <form action="" method="post">
 
-       <div class="flex">
+      <div class="flex">
          <div class="inputBox">
             <span>your name</span>
             <input type="text" placeholder="enter your name" name="name" required>
@@ -162,8 +161,8 @@ if(isset($_POST['order_btn'])){
             <input type="text" placeholder="e.g. india" name="country" required>
          </div>
          <div class="inputBox">
-            <span>pin code</span>
-            <input type="text" placeholder="e.g. 123456" name="pin_code" required>
+            <span>postal code</span>
+            <input type="text" placeholder="e.g. 123456" name="postal_code" required>
          </div>
       </div>
       <input type="submit" value="order now" name="order_btn" class="btn">
