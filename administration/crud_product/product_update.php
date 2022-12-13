@@ -45,6 +45,7 @@ if (!$result1 || !$result2) {
                         <div class="row">
                             <div class="col-md-12">
                                 <i class="bi bi-question-circle float-end" style="font-size: 18px" data-bs-toggle="popover" title="Description:" data-bs-content="<?php echo $f_Desc2; ?>"></i>
+                                <span style="color: #dc3545">&nbsp;&nbsp; * = Required</span>
                             </div>
                         </div>
                         <div class="card-body">
@@ -54,19 +55,19 @@ if (!$result1 || !$result2) {
                                         <div class="card-body">
                                             <input type="hidden" name="id" class="form-control" value="<?php echo $currentProduct['product_id']; ?>">
                                             <div class="mb-3">
-                                                <label>Product Name</label><span style="color: #dc3545">&nbsp;&nbsp; *<?php echo $nameErr; ?></span>
+                                                <label>Product Name</label><span style="color: #dc3545">&nbsp;&nbsp; *</span>
                                                 <input type="text" name="name" class="form-control" value="<?php echo $currentProduct['name']; ?>">
                                             </div>
                                             <div class="mb-3">
-                                                <label>Description</label><span style="color: #dc3545">&nbsp;&nbsp; *<?php echo $descriptionErr; ?></span>
+                                                <label>Description</label><span style="color: #dc3545">&nbsp;&nbsp; *</span>
                                                 <textarea name="description" class="form-control"><?php echo $currentProduct['description']; ?></textarea>
                                             </div>
                                             <div class="mb-3">
-                                                <label>Product Price (RM)</label><span style="color: #dc3545">&nbsp;&nbsp; *<?php echo $priceErr; ?></span>
+                                                <label>Product Price (RM)</label><span style="color: #dc3545">&nbsp;&nbsp; *</span>
                                                 <input type="text" name="price" class="form-control" value="<?php echo $currentProduct['price']; ?>">
                                             </div>
                                             <div class="mb-3">
-                                                <label>Category</label><span style="color: #dc3545">&nbsp;&nbsp; *<?php echo $categoryErr; ?></span>
+                                                <label>Category</label><span style="color: #dc3545">&nbsp;&nbsp; *</span>
                                                 <select class="form-select" aria-label="product list" name="c_name" id="c_name">
                                                     <option selected value="<?php echo $currentProduct['category_name']; ?>"><?php echo $currentProduct['category_name']; ?></option>
                                                     <?php
@@ -81,7 +82,7 @@ if (!$result1 || !$result2) {
                                                 </select>
                                             </div>
                                             <div class="mb-3">
-                                                <label>Store Name</label><span style="color: #dc3545">&nbsp;&nbsp; *<?php echo $s_idErr; ?></span>
+                                                <label>Store Name</label><span style="color: #dc3545">&nbsp;&nbsp; *</span>
                                                 <select class="form-select" aria-label="store list" name="s_id" id="s_id">
                                                     <option selected value="<?php echo $currentProduct['store_id']; ?>"><?php echo $currentProduct['store_name']; ?></option>
                                                     <?php
@@ -96,11 +97,11 @@ if (!$result1 || !$result2) {
                                                 </select>
                                             </div>
                                             <div class="mb-3">
-                                                <label>Quantity</label><span style="color: #dc3545">&nbsp;&nbsp; *<?php echo $quantityErr; ?></span>
+                                                <label>Quantity</label><span style="color: #dc3545">&nbsp;&nbsp; *</span>
                                                 <input type="number" name="quantity" min="0" class="form-control" value="<?php echo $currentProduct['quantity']; ?>">
                                             </div>
                                             <div class="mb-3">
-                                                <label>Product Image</label><span style="color: #dc3545">&nbsp;&nbsp; *<?php echo $imageErr; ?></span>
+                                                <label>Product Image</label><span style="color: #dc3545">&nbsp;&nbsp; *</span>
                                                 <input type="file" name="image" class="form-control" value="<?php echo $currentProduct['image']; ?>">
                                             </div>
                                         </div>
@@ -117,12 +118,12 @@ if (!$result1 || !$result2) {
                 </div>
             </div>
         </div>
+        <script>
+            //popover
+            var popoverTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="popover"]'));
+            var popoverList = popoverTriggerList.map(function (t) {
+                return new bootstrap.Popover(t);
+            });
+        </script>
     </body>
 </html>
-<script>
-    //popover
-    var popoverTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="popover"]'));
-    var popoverList = popoverTriggerList.map(function (t) {
-        return new bootstrap.Popover(t);
-    });
-</script>

@@ -23,7 +23,6 @@ require 'static-nav/static-sidenav.php';
                 <div class="card-header">
                     <i class="fas fa-table me-1"></i>
                     Category Table
-
                     <button type="button" class="btn btn-primary m-md-2 float-end" data-bs-toggle="modal" data-bs-target="#categoryModal">Create</button>
                     <div class="modal fade" id="categoryModal" tabindex="-1" role="dialog" aria-labelledby="categoryModalLabel" aria-hidden="true">
                         <div class="modal-dialog" role="document">

@@ -7,7 +7,7 @@ require 'promotion_db.php';
 <html>
     <head>
         <meta charset="UTF-8">
-        <title>Create Promotion</title>
+        <title>promo create</title>
         <!-- Bootstrap CSS -->
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.2/font/bootstrap-icons.css">
@@ -15,7 +15,7 @@ require 'promotion_db.php';
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.min.js" integrity="sha384-cuYeSxntonz0PPNlHhBs68uyIAVpIIOZZ5JqeqvYYIcEL727kskC66kF92t6Xl2V" crossorigin="anonymous"></script>
     </head>
     <body class="bg-primary">
-        
+
         <div class="container">
             <div class="row">
                 <div class="col-md-12">
@@ -27,7 +27,8 @@ require 'promotion_db.php';
                         </div>
                         <div class="row">
                             <div class="col-md-12">
-                                <i class="bi bi-question-circle float-end" style="font-size: 18px" data-bs-toggle="popover" title="Requirement:" data-bs-content="<?php echo $f_Desc1 ?>"></i>
+                                <i class="bi bi-question-circle float-end" style="font-size: 18px" data-bs-toggle="popover" title="Description:" data-bs-content="<?php echo $f_Desc1 ?>"></i>
+                                <span style="color: #dc3545">&nbsp;&nbsp; * = Required</span>
                             </div>
                         </div>
                         <div class="card-body">
@@ -37,28 +38,48 @@ require 'promotion_db.php';
                                         <div class="card-body">
                                             <div class="mb-3">
                                                 <label>Promotion's Title</label><span style="color: #dc3545">&nbsp;&nbsp; *<?php echo $titleErr; ?></span>
-                                                <input type="text" name="title" class="form-control">
+                                                <input type="text" name="title" class="form-control" value="<?php
+                                                if (!empty($_SESSION['promo_input_title'])) {
+                                                    echo $_SESSION['promo_input_title'];
+                                                }
+                                                ?>">
                                             </div>
                                             <div class="mb-3">
                                                 <label>Description</label><span style="color: #dc3545">&nbsp;&nbsp; *<?php echo $descriptionErr; ?></span>
-                                                <textarea name="description" class="form-control"></textarea>
+                                                <textarea name="description" class="form-control"><?php
+                                                    if (!empty($_SESSION['promo_input_description'])) {
+                                                        echo $_SESSION['promo_input_description'];
+                                                    }
+                                                    ?>
+                                                </textarea>
                                             </div>
                                             <div class="mb-3">
                                                 <label>Promotion Code</label><span style="color: #dc3545">&nbsp;&nbsp; *<?php echo $promoCodeErr; ?></span>
                                                 <div class="input-group mb-3">
-                                                    <input type="text" name="promoCode" id="promoCode" class="form-control">
-                                                    <button type="button" class="bi bi-arrow-repeat" style="font-size: 20px" onclick="getKey()"></button>
+                                                    <input type="text" name="promoCode" id="promoCode" class="form-control" value="<?php
+                                                    if (!empty($_SESSION['promo_input_code'])) {
+                                                        echo $_SESSION['promo_input_code'];
+                                                    }
+                                                    ?>">
+                                                    <button type="button" class="bi bi-arrow-repeat" style="font-size: 20px" onclick="getCode()"></button>
                                                 </div>
                                             </div>
                                             <div class="mb-3">
                                                 <label>Discount Rate (%)</label><span style="color: #dc3545">&nbsp;&nbsp; *<?php echo $discountRateErr; ?></span>
-                                                <input type="number" name="discountRate" min='0' max='100' class="form-control">
+                                                <input type="number" name="discountRate" min='0' max='100' class="form-control" value="<?php
+                                                if (!empty($_SESSION['promo_input_discountrate'])) {
+                                                    echo $_SESSION['promo_input_discountrate'];
+                                                }
+                                                ?>">
                                             </div>
                                             <div class="mb-3">
                                                 <label>Expiry Date</label><span style="color: #dc3545">&nbsp;&nbsp; *<?php echo $expiryDateErr; ?></span>
-                                                <input type="date" name="expiryDate" class="form-control">
+                                                <input type="date" name="expiryDate" class="form-control" value="<?php
+                                                if (!empty($_SESSION['promo_input_expirydate'])) {
+                                                    echo $_SESSION['promo_input_expirydate'];
+                                                }
+                                                ?>">
                                             </div>
-                                            
                                         </div>
                                     </div>
                                 </div>
@@ -73,9 +94,7 @@ require 'promotion_db.php';
                 </div>
             </div>
         </div>
-
         <script>
-
             //popover
             var popoverTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="popover"]'));
             var popoverList = popoverTriggerList.map(function (t) {
@@ -83,7 +102,7 @@ require 'promotion_db.php';
             });
 
             //Get Random Recovery Promotion Code
-            function getKey() {
+            function getCode() {
                 var chars = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
                 var result = "";
 
@@ -93,6 +112,5 @@ require 'promotion_db.php';
                 document.getElementById("promoCode").value = result;
             }
         </script>
-
     </body>
 </html>

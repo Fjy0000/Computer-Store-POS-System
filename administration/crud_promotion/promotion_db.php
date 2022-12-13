@@ -3,8 +3,9 @@
 //Define empty error message
 $currentPromo = $titleErr = $expiryDateErr = $descriptionErr = $promoCodeErr = $discountRateErr = $positionErr = $userNameErr = $passwordErr = $cPasswordErr = $keyErr = "";
 
-//Define information of requirement
-$f_Desc1 = "1. All fields are required.";
+//Define Description of function
+$f_Desc1 = "This page is the create promotion page and in here you can create and add a new promotion.";
+$f_Desc2 = "This page is the update promotion page and in here you can update a promotion details.";
 
 //Create Promotion
 if (isset($_POST['create_promotion'])) {
@@ -14,27 +15,32 @@ if (isset($_POST['create_promotion'])) {
     $promoCode = $_POST['promoCode'];
     $expiryDate = $_POST['expiryDate'];
     $discountRate = $_POST['discountRate'];
+    
+     //session value to keep input value after vaildation get error message
+    $_SESSION['promo_input_title'] = $title;
+    $_SESSION['promo_input_description'] = $description;
+    $_SESSION['promo_input_code'] = $promoCode;
+    $_SESSION['promo_input_expirydate'] = $expiryDate;
+    $_SESSION['promo_input_discountrate'] = $discountRate;
 
     if (empty($title)) {
-        $titleErr = "Required.";
+        $titleErr = "Promotion Title field cannot be left blank";
     } elseif (!empty($title) && strlen($title) < 5) {
         $titleErr = "Promotion tilte must be at least 5 letter.";
     }
     if (empty($description)) {
-        $descriptionErr = "Required.";
+        $descriptionErr = "Promotion description field cannot be left blank";
     }
     if (empty($promoCode)) {
-        $promoCodeErr = "Required.";
+        $promoCodeErr = "Promotion code field cannot be left blank";
     } elseif (!empty($promoCode) && strlen($promoCode) < 5) {
-        $userNameErr = "Promotion Code require at least 5 letter.";
+        $promoCodeErr = "Promotion Code require at least 5 letter.";
     }
-
     if (empty($expiryDate)) {
-        $expiryDateErr = "Required.";
+        $expiryDateErr = "Promotion expiry date field cannot be left blank";
     }
-
     if (empty($discountRate)) {
-        $discountRateErr = "Required.";
+        $discountRateErr = "Promotion discount rate field cannot be left blank";
     }
 
     if (empty($titleErr) && empty($descriptionErr) && empty($promoCodeErr) && empty($expiryDateErr) && empty($discountRateErr)) {
@@ -44,17 +50,16 @@ if (isset($_POST['create_promotion'])) {
 
         $sql_run = mysqli_query($connect, $sql1);
         if ($sql_run) {
-            $_SESSION['message'] = "Created successfully.";
+            $_SESSION['message'] = "Created Successfully";
             header("Location:http://localhost/Computer-Store-POS-System/administration/promotion.php");
             exit(0);
         } else {
-            $_SESSION['message'] = "Creating Failed.";
+            $_SESSION['error'] = "Create Fail ! ! ";
             header("Location:http://localhost/Computer-Store-POS-System/administration/promotion.php");
             exit(0);
         }
     }
 }
-
 
 //Update Promotion
 if (isset($_POST['update_promotion'])) {
@@ -66,26 +71,24 @@ if (isset($_POST['update_promotion'])) {
     $expiryDate = $_POST['expiryDate'];
     $discountRate = $_POST['discountRate'];
 
-    if (empty($title)) {
-        $titleErr = "Required.";
+     if (empty($title)) {
+        $titleErr = "Promotion Title field cannot be left blank";
     } elseif (!empty($title) && strlen($title) < 5) {
         $titleErr = "Promotion tilte must be at least 5 letter.";
     }
     if (empty($description)) {
-        $descriptionErr = "Required.";
+        $descriptionErr = "Promotion description field cannot be left blank";
     }
     if (empty($promoCode)) {
-        $promoCodeErr = "Required.";
+        $promoCodeErr = "Promotion code field cannot be left blank";
     } elseif (!empty($promoCode) && strlen($promoCode) < 5) {
-        $userNameErr = "Promotion Code require at least 5 letter.";
+        $promoCodeErr = "Promotion Code require at least 5 letter.";
     }
-
     if (empty($expiryDate)) {
-        $expiryDateErr = "Required.";
+        $expiryDateErr = "Promotion expiry date field cannot be left blank";
     }
-
     if (empty($discountRate)) {
-        $discountRateErr = "Required.";
+        $discountRateErr = "Promotion discount rate field cannot be left blank";
     }
 
     if (empty($titleErr) && empty($descriptionErr) && empty($promoCodeErr) && empty($expiryDateErr) && empty($discountRateErr)) {
@@ -95,34 +98,21 @@ if (isset($_POST['update_promotion'])) {
 
         $sql_run = mysqli_query($connect, $sql3);
         if ($sql_run) {
-            $_SESSION['message'] = "Updated successfully.";
+            $_SESSION['message'] = "Updated Successfully";
             header("Location:http://localhost/Computer-Store-POS-System/administration/promotion.php");
             exit(0);
         } else {
-            $_SESSION['message'] = "Updating Failed.";
+            $_SESSION['error'] = "Update fail ! ! System connect to database or query error.";
             header("Location:http://localhost/Computer-Store-POS-System/administration/promotion.php");
             exit(0);
         }
     } else {
-        $_SESSION['message'] = "Updating Failed.";
-        header("Location:http://localhost/Computer-Store-POS-System/administration/promotion.php");
-        exit(0);
-    }
-}
-
-//Delete Promotion
-if (isset($_POST['delete_promotion'])) {
-
-    $id = $_POST['delete_id'];
-
-    $sql4 = "DELETE FROM promotion WHERE promo_id='$id'";
-    $sql_run = mysqli_query($connect, $sql4);
-    if ($sql_run) {
-        $_SESSION['message'] = "Deleted successfully.";
-        header("Location:http://localhost/Computer-Store-POS-System/administration/promotion.php");
-        exit(0);
-    } else {
-        $_SESSION['message'] = "Delete Failed.";
+        $_SESSION['error'] = "Update Fail ! Reason: <br>"
+                . "$titleErr <br>"
+                . "$descriptionErr <br>"
+                . "$promoCodeErr <br>"
+                . "$expiryDateErr <br>"
+                . "$discountRateErr";
         header("Location:http://localhost/Computer-Store-POS-System/administration/promotion.php");
         exit(0);
     }

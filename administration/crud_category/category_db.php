@@ -4,7 +4,7 @@
 $nameErr = $descriptionErr = $currentCategory = "";
 
 //Define Description of function
-$f_Desc1 = "This page is the create category page and in here you can create and add a new category type.";
+$f_Desc1 = "This modal is the create category and in here you can create and add a new category type.";
 $f_Desc2 = "This page is the update category page and in here you can update a category details.";
 
 //Create Category

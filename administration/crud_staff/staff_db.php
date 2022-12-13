@@ -3,7 +3,7 @@
 //Define empty error message
 $currentStaff = $nameErr = $phoneErr = $emailErr = $icErr = $ageErr = $positionErr = $userNameErr = $passwordErr = $cPasswordErr = $keyErr = "";
 
-//Define information of requirement
+//Define Description of function
 $f_Desc1 = "This page is a staff account registration page, in here you can create and add a new one staff account.";
 
 //Create Staff
@@ -231,16 +231,16 @@ if (isset($_POST['update_staff'])) {
         }
     } else {
         $_SESSION['error'] = "Update Fail ! Reason: <br>"
-                . "- $nameErr <br>"
-                . "- $emailErr <br>"
-                . "- $phoneErr <br>"
-                . "- $icErr <br>"
-                . "- $ageErr <br>"
-                . "- $positionErr <br>"
-                . "- $userNameErr <br>"
-                . "- $passwordErr <br>"
-                . "- $cPasswordErr <br>"
-                . "- $keyErr";
+                . "$nameErr <br>"
+                . "$emailErr <br>"
+                . "$phoneErr <br>"
+                . "$icErr <br>"
+                . "$ageErr <br>"
+                . "$positionErr <br>"
+                . "$userNameErr <br>"
+                . "$passwordErr <br>"
+                . "$cPasswordErr <br>"
+                . "$keyErr";
         header("Location:http://localhost/Computer-Store-POS-System/administration/staff.php");
         exit(0);
     }

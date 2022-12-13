@@ -58,7 +58,7 @@ require 'staff_db.php';
                                                     <input type="text" name="name" class="form-control" value="<?php
                                                     if (!empty($_SESSION['staff_input_name'])) {
                                                         echo $_SESSION['staff_input_name'];
-                                                    };
+                                                    }
                                                     ?>">
                                                 </div>
                                                 <div class="mb-3">
@@ -67,7 +67,7 @@ require 'staff_db.php';
                                                            value="<?php
                                                            if (!empty($_SESSION['staff_input_email'])) {
                                                                echo $_SESSION['staff_input_email'];
-                                                           };
+                                                           }
                                                            ?>">
                                                 </div>
                                                 <div class="mb-3">
@@ -75,7 +75,7 @@ require 'staff_db.php';
                                                     <input type="text" name="phone" class="form-control" placeholder="60XXXXXXXXX" value="<?php
                                                     if (!empty($_SESSION['staff_input_phone'])) {
                                                         echo $_SESSION['staff_input_phone'];
-                                                    };
+                                                    }
                                                     ?>">
                                                 </div>
                                                 <div class="mb-3">
@@ -83,7 +83,7 @@ require 'staff_db.php';
                                                     <input type="text" name="ic" class="form-control" value="<?php
                                                     if (!empty($_SESSION['staff_input_ic'])) {
                                                         echo $_SESSION['staff_input_ic'];
-                                                    };
+                                                    }
                                                     ?>">
                                                 </div>
                                                 <div class="mb-3">
@@ -91,7 +91,7 @@ require 'staff_db.php';
                                                     <input type="number" name="age" min="18" max="100" class="form-control" value="<?php
                                                     if (!empty($_SESSION['staff_input_age'])) {
                                                         echo $_SESSION['staff_input_age'];
-                                                    };
+                                                    }
                                                     ?>">
                                                 </div>
                                                 <div class="mb-3">
@@ -117,7 +117,7 @@ require 'staff_db.php';
                                                     <input type="text" name="username" class="form-control" value="<?php
                                                     if (!empty($_SESSION['staff_input_username'])) {
                                                         echo $_SESSION['staff_input_username'];
-                                                    };
+                                                    }
                                                     ?>">
                                                 </div>
                                                 <div class="mb-3">
@@ -127,7 +127,7 @@ require 'staff_db.php';
                                                                value="<?php
                                                                if (!empty($_SESSION['staff_input_password'])) {
                                                                    echo $_SESSION['staff_input_password'];
-                                                               };
+                                                               }
                                                                ?>">
                                                         <span onclick="togglePasswordIcon1()">
                                                             <button type="button" id="pws1_eye1" class="bi bi-eye-slash-fill"></button>
@@ -142,7 +142,7 @@ require 'staff_db.php';
                                                                value="<?php
                                                                if (!empty($_SESSION['staff_input_cPassword'])) {
                                                                    echo $_SESSION['staff_input_cPassword'];
-                                                               };
+                                                               }
                                                                ?>">
                                                         <span onclick="togglePasswordIcon2()">
                                                             <button type="button" id="pws2_eye1" class="bi bi-eye-slash-fill"></button>
@@ -157,7 +157,7 @@ require 'staff_db.php';
                                                                value="<?php
                                                                if (!empty($_SESSION['staff_input_recoveryKey'])) {
                                                                    echo $_SESSION['staff_input_recoveryKey'];
-                                                               };
+                                                               }
                                                                ?>">
                                                         <button type="button" class="bi bi-arrow-repeat" style="font-size: 20px" onclick="getKey()"></button>
                                                     </div>
@@ -177,7 +177,6 @@ require 'staff_db.php';
                 </div>
             </div>
         </div>
-
         <script>
             //Toggle Password Visibility
             function togglePasswordIcon1() {
@@ -229,6 +228,5 @@ require 'staff_db.php';
                 document.getElementById("recoveryKey").value = result;
             }
         </script>
-
     </body>
 </html>

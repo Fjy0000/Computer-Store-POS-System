@@ -36,6 +36,7 @@ if (!$result1 || !$result2) {
                         <div class="row">
                             <div class="col-md-12">
                                 <i class="bi bi-question-circle float-end" style="font-size: 18px" data-bs-toggle="popover" title="Description:" data-bs-content="<?php echo $f_Desc1 ?>"></i>
+                                <span style="color: #dc3545">&nbsp;&nbsp; * = Required</span>
                             </div>
                         </div>
                         <div class="card-body">
@@ -123,12 +124,12 @@ if (!$result1 || !$result2) {
                 </div>
             </div>
         </div>
+        <script>
+            //popover
+            var popoverTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="popover"]'));
+            var popoverList = popoverTriggerList.map(function (t) {
+                return new bootstrap.Popover(t);
+            });
+        </script>
     </body>
 </html>
-<script>
-    //popover
-    var popoverTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="popover"]'));
-    var popoverList = popoverTriggerList.map(function (t) {
-        return new bootstrap.Popover(t);
-    });
-</script>

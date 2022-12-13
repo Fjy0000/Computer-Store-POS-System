@@ -40,6 +40,7 @@ require 'static-nav/static-sidenav.php';
                                 </div>
                                 <div>
                                     <i class="bi bi-question-circle float-end" style="font-size: 18px" data-bs-toggle="popover" title="Requirement:" data-bs-content="<?php echo $f_Desc1 ?>"></i>
+                                    <span style="color: #dc3545">&nbsp;&nbsp; * = Required</span>
                                 </div>
                                 <form method="POST" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>">
                                     <div class="modal-body">
@@ -135,10 +136,7 @@ require 'static-nav/static-sidenav.php';
                                         <td>
                                             <a class='btn btn-info' href="crud_product/product_view.php?id=<?php echo $product["product_id"]; ?>">View</a>
                                             <a class='btn btn-warning' href="crud_product_branch/product_update_branch.php?id=<?php echo $product["product_id"]; ?>">Update</a>
-                                            <form method="POST" action="stock_branch.php" class="d-inline">
-                                                <input type="hidden" name="delete_id" value="<?php echo $product["product_id"]; ?>">
-                                                <button type="submit" class="btn btn-danger" name="delete_product_branch">Delete</button>
-                                            </form>
+                                            <button type="button" class="btn btn-danger delete_product" id="<?php echo $product["product_id"]; ?>">Delete</button>
                                         </td>
                                     </tr>
                                     <?php
@@ -154,12 +152,28 @@ require 'static-nav/static-sidenav.php';
         </div>
     </main>
 </div>
-</body>
-</html>
 <script>
     //popover
     var popoverTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="popover"]'));
     var popoverList = popoverTriggerList.map(function (t) {
         return new bootstrap.Popover(t);
     });
+    
+    //delete stock confirmation
+    $(document).on('click', '.delete_product', function () {
+        var id = $(this).attr('id');
+        if (confirm("Are you sure you want to delete this product whole information ? ")) {
+            $.ajax({
+                url: "crud_product/product_delete.php",
+                method: "POST",
+                data: {id: id},
+                success: function (data) {
+                    location.reload(true);
+                }
+            })
+        }
+    });
 </script>
+</body>
+</html>
+

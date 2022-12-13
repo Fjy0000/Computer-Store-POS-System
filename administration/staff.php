@@ -77,8 +77,6 @@ require 'static-nav/static-sidenav.php';
         </div>
     </main>
 </div>
-</body>
-</html>
 <script>
     //delete staff account confirmation
     $(document).on('click', '.delete_staff', function () {
@@ -95,3 +93,5 @@ require 'static-nav/static-sidenav.php';
         }
     });
 </script>
+</body>
+</html>

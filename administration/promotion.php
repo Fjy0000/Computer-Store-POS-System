@@ -8,6 +8,13 @@ if (!$result) {
     die("Invalid query:" . $connect->error);
 }
 
+//Remove session value of input field in promotion page
+unset($_SESSION['promo_input_title'],
+        $_SESSION['promo_input_description'],
+        $_SESSION['promo_input_code'],
+        $_SESSION['promo_input_expirydate'],
+        $_SESSION['promo_input_discountrate']);
+
 include 'static-include/header.php';
 require 'static-nav/static-headnav.php';
 require 'static-nav/static-sidenav.php';
@@ -49,16 +56,13 @@ require 'static-nav/static-sidenav.php';
                                         <td><?php echo $promotion["expiry_date"]; ?></td>
                                         <td>
                                             <a class='btn btn-warning' href='crud_promotion/promotion_update.php?id=<?php echo $promotion["promo_id"]; ?>'>Update</a>
-                                            <form method="POST" action="promotion.php" class="d-inline">
-                                                <input type="hidden" name="delete_id" value="<?php echo $promotion["promo_id"]; ?>">
-                                                <button type="submit" class="btn btn-danger" name="delete_promotion">Delete</button>
-                                            </form>
+                                            <button type="button" class="btn btn-danger delete_promotion" id="<?php echo $promotion["promo_id"]; ?>">Delete</button>
                                         </td>
                                     </tr>
                                     <?php
                                 }
                             } else {
-                                 echo "<h5 class='text-primary'>No Record Found.....</h5>";
+                                echo "<h5 class='text-primary'>No Record Found.....</h5>";
                             }
                             ?>
                         </tbody>
@@ -68,5 +72,21 @@ require 'static-nav/static-sidenav.php';
         </div>
     </main>
 </div>
+<script>
+    //delete staff account confirmation
+    $(document).on('click', '.delete_promotion', function () {
+        var id = $(this).attr('id');
+        if (confirm("Are you sure you want to delete this staff account ? ")) {
+            $.ajax({
+                url: "crud_promotion/promotion_delete.php",
+                method: "POST",
+                data: {id: id},
+                success: function (data) {
+                    location.reload(true);
+                }
+            })
+        }
+    });
+</script>
 </body>
 </html>

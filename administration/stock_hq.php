@@ -47,6 +47,7 @@ require 'static-nav/static-sidenav.php';
                                 </div>
                                 <div>
                                     <i class="bi bi-question-circle float-end" style="font-size: 18px" data-bs-toggle="popover" title="Requirement:" data-bs-content="<?php echo $f_Desc3; ?>"></i>
+                                    <span style="color: #dc3545">&nbsp;&nbsp; * = Required</span>
                                 </div>
                                 <form method="POST" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>">
                                     <div class="modal-body">
@@ -158,8 +159,6 @@ require 'static-nav/static-sidenav.php';
         </div>
     </main>
 </div>
-</body>
-</html>
 <script>
     //popover
     var popoverTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="popover"]'));
@@ -182,3 +181,5 @@ require 'static-nav/static-sidenav.php';
         }
     });
 </script>
+</body>
+</html>

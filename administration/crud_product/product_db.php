@@ -4,7 +4,7 @@
 $currentProduct = $nameErr = $descriptionErr = $categoryErr = $priceErr = $s_idErr = $imageErr = $quantityErr = $t_productErr = $toErr = $fromErr = "";
 
 //Define Description of function
-$f_Desc1 = "This page is a add new stock page, in here you can create and add a new product and assign to different store inventory.";
+$f_Desc1 = "This modal is a add new stock, in here you can create and add a new product and assign to different store inventory.";
 $f_Desc2 = "This page is a update stock page, in here you can update a selected stock details.";
 $f_Desc3 = "This function is transfer stock, in here you can transfer the selected stock product quantity to another stock.";
 
