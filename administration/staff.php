@@ -31,7 +31,7 @@ require 'static-nav/static-sidenav.php';
 
             <?php include 'alertMessage.php'; ?>
 
-            <h1 class="mt-4">Staff Account</h1>
+            <h1 class="mt-4">Staff Account Manage</h1>
             <div class="card mb-4">
                 <div class="card-header">
                     <i class="fas fa-table me-1"></i>
