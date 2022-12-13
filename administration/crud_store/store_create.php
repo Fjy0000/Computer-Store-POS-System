@@ -21,7 +21,7 @@ require 'store_db.php';
                     <div class="card shadow-lg border-0 rounded-lg mt-5">
                         <div class="card-header">
                             <h4>Store Create
-                                  <button type="button" onclick="history.back()" class="btn btn-primary float-end">Back</button>
+                                <button type="button" onclick="history.back()" class="btn btn-primary float-end">Back</button>
                             </h4>
                         </div>
                         <div class="row">
@@ -37,7 +37,11 @@ require 'store_db.php';
                                         <div class="card-body">
                                             <div class="mb-3">
                                                 <label>Store Name</label><span style="color: #dc3545">&nbsp;&nbsp; *<?php echo $nameErr; ?></span>
-                                                <input type="text" name="name" class="form-control">
+                                                <input type="text" name="name" class="form-control" value="<?php
+                                                if (!empty($_SESSION['store_input_name'])) {
+                                                    echo $_SESSION['store_input_name'];
+                                                }
+                                                ?>">
                                             </div>
                                             <div class="mb-3">
                                                 <label>Store Type</label><span style="color: #dc3545">&nbsp;&nbsp; *<?php echo $typeErr; ?></span>
@@ -49,15 +53,27 @@ require 'store_db.php';
                                             </div>
                                             <div class="mb-3">
                                                 <label>Store Address</label><span style="color: #dc3545">&nbsp;&nbsp; *<?php echo $addressErr; ?></span>
-                                                <input type="text" name="address" class="form-control">
+                                                <input type="text" name="address" class="form-control" value="<?php
+                                                if (!empty($_SESSION['store_input_address'])) {
+                                                    echo $_SESSION['store_input_address'];
+                                                }
+                                                ?>">
                                             </div>
                                             <div class="mb-3">
                                                 <label>State</label><span style="color: #dc3545">&nbsp;&nbsp; *<?php echo $stateErr; ?></span>
-                                                <input type="text" name="state" class="form-control">
+                                                <input type="text" name="state" class="form-control" value="<?php
+                                                if (!empty($_SESSION['store_input_state'])) {
+                                                    echo $_SESSION['store_input_state'];
+                                                }
+                                                ?>">
                                             </div>
                                             <div class="mb-3">
                                                 <label>Postal Code</label><span style="color: #dc3545">&nbsp;&nbsp; *<?php echo $postalErr; ?></span>
-                                                <input type="text" name="postalCode" class="form-control">
+                                                <input type="text" name="postalCode" class="form-control" value="<?php
+                                                if (!empty($_SESSION['store_input_postalcode'])) {
+                                                    echo $_SESSION['store_input_postalcode'];
+                                                }
+                                                ?>">
                                             </div>
                                         </div>
                                     </div>

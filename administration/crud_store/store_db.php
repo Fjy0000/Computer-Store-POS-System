@@ -18,7 +18,6 @@ if (isset($_POST['create_store'])) {
 
     //session value to keep input value after vaildation get error message
     $_SESSION['store_input_name'] = $name;
-    $_SESSION['store_input_type'] = $type;
     $_SESSION['store_input_address'] = $address;
     $_SESSION['store_input_state'] = $state;
     $_SESSION['store_input_postalCode'] = $postalCode;

@@ -10,7 +10,6 @@ if (!$result) {
 
 //Remove session value of input field in create store page
 unset($_SESSION['store_input_name'],
-        $_SESSION['store_input_type'],
         $_SESSION['store_input_address'],
         $_SESSION['store_input_state'],
         $_SESSION['store_input_postalCode']);
