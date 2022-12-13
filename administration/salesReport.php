@@ -22,6 +22,15 @@ if (isset($_POST['generate'])) {
     $count = 0;
     $totalAmount = 0;
 
+    //range date
+    $arrayDate = [];
+    $start_d = strtotime($startDate);
+    $end_d = strtotime($endDate);
+    for ($i = $start_d; $i <= $end_d; $i += 86400) {   //add 24 hours
+        $count_date = date('Y-m-d', $i);
+        $arrayDate[] = $count_date;
+    }
+
     if (empty($endDate)) {
         $ederror = "Required.";
     }
@@ -33,9 +42,6 @@ if (isset($_POST['generate'])) {
     }
 
     if (empty($storeErr) && empty($ederror) && empty($sderror)) {
-        $sql = "SELECT * FROM orders WHERE store_send = '$store' ";
-        $ordersList = mysqli_query($connect, $sql);
-
         $pdf = new FPDF();
         $pdf->AddPage();
 
@@ -63,18 +69,24 @@ if (isset($_POST['generate'])) {
         $pdf->Cell(35, 5, 'Price (RM)', 0, 0, 'C');
         $pdf->Line(10, 70, 200, 70);
 
+        $sql = "SELECT * FROM orders WHERE store_send = '$store'";
+        $ordersList = mysqli_query($connect, $sql);
         if (mysqli_num_rows($ordersList) > 0) {
             foreach ($ordersList as $sold) {
-                $totalAmount += (double) $sold['total_price'];
-                $count += 1;
-                $pdf->Ln(10);
-                $pdf->Cell(20, 5, $count, 0, 0);
-                $x = $pdf->GetX();
-                $y = $pdf->GetY();
-                $pdf->MultiCell(120, 5, $sold['total_product'], 0, 0);
-                $pdf->SetXY($x + 115, $y);
-                $pdf->Cell(35, 5, $sold['total_price'], 0, 0, 'C');
-                $pdf->Ln(8);
+                for ($j = 0; $j < sizeof($arrayDate); $j++) {
+                    if ($arrayDate[$j] == $sold['date']) {
+                        $totalAmount += (double) $sold['total_price'];
+                        $count += 1;
+                        $pdf->Ln(10);
+                        $pdf->Cell(20, 5, $count, 0, 0);
+                        $x = $pdf->GetX();
+                        $y = $pdf->GetY();
+                        $pdf->MultiCell(120, 5, $sold['total_product'], 0, 0);
+                        $pdf->SetXY($x + 115, $y);
+                        $pdf->Cell(35, 5, $sold['total_price'], 0, 0, 'C');
+                        $pdf->Ln(8);
+                    }
+                }
             }
         }
 
