@@ -145,40 +145,40 @@ if (isset($_POST['confirmResetPassword'])) {
                 </footer>
             </div>
         </div>
+        <script>
+            function togglePasswordIcon1() {
+                var x1 = document.getElementById("newPassword");
+                var y1 = document.getElementById("pws1_eye1");
+                var z1 = document.getElementById("pws1_eye2");
+
+                if (x1.type === "password") {
+                    x1.type = "text";
+                    y1.style.display = "none";
+                    z1.style.display = "block";
+                } else {
+                    x1.type = "password";
+                    z1.style.display = "none";
+                    y1.style.display = "block";
+                }
+            }
+
+            function togglePasswordIcon2() {
+                var x2 = document.getElementById("newPassword2");
+                var y2 = document.getElementById("pws2_eye1");
+                var z2 = document.getElementById("pws2_eye2");
+
+                if (x2.type === "password") {
+                    x2.type = "text";
+                    y2.style.display = "none";
+                    z2.style.display = "block";
+                } else {
+                    x2.type = "password";
+                    z2.style.display = "none";
+                    y2.style.display = "block";
+                }
+            }
+        </script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
+        <script src="js/scripts.js"></script>
     </body>
 </html>
-<script>
-    function togglePasswordIcon1() {
-        var x1 = document.getElementById("newPassword");
-        var y1 = document.getElementById("pws1_eye1");
-        var z1 = document.getElementById("pws1_eye2");
-
-        if (x1.type === "password") {
-            x1.type = "text";
-            y1.style.display = "none";
-            z1.style.display = "block";
-        } else {
-            x1.type = "password";
-            z1.style.display = "none";
-            y1.style.display = "block";
-        }
-    }
-
-    function togglePasswordIcon2() {
-        var x2 = document.getElementById("newPassword2");
-        var y2 = document.getElementById("pws2_eye1");
-        var z2 = document.getElementById("pws2_eye2");
-
-        if (x2.type === "password") {
-            x2.type = "text";
-            y2.style.display = "none";
-            z2.style.display = "block";
-        } else {
-            x2.type = "password";
-            z2.style.display = "none";
-            y2.style.display = "block";
-        }
-    }
-</script>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
-<script src="js/scripts.js"></script>

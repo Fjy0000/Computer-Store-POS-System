@@ -8,6 +8,13 @@ if (!$result) {
     die("Invalid query:" . $connect->error);
 }
 
+//Remove session value of input field in create store page
+unset($_SESSION['store_input_name'],
+        $_SESSION['store_input_type'],
+        $_SESSION['store_input_address'],
+        $_SESSION['store_input_state'],
+        $_SESSION['store_input_postalCode']);
+
 include 'static-include/header.php';
 require 'static-nav/static-headnav.php';
 require 'static-nav/static-sidenav.php';
@@ -51,10 +58,7 @@ require 'static-nav/static-sidenav.php';
 
                                         <td>
                                             <a class='btn btn-warning' href='crud_store/store_update.php?id=<?php echo $store["store_id"]; ?>'>Update</a>
-                                            <form method="POST" action="info_store_main_page.php" class="d-inline">
-                                                <input type="hidden" name="delete_id" value="<?php echo $store["store_id"]; ?>">
-                                                <button type="submit" class="btn btn-danger" name="delete_store">Delete</button>
-                                            </form>
+                                            <button type="button" class="btn btn-danger delete_store" id="<?php echo $store["store_id"]; ?>">Delete</button>
                                         </td>
                                     </tr>
                                     <?php
@@ -70,5 +74,21 @@ require 'static-nav/static-sidenav.php';
         </div>
     </main>
 </div>
+<script>
+    //delete staff account confirmation
+    $(document).on('click', '.delete_store', function () {
+        var id = $(this).attr('id');
+        if (confirm("Are you sure you want to delete this staff account ? ")) {
+            $.ajax({
+                url: "crud_store/store_delete.php",
+                method: "POST",
+                data: {id: id},
+                success: function (data) {
+                    location.reload(true);
+                }
+            })
+        }
+    });
+</script>
 </body>
 </html>

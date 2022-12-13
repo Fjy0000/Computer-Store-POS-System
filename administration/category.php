@@ -92,8 +92,6 @@ require 'static-nav/static-sidenav.php';
         </div>
     </main>
 </div>
-</body>
-</html>
 <script>
     //popover
     var popoverTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="popover"]'));
@@ -116,3 +114,5 @@ require 'static-nav/static-sidenav.php';
         }
     });
 </script>
+</body>
+</html>

@@ -3,8 +3,8 @@
 //Define empty error message
 $currentProduct = $nameErr = $descriptionErr = $categoryErr = $priceErr = $s_idErr = $imageErr = $quantityErr = $t_productErr = $toErr = $fromErr = "";
 
-//Define information of requirement
-$f_Desc1 = "1. All fields are required.";
+//Define Description of function
+$f_Desc1 ="This function is transfer stock, in here you can transfer the selected stock product quantity to another stock.";
 
 //Update Product
 if (isset($_POST['update_product_branch'])) {

@@ -7,7 +7,7 @@ require 'store_db.php';
 <html>
     <head>
         <meta charset="UTF-8">
-        <title>Create Store</title>
+        <title>store create</title>
         <!-- Bootstrap CSS -->
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.2/font/bootstrap-icons.css">
@@ -21,12 +21,13 @@ require 'store_db.php';
                     <div class="card shadow-lg border-0 rounded-lg mt-5">
                         <div class="card-header">
                             <h4>Store Create
-                                <a href="http://localhost/Computer-Store-POS-System/administration/store.php" class="btn btn-danger float-end">Back</a>
+                                  <button type="button" onclick="history.back()" class="btn btn-primary float-end">Back</button>
                             </h4>
                         </div>
                         <div class="row">
                             <div class="col-md-12">
-                                <i class="bi bi-question-circle float-end" style="font-size: 18px" data-bs-toggle="popover" title="Requirement:" data-bs-content="<?php echo $f_Desc1 ?>"></i>
+                                <i class="bi bi-question-circle float-end" style="font-size: 18px" data-bs-toggle="popover" title="Description:" data-bs-content="<?php echo $f_Desc1 ?>"></i>
+                                <span style="color: #dc3545">&nbsp;&nbsp; * = Required</span>
                             </div>
                         </div>
                         <div class="card-body">
@@ -78,8 +79,6 @@ require 'store_db.php';
             var popoverList = popoverTriggerList.map(function (t) {
                 return new bootstrap.Popover(t);
             });
-
         </script>
-
     </body>
 </html>

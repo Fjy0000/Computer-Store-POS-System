@@ -6,7 +6,7 @@ $currentStaff = $nameErr = $phoneErr = $emailErr = $icErr = $ageErr = $positionE
 //Define Description of function
 $f_Desc1 = "This page is a staff account registration page, in here you can create and add a new one staff account.";
 
-//Create Staff
+//staff create
 if (isset($_POST['create_staff'])) {
 
     $name = $_POST['name'];
@@ -124,8 +124,7 @@ if (isset($_POST['create_staff'])) {
     }
 }
 
-
-//Update Staff 
+//staff update
 if (isset($_POST['update_staff'])) {
 
     $id = $_POST['id'];

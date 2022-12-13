@@ -31,7 +31,7 @@ if (isset($_GET['id'])) {
                     <div class="card shadow-lg border-0 rounded-lg mt-5">
                         <div class="card-header">
                             <h4>Promotion Update
-                                <a href="http://localhost/Computer-Store-POS-System/administration/promotion.php" class="btn btn-danger float-end">Back</a>
+                                <button type="button" onclick="history.back()" class="btn btn-primary float-end">Back</button>
                             </h4>
                         </div>
                         <div class="row">
@@ -85,7 +85,7 @@ if (isset($_GET['id'])) {
                 </div>
             </div>
         </div>
-         <script>
+        <script>
             //popover
             var popoverTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="popover"]'));
             var popoverList = popoverTriggerList.map(function (t) {

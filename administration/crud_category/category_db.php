@@ -1,7 +1,8 @@
 <?php
 
 //Define empty error message
-$nameErr = $descriptionErr = $currentCategory = "";
+$nameErr = $descriptionErr = "";
+$currentCategory = "";
 
 //Define Description of function
 $f_Desc1 = "This modal is the create category and in here you can create and add a new category type.";
@@ -20,15 +21,11 @@ if (isset($_POST['create_category'])) {
             $nameErr = "Category name must be at least 4 letter.";
         }
     }
-
     if (empty($description)) {
         $descriptionErr = "Description field cannot empty.";
     }
-
     if (empty($nameErr) && empty($descriptionErr)) {
-
         $sql1 = "INSERT INTO category (category_name, description) VALUES ('$name','$description')";
-
         $sql_run = mysqli_query($connect, $sql1);
         if ($sql_run) {
             $_SESSION['message'] = "Created Successfully.";
@@ -55,7 +52,6 @@ if (isset($_POST['update_category'])) {
     $id = $_POST['id'];
     $name = $_POST['name'];
     $description = $_POST['description'];
-
     if (empty($name)) {
         $nameErr = "Name field cannot empty.";
     } elseif (!empty($name)) {
@@ -63,11 +59,9 @@ if (isset($_POST['update_category'])) {
             $nameErr = "Category name must be at least 4 letter.";
         }
     }
-
     if (empty($description)) {
         $descriptionErr = "Description field cannot empty.";
     }
-
     if (empty($nameErr) && empty($descriptionErr)) {
         $sql2 = "UPDATE category SET category_name='$name',description='$description' WHERE category_id='$id'";
         $sql_run = mysqli_query($connect, $sql2);

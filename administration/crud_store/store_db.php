@@ -3,10 +3,11 @@
 //Define empty error message
 $currentStore = $nameErr = $addressErr = $typeErr = $stateErr = $postalErr = "";
 
-//Define information of requirement
-$f_Desc1 = "1. All fields are required.";
+//Define Description of function
+$f_Desc1 = "This page is the create store and in here you can create and add a new store.";
+$f_Desc2 = "This page is the update store page and in here you can update a store details.";
 
-//Create Store
+//store create
 if (isset($_POST['create_store'])) {
 
     $name = $_POST['name'];
@@ -15,30 +16,32 @@ if (isset($_POST['create_store'])) {
     $state = $_POST['state'];
     $postalCode = $_POST['postalCode'];
 
+    //session value to keep input value after vaildation get error message
+    $_SESSION['store_input_name'] = $name;
+    $_SESSION['store_input_type'] = $type;
+    $_SESSION['store_input_address'] = $address;
+    $_SESSION['store_input_state'] = $state;
+    $_SESSION['store_input_postalCode'] = $postalCode;
+
     if (empty($name)) {
-        $nameErr = "Required";
+        $nameErr = "Name field cannot be left blank";
     } elseif (!empty($name) && strlen($name) < 4) {
         $nameErr = "Store name must at least 5 letter";
     }
-
     if (empty($type)) {
-        $typeErr = "Required";
+        $typeErr = "Store type field cannot be left blank";
     }
-
     if (empty($address)) {
-        $addressErr = "Required";
+        $addressErr = "Store address field cannot be left blank";
     } elseif (!empty($address) && strlen($address) < 11) {
         $addressErr = "Store Address must be real";
     }
-
     if (empty($state)) {
-        $stateErr = "Required";
+        $stateErr = "State field cannot be left blank";
     }
-
     if (empty($postalCode)) {
-        $postalErr = "Required";
+        $postalErr = "Postal code field cannot be left blank";
     }
-
 
     if (empty($nameErr) && empty($typeErr) && empty($addressErr) && empty($stateErr) && empty($postalErr)) {
 
@@ -47,19 +50,18 @@ if (isset($_POST['create_store'])) {
 
         $sql_run = mysqli_query($connect, $sql1);
         if ($sql_run) {
-            $_SESSION['message'] = "Created successfully.";
+            $_SESSION['message'] = "Created Successfully.";
             header("Location:http://localhost/Computer-Store-POS-System/administration/store.php");
             exit(0);
         } else {
-            $_SESSION['message'] = "Creating Failed.";
+            $_SESSION['error'] = "Create Fail ! ! System connect to database or query error.";
             header("Location:http://localhost/Computer-Store-POS-System/administration/store.php");
             exit(0);
         }
     }
 }
 
-
-//Staff Update Create
+//store update
 if (isset($_POST['update_store'])) {
 
     $id = $_POST['id'];
@@ -70,32 +72,26 @@ if (isset($_POST['update_store'])) {
     $postalCode = $_POST['postalCode'];
 
     if (empty($name)) {
-        $nameErr = "Required";
+        $nameErr = "Name field cannot be left blank";
     } elseif (!empty($name) && strlen($name) < 4) {
         $nameErr = "Store name must at least 5 letter";
     }
-
     if (empty($type)) {
-        $typeErr = "Required";
+        $typeErr = "Store type field cannot be left blank";
     }
-
     if (empty($address)) {
-        $addressErr = "Required";
+        $addressErr = "Store address field cannot be left blank";
     } elseif (!empty($address) && strlen($address) < 11) {
         $addressErr = "Store Address must be real";
     }
-
     if (empty($state)) {
-        $stateErr = "Required";
+        $stateErr = "State field cannot be left blank";
     }
-
     if (empty($postalCode)) {
-        $postalErr = "Required";
+        $postalErr = "Postal code field cannot be left blank";
     }
-
 
     if (empty($nameErr) && empty($typeErr) && empty($addressErr) && empty($stateErr) && empty($postalErr)) {
-
         $sql3 = "UPDATE store SET name='$name',type='$type',"
                 . "address='$address',state='$state',postal_code='$postalCode' WHERE store_id='$id'";
 
@@ -105,30 +101,17 @@ if (isset($_POST['update_store'])) {
             header("Location:http://localhost/Computer-Store-POS-System/administration/store.php");
             exit(0);
         } else {
-            $_SESSION['message'] = "Updating Failed.";
+            $_SESSION['error'] = "Update Fail ! ! System connect to database or query error.";
             header("Location:http://localhost/Computer-Store-POS-System/administration/store.php");
             exit(0);
         }
     } else {
-        $_SESSION['message'] = "Updating Failed.";
-        header("Location:http://localhost/Computer-Store-POS-System/administration/store.php");
-        exit(0);
-    }
-}
-
-//Delete Store
-if (isset($_POST['delete_store'])) {
-
-    $id = $_POST['delete_id'];
-
-    $sql4 = "DELETE FROM store WHERE store_id='$id'";
-    $sql_run = mysqli_query($connect, $sql4);
-    if ($sql_run) {
-        $_SESSION['message'] = "Deleted successfully.";
-        header("Location:http://localhost/Computer-Store-POS-System/administration/store.php");
-        exit(0);
-    } else {
-        $_SESSION['message'] = "Delete Failed.";
+        $_SESSION['error'] = "Update Fail ! Reason:<br>"
+                . "$nameErr<br>"
+                . "$typeErr<br>"
+                . "$addressErr<br>"
+                . "$stateErr<br>"
+                . "$postalErr";
         header("Location:http://localhost/Computer-Store-POS-System/administration/store.php");
         exit(0);
     }

@@ -38,12 +38,12 @@ require 'staff_db.php';
                     <div class="card shadow-lg border-0 rounded-lg mt-5">
                         <div class="card-header">
                             <h4>Staff Account Registration
-                                <a href="http://localhost/Computer-Store-POS-System/administration/staff.php" class="btn btn-danger float-end">Back</a>
+                                <button type="button" onclick="history.back()" class="btn btn-primary float-end">Back</button>
                             </h4>
                         </div>
                         <div class="row">
                             <div class="col-md-12">
-                                <i class="bi bi-question-circle float-end" style="font-size: 18px" data-bs-toggle="popover" title="Requirement:" data-bs-content="<?php echo $f_Desc1 ?>"></i>
+                                <i class="bi bi-question-circle float-end" style="font-size: 18px" data-bs-toggle="popover" title="Description:" data-bs-content="<?php echo $f_Desc1 ?>"></i>
                             </div>
                         </div>
                         <div class="card-body">

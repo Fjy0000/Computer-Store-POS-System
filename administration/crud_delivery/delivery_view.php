@@ -37,7 +37,7 @@ if (isset($_GET['id'])) {
                     <h1 class="mt-4">Customer Order Details</h1>
                     <div class="card mb-4">
                         <div class="card-header bg-dark">
-                            <a href="http://localhost/Computer-Store-POS-System/administration/delivery.php" class="btn btn-primary float-end">Back</a>
+                              <button type="button" onclick="history.back()" class="btn btn-primary float-end">Back</button>
                         </div>
                         <section>
                             <div class="container">

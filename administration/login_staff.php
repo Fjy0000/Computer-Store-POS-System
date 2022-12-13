@@ -126,23 +126,23 @@ if (isset($_POST['staff_login'])) {
                 </div>
             </footer>
         </div>
+        <script>
+            //Toggle Password Visibility
+            function togglePasswordIcon1() {
+                var x1 = document.getElementById("inputPassword");
+                var y1 = document.getElementById("pws1_eye1");
+                var z1 = document.getElementById("pws1_eye2");
+
+                if (x1.type === "password") {
+                    x1.type = "text";
+                    y1.style.display = "none";
+                    z1.style.display = "block";
+                } else {
+                    x1.type = "password";
+                    z1.style.display = "none";
+                    y1.style.display = "block";
+                }
+            }
+        </script>
     </body>
 </html>
-<script>
-    //Toggle Password Visibility
-    function togglePasswordIcon1() {
-        var x1 = document.getElementById("inputPassword");
-        var y1 = document.getElementById("pws1_eye1");
-        var z1 = document.getElementById("pws1_eye2");
-
-        if (x1.type === "password") {
-            x1.type = "text";
-            y1.style.display = "none";
-            z1.style.display = "block";
-        } else {
-            x1.type = "password";
-            z1.style.display = "none";
-            y1.style.display = "block";
-        }
-    }
-</script>

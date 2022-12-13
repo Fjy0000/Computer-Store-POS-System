@@ -17,7 +17,7 @@ if (isset($_GET['id'])) {
 <html>
     <head>
         <meta charset="UTF-8">
-        <title>Update Store</title>
+        <title>store update</title>
         <!-- Bootstrap CSS -->
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.2/font/bootstrap-icons.css">
@@ -31,12 +31,13 @@ if (isset($_GET['id'])) {
                     <div class="card shadow-lg border-0 rounded-lg mt-5">
                         <div class="card-header">
                             <h4>Store Update
-                                <a href="http://localhost/Computer-Store-POS-System/administration/store.php" class="btn btn-danger float-end">Back</a>
+                                 <button type="button" onclick="history.back()" class="btn btn-primary float-end">Back</button>
                             </h4>
                         </div>
                         <div class="row">
                             <div class="col-md-12">
-                                <i class="bi bi-question-circle float-end" style="font-size: 18px" data-bs-toggle="popover" title="Requirement:" data-bs-content="<?php echo $f_Desc1 ?>"></i>
+                                <i class="bi bi-question-circle float-end" style="font-size: 18px" data-bs-toggle="popover" title="Description:" data-bs-content="<?php echo $f_Desc2 ?>"></i>
+                                 <span style="color: #dc3545">&nbsp;&nbsp; * = Required</span>
                             </div>
                         </div>
                         <div class="card-body">
@@ -46,11 +47,11 @@ if (isset($_GET['id'])) {
                                         <div class="card-body">
                                             <input type="hidden" name="id" class="form-control" value="<?php echo $currentStore['store_id']?>">
                                             <div class="mb-3">
-                                                <label>Store Name</label><span style="color: #dc3545">&nbsp;&nbsp; *<?php echo $nameErr; ?></span>
+                                                <label>Store Name</label><span style="color: #dc3545">&nbsp;&nbsp; *</span>
                                                 <input type="text" name="name" class="form-control" value="<?php echo $currentStore['name']?>">
                                             </div>
                                             <div class="mb-3">
-                                                <label>Store Type</label><span style="color: #dc3545">&nbsp;&nbsp; *<?php echo $typeErr; ?></span>
+                                                <label>Store Type</label><span style="color: #dc3545">&nbsp;&nbsp; *</span>
                                                 <select class="form-select" aria-label="storeType list" name="type" id="type">
                                                     <option selected value="<?php echo $currentStore['type']?>"><?php echo $currentStore['type']?></option>
                                                     <option value="Headquarters">Headquarters</option>
@@ -58,15 +59,15 @@ if (isset($_GET['id'])) {
                                                 </select>
                                             </div>
                                             <div class="mb-3">
-                                                <label>Store Address</label><span style="color: #dc3545">&nbsp;&nbsp; *<?php echo $addressErr; ?></span>
+                                                <label>Store Address</label><span style="color: #dc3545">&nbsp;&nbsp; *</span>
                                                 <input type="text" name="address" class="form-control" value="<?php echo $currentStore['address']?>">
                                             </div>
                                             <div class="mb-3">
-                                                <label>Store State</label><span style="color: #dc3545">&nbsp;&nbsp; *<?php echo $stateErr; ?></span>
+                                                <label>Store State</label><span style="color: #dc3545">&nbsp;&nbsp; *</span>
                                                 <input type="text" name="state" class="form-control" value="<?php echo $currentStore['state']?>" >
                                             </div>
                                             <div class="mb-3">
-                                                <label>Store Postal Code</label><span style="color: #dc3545">&nbsp;&nbsp; *<?php echo $postalErr; ?></span>
+                                                <label>Store Postal Code</label><span style="color: #dc3545">&nbsp;&nbsp; *</span>
                                                 <input type="text" name="postalCode" class="form-control" value="<?php echo $currentStore['postal_code']?>">
                                             </div>
                                         </div>

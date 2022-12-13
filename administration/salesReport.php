@@ -13,7 +13,7 @@ if (!$result || !$get1) {
 }
 
 $sderror = $ederror = $storeErr = "";
-$f_Desc1 = "Select the store to generate that store sold product is required";
+$f_Desc1 = "This modal is the generate sales report and in here you can choose the store and date to generate related sales report.";
 
 if (isset($_POST['generate'])) {
     $store = $_POST['storeName'];
@@ -119,7 +119,8 @@ require 'static-nav/static-sidenav.php';
                                     <span aria-hidden="true" data-bs-dismiss="modal" aria-label="Close"><i class="bi bi-x-lg"></i></span>
                                 </div>
                                 <div>
-                                    <i class="bi bi-question-circle float-end" style="font-size: 18px" data-bs-toggle="popover" title="Requirement:" data-bs-content="<?php echo $f_Desc1 ?>"></i>
+                                    <i class="bi bi-question-circle float-end" style="font-size: 18px" data-bs-toggle="popover" title="Description:" data-bs-content="<?php echo $f_Desc1 ?>"></i>
+                                    <span style="color: #dc3545">&nbsp;&nbsp; * = Required</span>
                                 </div>
                                 <form method="POST" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>">
                                     <div class="modal-body">
@@ -189,13 +190,14 @@ require 'static-nav/static-sidenav.php';
             </div>
     </main>
 </div>
-</body>
-</html>
 <script>
-    //popover
+//popover
     var popoverTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="popover"]'));
     var popoverList = popoverTriggerList.map(function (t) {
         return new bootstrap.Popover(t);
     });
 </script>
+</body>
+</html>
+
 

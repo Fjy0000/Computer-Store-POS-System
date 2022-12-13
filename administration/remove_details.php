@@ -41,10 +41,10 @@ require 'static-nav/static-sidenav.php';
                                 </div>
                                 <div>
                                     <i class="bi bi-question-circle float-end" style="font-size: 18px" data-bs-toggle="popover" title="Description:" data-bs-content="<?php echo $f_Desc1 ?>"></i>
+                                     <span style="color: #dc3545">&nbsp;&nbsp; * = Required</span>
                                 </div>
                                 <form method="POST" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>">
                                     <div class="modal-body">
-                                        <span style="color: #dc3545"><?php echo $checkError; ?></span>
                                         <div class="form-group mb-3">
                                             <label>Store</label><span style="color: #dc3545">&nbsp;&nbsp; *<?php echo $r_store_id_Err; ?></span>
                                             <select class="form-select" aria-label="store" name="r_store_id" id="r_store_id">
@@ -118,10 +118,7 @@ require 'static-nav/static-sidenav.php';
 
                                         <td>
                                             <a class='btn btn-info' href='crud_removedDetails/removedD_view.php?id=<?php echo $removed["removed_id"]; ?>'>View</a>
-                                            <form method="POST" action="remove_details.php" class="d-inline">
-                                                <input type="hidden" name="delete_id" value="<?php echo $removed["removed_id"]; ?>">
-                                                <button type="submit" class="btn btn-danger" name="delete_removedDetails">Delete</button>
-                                            </form>
+                                            <button type="button" class="btn btn-danger delete_removedD" id="<?php echo $removed["removed_id"]; ?>">Delete</button>
                                         </td>
                                     </tr>
                                     <?php
@@ -137,12 +134,26 @@ require 'static-nav/static-sidenav.php';
         </div>
     </main>
 </div>
-</body>
-</html>
 <script>
+    //delete removed details confirmation
+    $(document).on('click', '.delete_removedD', function () {
+        var id = $(this).attr('id');
+        if (confirm("Are you sure you want to delete this staff account ? ")) {
+            $.ajax({
+                url: "crud_removedDetails/removedD_delete.php",
+                method: "POST",
+                data: {id: id},
+                success: function (data) {
+                    location.reload(true);
+                }
+            })
+        }
+    });
     //popover
     var popoverTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="popover"]'));
     var popoverList = popoverTriggerList.map(function (t) {
         return new bootstrap.Popover(t);
     });
 </script>
+</body>
+</html>

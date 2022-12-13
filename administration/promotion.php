@@ -73,7 +73,7 @@ require 'static-nav/static-sidenav.php';
     </main>
 </div>
 <script>
-    //delete staff account confirmation
+    //delete promotion confirmation
     $(document).on('click', '.delete_promotion', function () {
         var id = $(this).attr('id');
         if (confirm("Are you sure you want to delete this staff account ? ")) {

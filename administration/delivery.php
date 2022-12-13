@@ -35,7 +35,7 @@ require 'static-nav/static-sidenav.php';
                                     <span aria-hidden="true" data-bs-dismiss="modal" aria-label="Close"><i class="bi bi-x-lg"></i></span>
                                 </div>
                                 <div>
-                                    <i class="bi bi-question-circle float-end" data-bs-toggle="popover" title="Requirement:" data-bs-content="<?php echo $f_Desc1; ?>"></i>
+                                    <i class="bi bi-question-circle float-end" data-bs-toggle="popover" title="Description:" data-bs-content="<?php echo $f_Desc1; ?>"></i>
                                 </div>
                                 <form method="POST" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>">
                                     <div class="modal-body">
@@ -129,8 +129,6 @@ require 'static-nav/static-sidenav.php';
         </div>
     </main>
 </div>
-</body>
-</html>
 <script>
     //popover
     var popoverTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="popover"]'));
@@ -138,3 +136,5 @@ require 'static-nav/static-sidenav.php';
         return new bootstrap.Popover(t);
     });
 </script>
+</body>
+</html>
