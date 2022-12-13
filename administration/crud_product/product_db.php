@@ -162,13 +162,13 @@ if (isset($_POST['update_product'])) {
         }
     } else {
         $_SESSION['error'] = "Update Fail ! Reason : <br>"
-                . "- $nameErr <br>"
-                . "- $descriptionErr <br>"
-                . "- $categoryErr <br>"
-                . "- $s_idErr <br>"
-                . "- $priceErr <br>"
-                . "- $quantityErr <br>"
-                . "- $imageErr";
+                . "$nameErr <br>"
+                . "$descriptionErr <br>"
+                . "$categoryErr <br>"
+                . "$s_idErr <br>"
+                . "$priceErr <br>"
+                . "$quantityErr <br>"
+                . "$imageErr";
 
         header("Location:http://localhost/Computer-Store-POS-System/administration/stock_hq.php");
         exit(0);

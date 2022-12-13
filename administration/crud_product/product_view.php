@@ -66,7 +66,7 @@ if (isset($_GET['id'])) {
                     <h1 class="mt-4">Product's Detail</h1>
                     <div class="card mb-4">
                         <div class="card-header bg-dark">
-                            <a href="http://localhost/Computer-Store-POS-System/administration/stock_hq.php" class="btn btn-primary float-end">Back</a>
+                             <button type="button" onclick="history.back()" class="btn btn-primary float-end">Back</button>
                         </div>
                         <section class="section about-section gray-bg" id="about">
                             <div class="container">

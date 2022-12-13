@@ -38,9 +38,9 @@ if (isset($_POST['assign_delivery'])) {
         }
     } else {
         $_SESSION['error'] = "Assign Fail ! ! Reason: <br>"
-                . "- $id_error <br>"
-                . "- $store_send_error <br>"
-                . "- $delivery_status_error ";
+                . "$id_error <br>"
+                . "$store_send_error <br>"
+                . "$delivery_status_error ";
         header("Location:http://localhost/Computer-Store-POS-System/administration/delivery.php");
         exit(0);
     }

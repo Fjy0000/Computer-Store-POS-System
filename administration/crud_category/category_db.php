@@ -41,8 +41,8 @@ if (isset($_POST['create_category'])) {
         }
     } else {
         $_SESSION['error'] = "Create Fail. Reason : <br>"
-                . "<strong>$nameErr</strong><br>"
-                . "<strong>$descriptionErr</strong>";
+                . "$nameErr<br>"
+                . "$descriptionErr";
         header("Location: http://localhost/Computer-Store-POS-System/administration/category.php");
         exit(0);
     }
@@ -82,8 +82,8 @@ if (isset($_POST['update_category'])) {
         }
     } else {
         $_SESSION['error'] = "Update Fail. Reason : <br>"
-                . "<strong>$nameErr</strong><br>"
-                . "<strong>$descriptionErr</strong>";
+                . "$nameErr<br>"
+                . "$descriptionErr";
         header("Location: http://localhost/Computer-Store-POS-System/administration/category.php");
         exit(0);
     }
