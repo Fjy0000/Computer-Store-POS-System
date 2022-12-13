@@ -29,81 +29,59 @@ if (isset($_POST['update_product_branch'])) {
         $store_n = $row['name'];
         $store_type = $row['type'];
     }
-
     if ($_FILES['image']['size'] > 200000) {
         $imageErr = "File is too large only allowed  size < 2MB.";
     }
-
     if ($fileType != "jpg" && $fileType != "png" && $fileType != "jpeg") {
         $imageErr = "Only JPG, JPEG & PNG files are allowed.";
     }
-
     if (empty($name)) {
-        $nameErr = "Required.";
+        $nameErr = "product name field cannot empty.";
     } elseif (!empty($name) && strlen($name) < 5) {
         $nameErr = "Product name must be at least 5 letter.";
     }
-
     if (empty($description)) {
-        $descriptionErr = "Required";
+        $descriptionErr = "product description field cannot empty";
     }
-
     if (empty($price)) {
-        $priceErr = "Required";
+        $priceErr = "price field cannot empty";
     }
-
     if (empty($c_name)) {
-        $categoryErr = "Required";
+        $categoryErr = "category field cannot empty";
     }
-
     if (empty($s_id)) {
-        $s_idErr = "Required";
+        $s_idErr = "store field cannot empty";
     }
-
     if (empty($quantity)) {
-        $quantityErr = "Required";
+        $quantityErr = "quantity field cannot empty";
     }
     if (empty($filename)) {
-        $imageErr = "Required";
+        $imageErr = "image field cannot empty";
     }
-
-    if (empty($nameErr) && empty($priceErr) && empty($categoryErr) && empty($s_idErr) && empty($imageErr) && empty($descriptionErr) && empty($imageErr)) {
+    if (empty($nameErr) && empty($priceErr) && empty($categoryErr) && empty($s_idErr) && empty($descriptionErr) && empty($imageErr) && empty($quantityErr)) {
         $sql3 = "UPDATE product SET name='$name',description='$description',price='$price',category_name='$c_name',"
                 . "store_id='$s_id',store_name='$store_n',store_type='$store_type',quantity='$quantity', image='$filename' WHERE product_id='$id' ";
 
         move_uploaded_file($tempname, $folder . $filename);
         $sql_run = mysqli_query($connect, $sql3);
         if ($sql_run) {
-            $_SESSION['message'] = "Updated successfully.";
+            $_SESSION['message'] = "Updated Successfully.";
             header("Location:http://localhost/Computer-Store-POS-System/administration/stock_branch.php");
             exit(0);
         } else {
-            $_SESSION['message'] = "Updating Failed.";
+            $_SESSION['error'] = "Update Fail ! ! System connect to database or query error. ";
             header("Location:http://localhost/Computer-Store-POS-System/administration/stock_branch.php");
             exit(0);
         }
     } else {
-        $_SESSION['message'] = "Updating Failed.";
-        header("Location:http://localhost/Computer-Store-POS-System/administration/stock_branch.php");
-        exit(0);
-    }
-}
-
-
-//Delete Product
-if (isset($_POST['delete_product_branch'])) {
-
-    $id = $_POST['delete_id'];
-
-    $sql4 = "DELETE FROM product WHERE product_id='$id'";
-    $sql_run = mysqli_query($connect, $sql4);
-
-    if ($sql_run) {
-        $_SESSION['message'] = "Deleted successfully.";
-        header("Location:http://localhost/Computer-Store-POS-System/administration/stock_branch.php");
-        exit(0);
-    } else {
-        $_SESSION['message'] = "Delete Failed.";
+          $_SESSION['error'] = "Update Fail ! Reason : <br>"
+                . "$nameErr <br>"
+                . "$descriptionErr <br>"
+                . "$categoryErr <br>"
+                . "$s_idErr <br>"
+                . "$priceErr <br>"
+                . "$quantityErr <br>"
+                . "$imageErr";
         header("Location:http://localhost/Computer-Store-POS-System/administration/stock_branch.php");
         exit(0);
     }
@@ -160,21 +138,18 @@ if (isset($_POST['transfer_product_branch'])) {
 
     //input requirement
     if (empty($fromStoreId)) {
-        $fromErr = "Required";
+        $fromErr = "From Store field cannot empty";
     }
-
     if (empty($toStoreId)) {
-        $toErr = "Required";
+        $toErr = "To Store field cannot empty";
     } elseif ($fromStoreId == $toStoreId) {
         $toErr = "Cannot select same store. ";
     }
-
     if (empty($n_product)) {
-        $t_productErr = "Required";
+        $t_productErr = "Product name field cannot empty";
     }
-
     if (empty($transfer_num)) {
-        $quantityErr = "Required";
+        $quantityErr = "Quantity to transfer field cannot empty";
     }
 
     if (empty($t_productErr) && empty($toErr) && empty($fromErr) && empty($quantityErr)) {
@@ -199,26 +174,24 @@ if (isset($_POST['transfer_product_branch'])) {
         if (mysqli_num_rows($check_run) == 0) {
             //create new product
             mysqli_query($connect, $create_toStore_sql);
-
             if ($sql_run) {
                 $_SESSION['message'] = "Transfer successfully.";
                 header("Location:http://localhost/Computer-Store-POS-System/administration/stock_branch.php");
                 exit(0);
             } else {
-                $_SESSION['message'] = "Transfer Failed.";
+                $_SESSION['error'] = "Transfer Fail ! ! System connect to database or query error. ";
                 header("Location:http://localhost/Computer-Store-POS-System/administration/stock_branch.php");
                 exit(0);
             }
         } else {
             //update product
             mysqli_query($connect, $to_sql);
-
             if ($sql_run) {
                 $_SESSION['message'] = "Transfer successfully.";
                 header("Location:http://localhost/Computer-Store-POS-System/administration/stock_branch.php");
                 exit(0);
             } else {
-                $_SESSION['message'] = "Transfer Failed.";
+                $_SESSION['error'] = "Transfer Fail ! ! System connect to database or query error. ";
                 header("Location:http://localhost/Computer-Store-POS-System/administration/stock_branch.php");
                 exit(0);
             }
