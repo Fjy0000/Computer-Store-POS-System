@@ -32,15 +32,15 @@ require 'static-nav/static-sidenav.php';
             <?php include 'alertMessage.php'; ?>
             <h1 class="mt-4">HQ Stock Manage</h1>
             <div class="card mb-4">
-                <div class="card-header">
-                    <i class="fas fa-table me-1"></i>
+                <div class="card-header bg-dark text-white">
+                    <i class="bi bi-table"></i>
                     HQ Stock Table
                     <a href="crud_product/product_create.php" class="btn btn-primary float-end m-md-2">Add New Product</a>
                     <button type="button" class="btn btn-primary m-md-2 float-end" data-bs-toggle="modal" data-bs-target="#transferToModal">Transfer to<i class="bi bi-arrow-left-right  m-md-2"></i></button>
                     <!-- Transfer to modal  -->
                     <div class="modal fade" id="transferToModal" tabindex="-1" role="dialog" aria-labelledby="transferModalLabel" aria-hidden="true">
                         <div class="modal-dialog" role="document">
-                            <div class="modal-content">
+                            <div class="modal-content bg-dark">
                                 <div class="modal-header">
                                     <h5 class="modal-title" id="transferModalLabel">Transfer To Another Store</h5>
                                     <span aria-hidden="true" data-bs-dismiss="modal" aria-label="Close"><i class="bi bi-x-lg"></i></span>
@@ -50,7 +50,7 @@ require 'static-nav/static-sidenav.php';
                                     <span style="color: #dc3545">&nbsp;&nbsp; * = Required</span>
                                 </div>
                                 <form method="POST" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>">
-                                    <div class="modal-body">
+                                    <div class="modal-body text-black">
                                         <div class="form-group mb-3">
                                             <label>From</label><span style="color: #dc3545">&nbsp;&nbsp; *</span>
                                             <select class="form-select" aria-label="from store" name="fromStoreId" id="fromStoreId">

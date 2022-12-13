@@ -20,14 +20,14 @@ require 'static-nav/static-sidenav.php';
             <?php include 'alertMessage.php'; ?>
             <h1 class="mt-4">Category Maintenance</h1>
             <div class="card mb-4">
-                <div class="card-header">
-                    <i class="fas fa-table me-1"></i>
+                <div class="card-header bg-dark text-white">
+                    <i class="bi bi-table"></i>
                     Category Table
                     <button type="button" class="btn btn-primary m-md-2 float-end" data-bs-toggle="modal" data-bs-target="#categoryModal">Create</button>
                     <div class="modal fade" id="categoryModal" tabindex="-1" role="dialog" aria-labelledby="categoryModalLabel" aria-hidden="true">
                         <div class="modal-dialog" role="document">
                             <div class="modal-content">
-                                <div class="modal-header">
+                                <div class="modal-header bg-dark">
                                     <h5 class="modal-title" id="categoryModalLabel">Category Create</h5>
                                     <span aria-hidden="true" data-bs-dismiss="modal" aria-label="Close"><i class="bi bi-x-lg"></i></span>
                                 </div>
@@ -36,7 +36,7 @@ require 'static-nav/static-sidenav.php';
                                     <span style="color: #dc3545">&nbsp;&nbsp; * = Required</span>
                                 </div>
                                 <form method="POST" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>">
-                                    <div class="modal-body">
+                                    <div class="modal-body text-black">
                                         <div class="form-group">
                                             <label>Category Name</label><span style="color: #dc3545">&nbsp;&nbsp; *<?php echo $nameErr; ?></span>
                                             <input type="text" name="name" class="form-control" value="">

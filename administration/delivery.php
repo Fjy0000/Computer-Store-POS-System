@@ -22,15 +22,15 @@ require 'static-nav/static-sidenav.php';
             <?php include 'alertMessage.php'; ?>
             <h1 class="mt-4">Sales Delivery Manage</h1>
             <div class="card mb-4">
-                <div class="card-header">
-                    <i class="fas fa-table me-1"></i>
+                <div class="card-header bg-dark text-white">
+                    <i class="bi bi-table"></i>
                     Delivery Table
                     <button type="button" class="btn btn-warning m-md-2 float-end" data-bs-toggle="modal" data-bs-target="#deliveryModal">Delivery Manage</button>
                     <!-- Delivery assign store to send modal -->
                     <div class="modal fade" id="deliveryModal" tabindex="-1" role="dialog" aria-labelledby="deliveryModalLabel" aria-hidden="true">
                         <div class="modal-dialog" role="document">
                             <div class="modal-content">
-                                <div class="modal-header">
+                                <div class="modal-header bg-dark">
                                     <h5 class="modal-title" id="deliveryModalLabel">Delivery Manage</h5>
                                     <span aria-hidden="true" data-bs-dismiss="modal" aria-label="Close"><i class="bi bi-x-lg"></i></span>
                                 </div>
@@ -38,7 +38,7 @@ require 'static-nav/static-sidenav.php';
                                     <i class="bi bi-question-circle float-end" data-bs-toggle="popover" title="Description:" data-bs-content="<?php echo $f_Desc1; ?>"></i>
                                 </div>
                                 <form method="POST" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>">
-                                    <div class="modal-body">
+                                    <div class="modal-body text-black">
                                         <div class="form-group mb-3">
                                             <label>Order ID</label><span class="text-danger">&nbsp;&nbsp; * &nbsp;<?php echo $id_error; ?></span>
                                             <select class="form-select" aria-label="order list" name="order_id" id="order_id">

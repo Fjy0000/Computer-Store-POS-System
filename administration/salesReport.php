@@ -114,8 +114,8 @@ require 'static-nav/static-sidenav.php';
             <?php include 'alertMessage.php'; ?>
             <h1 class="mt-4">Sales Report</h1>
             <div class="card mb-4">
-                <div class="card-header">
-                    <i class="fas fa-table me-1"></i>
+                <div class="card-header bg-dark text-white">
+                    <i class="bi bi-table"></i>
                     Order Table
                     <div class="dropdown float-end">
                         <button type="button" class="btn btn-primary dropdown-toggle m-md-2" data-bs-toggle="dropdown">Export</button>
@@ -126,7 +126,7 @@ require 'static-nav/static-sidenav.php';
                     <div class="modal fade" id="reportModal" tabindex="-1" role="dialog" aria-labelledby="reportModalLabel" aria-hidden="true">
                         <div class="modal-dialog" role="document">
                             <div class="modal-content">
-                                <div class="modal-header">
+                                <div class="modal-header bg-dark">
                                     <h5 class="modal-title" id="reportModalLabel">Sales Report</h5>
                                     <span aria-hidden="true" data-bs-dismiss="modal" aria-label="Close"><i class="bi bi-x-lg"></i></span>
                                 </div>
@@ -135,7 +135,7 @@ require 'static-nav/static-sidenav.php';
                                     <span style="color: #dc3545">&nbsp;&nbsp; * = Required</span>
                                 </div>
                                 <form method="POST" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>">
-                                    <div class="modal-body">
+                                    <div class="modal-body text-black">
                                         <div class="form-group mb-3">
                                             <label>Store</label><span style="color: #dc3545">&nbsp;&nbsp; *<?php echo $storeErr; ?></span>
                                             <select class="form-select" aria-label="Store list" name="storeName" id="storeName">
@@ -168,38 +168,39 @@ require 'static-nav/static-sidenav.php';
                             </div>
                         </div>
                     </div>
-                    <div class="card-body">
-                        <table class="table">
-                            <thead>
-                                <tr>
-                                    <th>Order ID</th>
-                                    <th>Product Name</th>
-                                    <th>Store Name</th>
-                                    <th>Total Price (RM)</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <?php
-                                if (mysqli_num_rows($result) > 0) {
-                                    foreach ($result as $order) {
-                                        ?>
-                                        <tr>
-                                            <td><?php echo $order["id"]; ?></td>
-                                            <td><?php echo $order["total_product"]; ?></td>
-                                            <td><?php echo $order["store_send"]; ?> </td>
-                                            <td><?php echo $order["total_price"]; ?></td>
-                                        </tr>
-                                        <?php
-                                    }
-                                } else {
-                                    echo "<h5 class='text-primary'>No Record Found.....</h5>";
+                </div>
+                <div class="card-body">
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th>Order ID</th>
+                                <th>Product Name</th>
+                                <th>Store Name</th>
+                                <th>Total Price (RM)</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <?php
+                            if (mysqli_num_rows($result) > 0) {
+                                foreach ($result as $order) {
+                                    ?>
+                                    <tr>
+                                        <td><?php echo $order["id"]; ?></td>
+                                        <td><?php echo $order["total_product"]; ?></td>
+                                        <td><?php echo $order["store_send"]; ?> </td>
+                                        <td><?php echo $order["total_price"]; ?></td>
+                                    </tr>
+                                    <?php
                                 }
-                                ?>
-                            </tbody>
-                        </table>
-                    </div>
+                            } else {
+                                echo "<h5 class='text-primary'>No Record Found.....</h5>";
+                            }
+                            ?>
+                        </tbody>
+                    </table>
                 </div>
             </div>
+        </div>
     </main>
 </div>
 <script>

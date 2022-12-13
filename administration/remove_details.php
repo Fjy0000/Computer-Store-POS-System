@@ -27,8 +27,8 @@ require 'static-nav/static-sidenav.php';
             <?php include 'alertMessage.php'; ?>
             <h1 class="mt-4">Removed Detail Manage</h1>
             <div class="card mb-4">
-                <div class="card-header">
-                    <i class="fas fa-table me-1"></i>
+                <div class="card-header bg-dark text-white">
+                    <i class="bi bi-table"></i>
                     Removed Detail Table
                     <button type="button" class="btn btn-danger m-md-2 float-end" data-bs-toggle="modal" data-bs-target="#removeModal">Remove Product Quantity</button>
                     <!-- remove product quantity modal -->
@@ -41,7 +41,7 @@ require 'static-nav/static-sidenav.php';
                                 </div>
                                 <div>
                                     <i class="bi bi-question-circle float-end" style="font-size: 18px" data-bs-toggle="popover" title="Description:" data-bs-content="<?php echo $f_Desc1 ?>"></i>
-                                     <span style="color: #dc3545">&nbsp;&nbsp; * = Required</span>
+                                    <span style="color: #dc3545">&nbsp;&nbsp; * = Required</span>
                                 </div>
                                 <form method="POST" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>">
                                     <div class="modal-body">

@@ -32,8 +32,6 @@ if (isset($_GET['id'])) {
             }
         }
     }
-
-
     if (mysqli_num_rows($result1) > 0) {
         $currentProduct = mysqli_fetch_array($result1);
     }
@@ -158,6 +156,48 @@ if (isset($_GET['id'])) {
                                 </div>
                             </div>
                         </section>
+                    </div>
+                    <div class="card">
+                        <div class="card-header">
+                            <i class="bi bi-table"></i>
+                            Transfer Product Record
+                        </div>
+                        <div class="card-body">
+                            <table class="table table-bordered">
+                                <thead>
+                                    <tr>
+                                        <th scope="col">#</th>
+                                        <th scope="col">Product Name</th>
+                                        <th scope="col">From Store</th>
+                                        <th scope="col">Qunatity</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <?php
+                                    $count_num = 0;
+                                    $get_transfer_store = $currentProduct['store_name'];
+                                    $get_transfer_product = $currentProduct['name'];
+                                    $sql3 = "SELECT * FROM transfer_product WHERE to_store='$get_transfer_store' AND product_name='$get_transfer_product' ";
+                                    $result3 = mysqli_query($connect, $sql3);
+                                    if (mysqli_num_rows($result3) > 0) {
+                                        foreach ($result3 as $transfer_records) {
+                                            $count_num++;
+                                            ?>
+                                            <tr>
+                                                <th scope="row"><?php echo $count_num; ?></th>
+                                                <td><?php echo $transfer_records['product_name']; ?></td>
+                                                <td><?php echo $transfer_records['from_store']; ?></td>
+                                                <td><?php echo $transfer_records['quantity']; ?></td>
+                                            </tr>
+                                            <?php
+                                        }
+                                    } else {
+                                        echo "<h5 class='text-primary'>No Record Found.....</h5>";
+                                    }
+                                    ?>
+                                </tbody>
+                            </table>
+                        </div>
                     </div>
                 </div>
             </main>

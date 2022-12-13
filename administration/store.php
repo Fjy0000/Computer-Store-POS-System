@@ -25,8 +25,8 @@ require 'static-nav/static-sidenav.php';
             <?php include 'alertMessage.php'; ?>
             <h1 class="mt-4">Store Maintenance</h1>
             <div class="card mb-4">
-                <div class="card-header">
-                    <i class="fas fa-table me-1"></i>
+                <div class="card-header bg-dark text-white">
+                    <i class="bi bi-table"></i>
                     Store Table
                     <a href="crud_store/store_create.php" class="btn btn-primary float-end">Create</a>
                 </div>
