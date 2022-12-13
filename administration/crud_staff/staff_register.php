@@ -44,6 +44,7 @@ require 'staff_db.php';
                         <div class="row">
                             <div class="col-md-12">
                                 <i class="bi bi-question-circle float-end" style="font-size: 18px" data-bs-toggle="popover" title="Description:" data-bs-content="<?php echo $f_Desc1 ?>"></i>
+                                <span style="color: #dc3545">&nbsp;&nbsp; * = Required</span>
                             </div>
                         </div>
                         <div class="card-body">

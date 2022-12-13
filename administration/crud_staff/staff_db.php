@@ -5,6 +5,7 @@ $currentStaff = $nameErr = $phoneErr = $emailErr = $icErr = $ageErr = $positionE
 
 //Define Description of function
 $f_Desc1 = "This page is a staff account registration page, in here you can create and add a new one staff account.";
+$f_Desc2 = "This page is a staff update details page, in here you can update a staff account details.";
 
 //staff create
 if (isset($_POST['create_staff'])) {
