@@ -6,18 +6,12 @@ $id = $_GET['id'];
 $url = "";
 $path = "images_qrcode/";
 $qrcode = $path . time() . ".png";
-$qrimage = time() . ".png";
-$name = strval($qrimage);
 
 if (isset($_POST['generate_qrCode'])) {
     $url = $_POST['qr_code'];
-    $query = "UPDATE orders SET qrcode='$name' WHERE id= '$id' ";
-    $save = mysqli_query($connect, $query);
-    if ($save) {
-        echo '<script>alert("Your QR code generated succussfully.");</script>';
-    }
+    QRcode::png($url, $qrcode, 'H', 4, 4);
+    echo '<script>alert("Your QR code generated succussfully.");</script>';
 }
-QRcode::png($url, $qrcode, 'H', 4, 4);
 
 include 'static-include/header.php';
 require 'static-nav/static-headnav.php';
@@ -30,7 +24,7 @@ require 'static-nav/static-sidenav.php';
             <h1 class="mt-4">Generate QR Code </h1>
             <div class="card mb-4">
                 <div class="card-header bg-dark">
-                    <button type="button" onclick="history.back()" class="btn btn-primary float-end">Back</button>
+                    <a href="http://localhost/Computer-Store-POS-System/administration/delivery.php" class="btn btn-primary float-end">Back</a>
                 </div>
                 <div class="container">
                     <div class="card-body">
