@@ -14,7 +14,8 @@
                     </a>
                     <div class="sb-sidenav-menu-heading">Maintenance</div>
                     <?php
-                    if ($_SESSION['position'] == "Human Resource Manager" || $_SESSION['position'] == "Business Manager") {
+                    $permission_position = array("Human Resource Manager", "Business Manager");
+                    if ($_SESSION['position'] == $permission_position[0] || $_SESSION['position'] == $permission_position[1]) {
                         ?>
                         <a class="nav-link" href="http://localhost/Computer-Store-POS-System/administration/staff.php">
                             <div class="sb-nav-link-icon"><i class="bi bi-person-vcard-fill"></i></div>
