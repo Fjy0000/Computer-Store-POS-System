@@ -4,7 +4,7 @@
 $currentProduct = $nameErr = $descriptionErr = $categoryErr = $priceErr = $s_idErr = $imageErr = $quantityErr = $t_productErr = $toErr = $fromErr = "";
 
 //Define Description of function
-$f_Desc1 ="This function is transfer stock, in here you can transfer the selected stock product quantity to another stock.";
+$f_Desc1 = "This function is transfer stock, in here you can transfer the selected stock product quantity to another stock.";
 
 //Update Product
 if (isset($_POST['update_product_branch'])) {
@@ -74,7 +74,7 @@ if (isset($_POST['update_product_branch'])) {
             exit(0);
         }
     } else {
-          $_SESSION['error'] = "Update Fail ! Reason : <br>"
+        $_SESSION['error'] = "Update Fail ! Reason : <br>"
                 . "$nameErr <br>"
                 . "$descriptionErr <br>"
                 . "$categoryErr <br>"
@@ -94,6 +94,7 @@ if (isset($_POST['transfer_product_branch'])) {
     $toStoreId = $_POST['toStoreId'];
     $n_product = $_POST['product'];
     $transfer_num = $_POST['transferQuantity'];
+    $transfer_date = date('Y-m-d');
 
     //get store information
     $sql1 = "SELECT * FROM store WHERE store_id='$fromStoreId' ";
@@ -155,8 +156,8 @@ if (isset($_POST['transfer_product_branch'])) {
     if (empty($t_productErr) && empty($toErr) && empty($fromErr) && empty($quantityErr)) {
 
         //save transfer product details 
-        $sql5 = "INSERT INTO transfer_product (product_name, from_store, fromStore_id, to_store, toStore_id, quantity) "
-                . "VALUES ('$n_product','$from_name','$fromStoreId','$to_name','$toStoreId',' $transfer_num') ";
+        $sql5 = "INSERT INTO transfer_product (product_name, from_store, fromStore_id, to_store, toStore_id, quantity, transfer_date) "
+                . "VALUES ('$n_product','$from_name','$fromStoreId','$to_name','$toStoreId',' $transfer_num', '$transfer_date') ";
 
         //update both side product quantity
         $to_sql = "UPDATE product SET quantity='$num_to' WHERE name='$n_product' AND store_id='$toStoreId' ";
@@ -196,6 +197,15 @@ if (isset($_POST['transfer_product_branch'])) {
                 exit(0);
             }
         }
+    } else {
+        $_SESSION['error'] = "Update Fail ! Reason : <br>"
+                . "$fromErr <br>"
+                . "$toErr <br>"
+                . "$t_productErr <br>"
+                . "$quantityErr";
+
+        header("Location:http://localhost/Computer-Store-POS-System/administration/stock_branch.php");
+        exit(0);
     }
 }
 ?>

@@ -158,7 +158,7 @@ if (isset($_GET['id'])) {
                         </section>
                     </div>
                     <div class="card">
-                        <div class="card-header">
+                        <div class="card-header bg-danger">
                             <i class="bi bi-table"></i>
                             Transfer Product Record
                         </div>
@@ -170,6 +170,7 @@ if (isset($_GET['id'])) {
                                         <th scope="col">Product Name</th>
                                         <th scope="col">From Store</th>
                                         <th scope="col">Qunatity</th>
+                                        <th scope="col">Transfer Date</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -188,6 +189,42 @@ if (isset($_GET['id'])) {
                                                 <td><?php echo $transfer_records['product_name']; ?></td>
                                                 <td><?php echo $transfer_records['from_store']; ?></td>
                                                 <td><?php echo $transfer_records['quantity']; ?></td>
+                                                <td><?php echo $transfer_records['transfer_date']; ?></td>
+                                            </tr>
+                                            <?php
+                                        }
+                                    } else {
+                                        echo "<h5 class='text-primary'>No Record Found.....</h5>";
+                                    }
+                                    ?>
+                                </tbody>
+                            </table>
+                        </div>
+                        <div class="card">
+                            <div class="card-header bg-warning">
+                            <i class="bi bi-chat-right-text-fill"></i>
+                            Customer Comment
+                        </div>
+                        <div class="card-body">
+                            <table class="table table-bordered">
+                                <thead>
+                                    <tr>
+                                        <th scope="col">#</th>
+                                        <th scope="col">Customer Name</th>
+                                        <th scope="col">Comment</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <?php
+                                    $count_num = 0;
+                                    if (mysqli_num_rows($result2) > 0) {
+                                        foreach ($result2 as $product_comment) {
+                                            $count_num++;
+                                            ?>
+                                            <tr>
+                                                <th scope="row"><?php echo $count_num; ?></th>
+                                                <td><?php echo $product_comment['name']; ?></td>
+                                                <td><?php echo $product_comment['comment']; ?></td>
                                             </tr>
                                             <?php
                                         }
