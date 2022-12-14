@@ -14,27 +14,20 @@
                     </a>
                     <div class="sb-sidenav-menu-heading">Maintenance</div>
                     <?php
-                    if (!empty($_SESSION['position'])) {
-                        if ($_SESSION['position'] == "Human Resource Manager" || $_SESSION['position'] == "Business Manager") {
-                            ?>
-                            <a class="nav-link" href="http://localhost/Computer-Store-POS-System/administration/staff.php">
-                                <div class="sb-nav-link-icon"><i class="bi bi-person-vcard-fill"></i></div>
-                                Staff Account
-                            </a>
-                        <?php } else { ?>
-                            <a class="nav-link" href="#" onclick="alert('You do not have permission to access this page ! ! !')">
-                                <div class="sb-nav-link-icon"><i class="bi bi-person-vcard-fill"></i></div>
-                                Staff Account
-                            </a>
-                            <?php
-                        }
-                    } else {
+                    if ($_SESSION['position'] == "Human Resource Manager" || $_SESSION['position'] == "Business Manager") {
                         ?>
-                        <a class="nav-link" href="#" onclick="alert('System cannot identify your account ! ! ! Please go to login ! ! !')">
+                        <a class="nav-link" href="http://localhost/Computer-Store-POS-System/administration/staff.php">
                             <div class="sb-nav-link-icon"><i class="bi bi-person-vcard-fill"></i></div>
                             Staff Account
                         </a>
-                    <?php } ?>
+                    <?php } else { ?>
+                        <a class="nav-link" href="#" onclick="alert('You do not have permission to access this page ! ! !')">
+                            <div class="sb-nav-link-icon"><i class="bi bi-person-vcard-fill"></i></div>
+                            Staff Account
+                        </a>
+                        <?php
+                    }
+                    ?>
                     <a class="nav-link" href="http://localhost/Computer-Store-POS-System/administration/delivery.php">
                         <div class="sb-nav-link-icon"><i class="bi bi-truck"></i></div>
                         Sales Delivery
@@ -82,11 +75,7 @@
             <div class="sb-sidenav-footer">
                 <div class="small">Logged in as:</div>
                 <?php
-                if (empty($_SESSION['username'])) {
-                    echo "null";
-                } else {
-                    echo $_SESSION['username'];
-                }
+                echo $_SESSION['username'];
                 ?>
             </div>
         </nav>

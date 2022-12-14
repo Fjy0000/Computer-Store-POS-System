@@ -26,7 +26,7 @@ if (isset($_POST['staff_login'])) {
             if ($row['staff_username'] == $u && $row['staff_password'] == $p) {
 
                 $_SESSION['message'] = "Welcome back ! $u let start to work.";
-
+                $_SESSION['checklogin'] = true;
                 $_SESSION['id'] = $row['staff_id'];
                 $_SESSION['username'] = $row['staff_username'];
                 $_SESSION['position'] = $row['staff_position'];
