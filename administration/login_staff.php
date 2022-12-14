@@ -29,6 +29,7 @@ if (isset($_POST['staff_login'])) {
 
                 $_SESSION['id'] = $row['staff_id'];
                 $_SESSION['username'] = $row['staff_username'];
+                $_SESSION['position'] = $row['staff_position'];
 
                 //PDO mode - add users login details for use to represent the account online/offline in live chat
                 $i = $row['staff_id'];

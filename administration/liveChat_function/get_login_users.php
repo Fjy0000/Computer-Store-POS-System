@@ -74,6 +74,6 @@ if (isset($_SESSION['id'])) {
     $output .= '</table>';
     echo $output;
 } else {
-    echo '<strong>Invalid account! System cannot recognize your Account ID, please login again.<strong>';
+    echo '<strong>Invalid account ! ! ! The system cannot identify your account, please login again.<strong>';
 }
 ?>

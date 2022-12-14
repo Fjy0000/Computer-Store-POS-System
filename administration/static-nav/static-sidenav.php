@@ -3,9 +3,7 @@
         <nav class="sb-sidenav accordion sb-sidenav-dark" id="sidenavAccordion">
             <div class="sb-sidenav-menu">
                 <div class="nav">
-
                     <div class="sb-sidenav-menu-heading">Core</div>
-
                     <a class="nav-link" href="http://localhost/Computer-Store-POS-System/administration/admin_dashboard.php">
                         <div class="sb-nav-link-icon"><i class="bi bi-speedometer"></i></div>
                         Dashboard
@@ -14,13 +12,29 @@
                         <div class="sb-nav-link-icon"><i class="bi bi-chat-dots-fill"></i></div>
                         Live-Chat
                     </a>
-
                     <div class="sb-sidenav-menu-heading">Maintenance</div>
-
-                    <a class="nav-link" href="http://localhost/Computer-Store-POS-System/administration/staff.php">
-                        <div class="sb-nav-link-icon"><i class="bi bi-person-vcard-fill"></i></div>
-                        Staff Account
-                    </a>
+                    <?php
+                    if (!empty($_SESSION['position'])) {
+                        if ($_SESSION['position'] == "Human Resource Manager" || $_SESSION['position'] == "Business Manager") {
+                            ?>
+                            <a class="nav-link" href="http://localhost/Computer-Store-POS-System/administration/staff.php">
+                                <div class="sb-nav-link-icon"><i class="bi bi-person-vcard-fill"></i></div>
+                                Staff Account
+                            </a>
+                        <?php } else { ?>
+                            <a class="nav-link" href="#" onclick="alert('You do not have permission to access this page ! ! !')">
+                                <div class="sb-nav-link-icon"><i class="bi bi-person-vcard-fill"></i></div>
+                                Staff Account
+                            </a>
+                            <?php
+                        }
+                    } else {
+                        ?>
+                        <a class="nav-link" href="#" onclick="alert('System cannot identify your account ! ! ! Please go to login ! ! !')">
+                            <div class="sb-nav-link-icon"><i class="bi bi-person-vcard-fill"></i></div>
+                            Staff Account
+                        </a>
+                    <?php } ?>
                     <a class="nav-link" href="http://localhost/Computer-Store-POS-System/administration/delivery.php">
                         <div class="sb-nav-link-icon"><i class="bi bi-truck"></i></div>
                         Sales Delivery
@@ -58,9 +72,8 @@
                         <div class="sb-nav-link-icon"><i class="bi bi-buildings"></i></div>
                         Store
                     </a>
-                    
                     <div class="sb-sidenav-menu-heading">Generate Report</div>
-                     <a class="nav-link" href="http://localhost/Computer-Store-POS-System/administration/salesReport.php">
+                    <a class="nav-link" href="http://localhost/Computer-Store-POS-System/administration/salesReport.php">
                         <div class="sb-nav-link-icon"><i class="bi bi-file-earmark"></i></div>
                         Sales Report
                     </a>
