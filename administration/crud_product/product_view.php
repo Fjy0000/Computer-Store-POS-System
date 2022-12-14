@@ -54,11 +54,15 @@ if (isset($_GET['id'])) {
         <link rel="stylesheet" href="extensions/sticky-header/bootstrap-table-sticky-header.css">
         <script src="extensions/sticky-header/bootstrap-table-sticky-header.js"></script>
         <style>
+            thead{
+                position: sticky;
+                top: 0;
+                background-color: #C5C5EC;
+            }
             .table-wrapper{
-                max-height: 200px;
+                max-height: 250px;
                 overflow-y: scroll;
             }
-
         </style>
     </head>
     <body>
@@ -166,13 +170,13 @@ if (isset($_GET['id'])) {
                             </div>
                         </section>
                     </div>
-                    <div class="card">
+                    <div class="card mb-4">
                         <div class="card-header bg-danger">
                             <i class="bi bi-table"></i>
                             Transfer Product Record
                         </div>
                         <div class="card-body table-wrapper">
-                            <table class="table table-bordered">
+                            <table class="table table-hover">
                                 <thead>
                                     <tr>
                                         <th scope="col">#</th>
@@ -210,13 +214,13 @@ if (isset($_GET['id'])) {
                             </table>
                         </div>
                     </div>
-                    <div class="card">
+                    <div class="card mb-4">
                         <div class="card-header bg-warning">
                             <i class="bi bi-chat-right-text-fill"></i>
                             Customer Comment
                         </div>
                         <div class="card-body table-wrapper">
-                            <table class="table table-bordered">
+                            <table class="table table-hover">
                                 <thead>
                                     <tr>
                                         <th scope="col">#</th>
