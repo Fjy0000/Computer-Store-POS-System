@@ -51,6 +51,15 @@ if (isset($_GET['id'])) {
         <!-- JavaScript Bundle with Popper -->
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous"></script>
         <script src="http://localhost/Computer-Store-POS-System/administration/js/scripts.js"></script>
+        <link rel="stylesheet" href="extensions/sticky-header/bootstrap-table-sticky-header.css">
+        <script src="extensions/sticky-header/bootstrap-table-sticky-header.js"></script>
+        <style>
+            .table-wrapper{
+                max-height: 200px;
+                overflow-y: scroll;
+            }
+
+        </style>
     </head>
     <body>
         <?php
@@ -162,7 +171,7 @@ if (isset($_GET['id'])) {
                             <i class="bi bi-table"></i>
                             Transfer Product Record
                         </div>
-                        <div class="card-body">
+                        <div class="card-body table-wrapper">
                             <table class="table table-bordered">
                                 <thead>
                                     <tr>
@@ -200,12 +209,13 @@ if (isset($_GET['id'])) {
                                 </tbody>
                             </table>
                         </div>
-                        <div class="card">
-                            <div class="card-header bg-warning">
+                    </div>
+                    <div class="card">
+                        <div class="card-header bg-warning">
                             <i class="bi bi-chat-right-text-fill"></i>
                             Customer Comment
                         </div>
-                        <div class="card-body">
+                        <div class="card-body table-wrapper">
                             <table class="table table-bordered">
                                 <thead>
                                     <tr>
