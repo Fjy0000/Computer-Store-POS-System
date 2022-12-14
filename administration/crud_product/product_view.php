@@ -194,7 +194,7 @@ if (isset($_GET['id'])) {
                                             <?php
                                         }
                                     } else {
-                                        echo "<h5 class='text-primary'>No Record Found.....</h5>";
+                                        echo "<h5 class='text-primary'>No Record.....</h5>";
                                     }
                                     ?>
                                 </tbody>
@@ -229,7 +229,7 @@ if (isset($_GET['id'])) {
                                             <?php
                                         }
                                     } else {
-                                        echo "<h5 class='text-primary'>No Record Found.....</h5>";
+                                        echo "<h5 class='text-primary'>No Record.....</h5>";
                                     }
                                     ?>
                                 </tbody>

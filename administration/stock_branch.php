@@ -142,7 +142,7 @@ require 'static-nav/static-sidenav.php';
                                     <?php
                                 }
                             } else {
-                                echo "<h5 class='text-primary'>No Record Found.....</h5>";
+                                echo "<h5 class='text-primary'>No Record.....</h5>";
                             }
                             ?>
                         </tbody>
