@@ -21,7 +21,9 @@ if (isset($_POST['resetPassword'])) {
             $row = mysqli_fetch_assoc($check);
             if ($row['staff_email'] == $email) {
 
-                $message = $row['staff_recoveryPasswordKey'];
+                $message = "You have requested to reset your Account password. Please copy this code : " 
+                        . $row['staff_recoveryPasswordKey'] . 
+                        ". And enter the code to change your password. Please be reminded that the code is valid for 24 hours.";
                 $to = $email;
                 $subject = "Staff Account - Password Recovery Key";
                 $txt = $message;
