@@ -30,7 +30,7 @@ if (!$result1 || !$result2) {
                     <div class="card shadow-lg border-0 rounded-lg mt-5">
                         <div class="card-header">
                             <h4>Create Product
-                                <button type="button" onclick="history.back()" class="btn btn-primary float-end">Back</button>
+                                <a href="http://localhost/Computer-Store-POS-System/administration/stock_hq.php" class="btn btn-primary float-end">Back</a>
                             </h4>
                         </div>
                         <div class="row">

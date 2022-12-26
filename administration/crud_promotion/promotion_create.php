@@ -22,7 +22,7 @@ require 'promotion_db.php';
                     <div class="card shadow-lg border-0 rounded-lg mt-5">
                         <div class="card-header">
                             <h4>Promotion Create
-                                <button type="button" onclick="history.back()" class="btn btn-primary float-end">Back</button>
+                                <a href="http://localhost/Computer-Store-POS-System/administration/promotion.php" class="btn btn-primary float-end">Back</a>
                             </h4>
                         </div>
                         <div class="row">
