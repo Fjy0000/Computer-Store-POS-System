@@ -51,23 +51,19 @@ if (isset($_POST['create_staff'])) {
     if (empty($phone)) {
         $phoneErr = "Phone field cannot be left blank";
     } elseif (!empty($phone)) {
-        if (strlen($phone) < 10 || strlen($phone) > 13) {
+        if (!preg_match("/^[0-9]*$/", $phone)) {
+            $phoneErr = "Only numbers are allowed";
+        } elseif (strlen($phone) < 10 || strlen($phone) > 13) {
             $phoneErr = "Staff phone number must be real";
-        } else {
-            if (!preg_match("/^[0-9]*$/", $phone)) {
-                $phoneErr = "Only numbers are allowed";
-            }
         }
     }
     if (empty($ic)) {
         $icErr = "IC field cannot be left blank";
     } elseif (!empty($ic)) {
-        if (strlen($ic) < 12) {
+        if (!preg_match("/^[0-9]*$/", $ic)) {
+            $icErr = "Only numbers are allowed";
+        } elseif (strlen($ic) < 12) {
             $icErr = "Staff ic number must be real";
-        } else {
-            if (!preg_match("/^[0-9]*$/", $ic)) {
-                $icErr = "Only numbers are allowed";
-            }
         }
     }
     if (empty($age)) {
@@ -159,23 +155,19 @@ if (isset($_POST['update_staff'])) {
     if (empty($phone)) {
         $phoneErr = "Phone field cannot be left blank";
     } elseif (!empty($phone)) {
-        if (strlen($phone) < 10 || strlen($phone) > 13) {
+        if (!preg_match("/^[0-9]*$/", $phone)) {
+            $phoneErr = "Only numbers are allowed";
+        } elseif (strlen($phone) < 10 || strlen($phone) > 13) {
             $phoneErr = "Staff phone number must be real";
-        } else {
-            if (!preg_match("/^[0-9]*$/", $phone)) {
-                $phoneErr = "Only numbers are allowed";
-            }
         }
     }
     if (empty($ic)) {
         $icErr = "IC field cannot be left blank";
     } elseif (!empty($ic)) {
-        if (strlen($ic) < 12) {
+        if (!preg_match("/^[0-9]*$/", $ic)) {
+            $icErr = "Only numbers are allowed";
+        } elseif (strlen($ic) < 12) {
             $icErr = "Staff ic number must be real";
-        } else {
-            if (!preg_match("/^[0-9]*$/", $ic)) {
-                $icErr = "Only numbers are allowed";
-            }
         }
     }
     if (empty($age)) {
