@@ -11,7 +11,7 @@ $qrcode = $path . time() . ".png";
 if (isset($_POST['generate_qrCode'])) {
     $url = $_POST['qr_code'];
     QRcode::png($url, $qrcode, 'H', 4, 4);
-    echo '<script>alert("Your QR code generated succussfully.");</script>';
+    echo '<script>alert("Your QR code generated successfully.");</script>';
 }
 
 include 'static-include/header.php';
