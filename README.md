@@ -10,7 +10,7 @@ The purpose of the POS system is to simplify user operation processes, optimize 
 
 - [Installation](#installation)
 - [Configuration](#configuration)
-- [Run&Test](#run&tests)
+- [Run&Test](#run&test)
 
 ## Installation
 
@@ -37,6 +37,6 @@ Before configuration, make sure you have the following dependencies installed:
 3. Rename Download FileName:
 - Make sure the file name is "Computer-Store-POS-System"
 
-## Run&Tests
+## Run&Test
 
 Copy this link and run : http://localhost/Computer-Store-POS-System/administration/login_staff.php
