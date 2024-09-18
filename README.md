@@ -1,9 +1,9 @@
 # Project Name : Computer Store POS System
 
-#Description:
+**Description:
 The POS system is a solution designed for retail businesses to help them smoothly transition from physical stores to online stores. The system has a minimalist design and an easy-to-use user interface, allowing merchants to easily manage sales, inventory, and customer information. The system is able to generate sales reports, track inventory levels, and seamlessly manage inventory across multiple stores.
 
-#Purpose:
+**Purpose:
 The purpose of the POS system is to simplify user operation processes, optimize inventory management, and provide business owners with detailed data on sales and customer behavior, thereby improving operational efficiency and decision-making capabilities.
 
 ## Table of Contents
