@@ -1,6 +1,6 @@
 # Project Name : Computer Store POS System
 
-- Contribution & Handle: Fong Jun Yi (Admin Side) , Zheng Yi Ng (Customer Side)
+- Contribution & Handle: Fong Jun Yi(Admin Side) , Ng Zheng Yi(Customer Side)
 
 - Description:
 The POS system is a solution designed for retail businesses to help them smoothly transition from physical stores to online stores. The system has a minimalist design and an easy-to-use user interface, allowing merchants to easily manage sales, inventory, and customer information. The system is able to generate sales reports, track inventory levels, and seamlessly manage inventory across multiple stores.
