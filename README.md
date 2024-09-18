@@ -33,6 +33,7 @@ Before configuration, make sure you have the following dependencies installed:
 
 2. Setup Sendmail:
 - Follow the link to setup : (https://youtu.be/TvaKz3wwvWY?si=hlbMqCK7PJvd12xy)
+- Open administration > Select resetPassword.php > Search Line 30 > Enter your email address 
 
 3. Rename Download FileName:
 - Make sure the file name is "Computer-Store-POS-System"
