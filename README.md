@@ -10,7 +10,7 @@ The purpose of the POS system is to simplify user operation processes, optimize 
 
 - [Installation](#installation)
 - [Configuration](#configuration)
-- [Run&Test](#run&test)
+- [Run&Test](#runtest)
 
 ## Installation
 
