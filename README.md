@@ -37,8 +37,8 @@ Before configuration, make sure you have the following dependencies installed:
 - Follow the link to setup : (https://youtu.be/TvaKz3wwvWY?si=hlbMqCK7PJvd12xy)
 - Open administration > Select resetPassword.php > Search Line 30 > Enter "From: [your email address]"
 
-3. Rename Download FileName:
-- Make sure the file name is "Computer-Store-POS-System"
+3. Rename Download FolderName:
+- Make sure the folder name is "Computer-Store-POS-System"
 
 ## Run&Test
 
