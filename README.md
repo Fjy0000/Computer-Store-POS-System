@@ -39,4 +39,4 @@ Before configuration, make sure you have the following dependencies installed:
 
 ## Run&Tests
 
-Copy this link and run : 
+Copy this link and run : http://localhost/Computer-Store-POS-System/administration/login_staff.php
