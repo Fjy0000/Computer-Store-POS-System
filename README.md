@@ -18,8 +18,8 @@ The purpose of the POS system is to simplify user operation processes, optimize 
 
 Before configuration, make sure you have the following dependencies installed:
 
-- **[Xampp](https://www.apachefriends.org/download.html)** (version 8.2.12 / PHP 8.2.12)
-- **[Apache Netbeans](https://netbeans.apache.org/front/main/download/nb22/)** (version NetBeans-22)
+- **[Xampp](https://www.apachefriends.org/download.html)** (version 7.4.29 and above)
+- **[Apache Netbeans](https://netbeans.apache.org/front/main/download/nb22/)** (version NetBeans-19 and above)
 
 ## Configuration
 
