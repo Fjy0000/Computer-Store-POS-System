@@ -27,7 +27,7 @@ if (isset($_POST['resetPassword'])) {
                 $to = $email;
                 $subject = "Staff Account - Password Recovery Key";
                 $txt = $message;
-                $headers = "From: ymark2122@gmail.com";
+                $headers = "From: ymark2122@gmail.com"; //change to your email address
 
                 mail($to, $subject, $txt, $headers);
                 header("Location:http://localhost/Computer-Store-POS-System/administration/setNewPassword.php");
